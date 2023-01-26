@@ -10,6 +10,7 @@ import TopQuestion from "../pages/Home/TopQuestions/TopQuestion";
 import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
+import Complier from "../pages/Complier/Complier";
 
 
 export const router = createBrowserRouter([
@@ -48,28 +49,33 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/login",
-				element: <Login />
+				element: <Login />,
 			},
 			{
-				path: '/signup',
+				path: "/signup",
 
-				element: <Signup />
+				element: <Signup />,
 			},
 			{
-        path: "/qna",
-        loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-        element: <QuestionAns></QuestionAns>,
-      },
-      {
-        path: "/singleqna/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-        element:<SingleQnA></SingleQnA>,
-      },
+				path: "/qna",
+				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
+				element: <QuestionAns></QuestionAns>,
+			},
+			{
+				path: "/singleqna/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+				element: <SingleQnA></SingleQnA>,
+			},
+			{
+				path: "/free",
+
+				element: <Complier />,
+			},
 		],
 	},
 	{
-		path: '*',
-		element: <NotFound></NotFound>
-	}
+		path: "*",
+		element: <NotFound></NotFound>,
+	},
 ]);

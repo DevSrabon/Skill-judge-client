@@ -13,14 +13,14 @@ interface QuestionType  {
 
 const TopQuestions = () => {
 	const { data = [], isLoading } = useQuery({
-		queryKey: ["services"],
+		queryKey: ["topquestions"],
 		queryFn: async () => {
 			const res = fetch(`${process.env.REACT_APP_API_URL}/topquestions`);
 			const data = (await res).json();
 			return data;
 		},
 	});
-	console.log(data);
+	// console.log(data);
 	if (isLoading) {
 		return <Spinner />;
 	}
