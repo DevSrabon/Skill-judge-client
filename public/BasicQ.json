@@ -1,0 +1,16 @@
+[
+    {
+        "problem":"Write a Python program to display the current date and time.",
+        "sample`":"Current date and time :",
+        "sample2":"2014-07-05 14:34:14",
+    },
+    {
+        "problem":"Say Hello, World! With Python",
+        "type":"easy, Python(Basic)",
+        "task-Title":"Here is a sample line of code that can be executed in Python:",
+        "task":"<li>If n  is odd, print <code>Weird</code> </li> <li>If  is even and in the inclusive range of  to , print Not <code>Weird</code> </li> <li> If n is even and in the inclusive range of 6 to 20, print <code>Weird</code> </li><li> If  is even and greater than , print Not <code>Weird</code></li>",
+        "input-format":"A single line containing a positive integer, n.",
+        "constraints":""
+        
+    }
+]

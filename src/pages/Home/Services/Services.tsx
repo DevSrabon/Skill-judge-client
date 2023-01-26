@@ -1,17 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Spinner from "../../../SharedComponent/Spinner/Spinner";
 
 const Services = () => {
-	const [data, setData] = useState<string[]>([]);
-	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/services`)
-			.then((res) => res.json())
-			.then((data) => setData(data));
-	}, []);
-
+const { data: serviceData = [], isLoading } = useQuery({
+	queryKey: ["services"],
+	queryFn: async () => {
+		const res = fetch(`${process.env.REACT_APP_API_URL}/services`);
+		const data = (await res).json();
+		return data;
+	},
+});
+console.log(serviceData)
+if (isLoading) {
+	return <Spinner />;
+}
 	
 	return (
-		<section className="py-20">
+		<section className="py-20 scroll-smooth">
 			<div className="container md:px-4 mx-auto">
 				<div className="max-w-2xl mx-auto mb-16 text-center">
 					<span className="font-bold tracking-wider uppercase dark:text-violet-400">
@@ -22,7 +29,7 @@ const Services = () => {
 					</h2>
 				</div>
 				<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-16 my-2 md:my-5 -mx-4 mt-16 ">
-					{data.map((service: any) => (
+					{serviceData.map((service: any) => (
 						<div key={service._id} className="col-span-1 p-6 space-y-6 rounded shadow sm:p-8 bg-yellow-200 hover:bg-[rgb(167,139,250)] hover:shadow-2xl">
 							<div className="space-y-2">
 								<h4 className="text-2xl font-bold">{service.title}</h4>
