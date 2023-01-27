@@ -1,14 +1,14 @@
 
 import React, { useEffect } from 'react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext, useAuth } from '../../contexts/AuthProvider';
+import { Link } from 'react-router-dom';
+import {  useAuth } from '../../contexts/AuthProvider';
 
 const QuestionAns = () => {
   // const { user }: any = useContext(AuthContext);
-  const { user, signOutUser }: any = useAuth();
+  const { user }: any = useAuth();
   const { register, handleSubmit } = useForm();
   console.log("This is from Q & A : ",user)
         //  const qnaData:any = useLoaderData();
