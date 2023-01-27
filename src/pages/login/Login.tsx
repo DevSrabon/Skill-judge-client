@@ -79,15 +79,15 @@ const Login = () => {
     }
 
     return (
-			<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
-				<div className="lg:col-span-2">
+			<div className="grid grid-cols-1 items-center md:grid-cols-2 gap-4 md:gap-5 pt-5 lg:pt-10 mb-5 md:mx-72">
+				<div className="">
 					<img
 						src="https://i.ibb.co/MMnnGR2/6300830.jpg"
-						className="w-full"
+						className="w-full mx-auto"
 						alt="money"
 					/>
 				</div>
-				<div className="lg:col-span-2">
+				<div className="">
 					<div className="w-full max-w-sm mx-auto shadow-xl p-8 rounded-md">
 						<h2 className="text-xl">Login</h2>
 						<form onSubmit={handleSubmit(handleLogin)} className="form-control">

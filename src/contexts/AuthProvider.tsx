@@ -3,24 +3,24 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import app from '../firebase/firebase.config';
 
 
-// export const AuthContext = createContext<unknown>(null);
-export const AuthContext = createContext<Partial<IAuth>>({});
+export const AuthContext = createContext<unknown>(null);
+// export const AuthContext = createContext<Partial<IAuth>>({});
 const auth: any = getAuth(app)
 
 export const useAuth = () => {
     return useContext(AuthContext);
 }
-export interface IAuth {
-	createUser;
-	createUserWithGoogle;
-	updateUser;
-	loginUser;
-	passwordReset;
-	signOutUser;
-	user;
-	loading;
-	setLoading;
-}
+// export interface IAuth {
+// 	createUser;
+// 	createUserWithGoogle;
+// 	updateUser;
+// 	loginUser;
+// 	passwordReset;
+// 	signOutUser;
+// 	user;
+// 	loading;
+// 	setLoading;
+// }
 
 
 const AuthProvider = ({ children }: { children: ReactElement }) => {
