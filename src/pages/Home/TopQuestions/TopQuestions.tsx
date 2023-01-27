@@ -20,7 +20,6 @@ const TopQuestions = () => {
 			return data;
 		},
 	});
-	// console.log(data);
 	if (isLoading) {
 		return <Spinner />;
 	}
