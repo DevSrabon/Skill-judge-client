@@ -33,7 +33,7 @@ function Complier() {
 	};
 
 	// Function to call the compile endpoint
-	const compile=()=> {
+	const compile = () => {
 		setLoading(true);
 		if (userCode === ``) {
 			return;
@@ -52,12 +52,12 @@ function Complier() {
 			.then(() => {
 				setLoading(false);
 			});
-	}
+	};
 
 	// Function to clear the output screen
-	function clearOutput() {
+	const clearOutput = () => {
 		setUserOutput("");
-	}
+	};
 
 	return (
 		<div className="Complier mb-10">
@@ -97,7 +97,7 @@ function Complier() {
 					<h4>Output:</h4>
 					{loading ? (
 						<div className="spinner-box">
-							<Spinner/>
+							<Spinner />
 						</div>
 					) : (
 						<div className="output-box">

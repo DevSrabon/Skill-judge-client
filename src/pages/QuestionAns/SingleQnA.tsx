@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
-// import { AuthContext } from '../../contexts/AuthProvider';
 
 const SingleQnA = () => {
 	const singleQnaData: any = useLoaderData();
