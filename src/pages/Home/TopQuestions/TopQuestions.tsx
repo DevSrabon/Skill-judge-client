@@ -13,14 +13,14 @@ interface QuestionType  {
 
 const TopQuestions = () => {
 	const { data = [], isLoading } = useQuery({
-		queryKey: ["topquestions"],
+		queryKey: ["questions"],
 		queryFn: async () => {
-			const res = fetch(`${process.env.REACT_APP_API_URL}/topquestions`);
+			const res = fetch(`${process.env.REACT_APP_API_URL}/questions`);
 			const data = (await res).json();
 			return data;
 		},
 	});
-	// console.log(data);
+	console.log(data);
 	if (isLoading) {
 		return <Spinner />;
 	}
@@ -42,7 +42,7 @@ const TopQuestions = () => {
 								)}
 							</p>
 							<div className="text-center md:text-left mt-5">
-								<Link to={`topquestions/${top?._id}`}>
+								<Link to={`questions/${top?._id}`}>
 									<button className="btn btn-sm btn-outline border-slate-100 text-white">
 										See Details
 									</button>

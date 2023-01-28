@@ -3,6 +3,7 @@ import Editor from "@monaco-editor/react";
 import ComNav from "./ComNav";
 import axios from "axios";
 import "./css/ComplierCss.css";
+import Spinner from "../../SharedComponent/Spinner/Spinner";
 
 function Complier() {
 	// State variable to set users source code
@@ -32,7 +33,7 @@ function Complier() {
 	};
 
 	// Function to call the compile endpoint
-	function compile() {
+	const compile = () => {
 		setLoading(true);
 		if (userCode === ``) {
 			return;
@@ -51,12 +52,12 @@ function Complier() {
 			.then(() => {
 				setLoading(false);
 			});
-	}
+	};
 
 	// Function to clear the output screen
-	function clearOutput() {
+	const clearOutput = () => {
 		setUserOutput("");
-	}
+	};
 
 	return (
 		<div className="Complier mb-10">
@@ -78,7 +79,7 @@ function Complier() {
 						language={userLang}
 						defaultLanguage="python"
 						defaultValue="# Enter your code here"
-						onChange={(value:any) => {
+						onChange={(value: any) => {
 							setUserCode(value);
 						}}
 					/>
@@ -94,7 +95,11 @@ function Complier() {
 							onChange={(e) => setUserInput(e.target.value)}></textarea>
 					</div>
 					<h4>Output:</h4>
-					
+					{loading ? (
+						<div className="spinner-box">
+							<Spinner />
+						</div>
+					) : (
 						<div className="output-box">
 							<pre>{userOutput}</pre>
 							<button
@@ -105,7 +110,7 @@ function Complier() {
 								Clear
 							</button>
 						</div>
-					
+					)}
 				</div>
 			</div>
 		</div>

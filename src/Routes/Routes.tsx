@@ -34,14 +34,14 @@ export const router = createBrowserRouter([
 					fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
 			},
 			{
-				path: "/topquestions/:id",
+				path: "/questions/:id",
 				element: (
 					<PrivateRoute>
 						<TopQuestion />
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`${process.env.REACT_APP_API_URL}/topquestions/${params.id}`),
+					fetch(`${process.env.REACT_APP_API_URL}/questions/${params.id}`),
 			},
 			{
 				path: "qna",
