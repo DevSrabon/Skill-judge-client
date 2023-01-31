@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthProvider';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import logo from '../assets/Logo/icons8-productivity-64.png';
 
 const Nav = () => {
     const { user, signOutUser }: any = useAuth();
@@ -11,25 +12,28 @@ const Nav = () => {
             .then(() => {
 
             })
-            .catch(err => {
-                console.log(err);
+            .catch(error => {
+                console.log(error);
             })
     }
 
-    const navItems = <>
+    const navItems = 
+	<React.Fragment>
         <li><Link to={''}>Home</Link></li>
         <li><Link to={'qna'}>QnA</Link></li>
         <li><Link to={''}>Categories</Link></li>
         <li><Link to={''}>Quiz</Link></li>
         <li><Link to={''}>About Us</Link></li>
         {
-            user?.uid ? <>
-                <li><Link onClick={handleLogout} to="">Logout</Link></li>
-            </>
+            user?.uid ? 
+			<React.Fragment>
+			    <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                <li><Link onClick={handleLogout} to="">Logout</Link></li> 
+            </React.Fragment>
                 :
-                <li><Link to={'/login'}>Login</Link></li>
+            <li><Link to={'/login'}>Login</Link></li>
         }
-    </>
+    </React.Fragment>
 
     return (
 		<nav className="fixed bg-[#faf7f5] bg-opacity-30 backdrop-filter backdrop-blur-lg shadow-md  z-50 w-full px-6 py-3 flex justify-between items-center right-0 top-0 mb-20">
@@ -60,19 +64,24 @@ const Nav = () => {
 							</ul>
 						)}
 					</div>
-					<Link
-						to="/"
-						className="btn btn-ghost normal-case text-slate-400 text-3xl">
-						Skill Judge
+					<Link to="/" className="btn btn-ghost normal-case text-black text-3xl">
+					  <img className='ml-2' src={logo} alt=''/><span>Skill Judge</span> 
 					</Link>
 				</div>
-				<div className="navbar-end hidden  font-bold lg:flex">
-					<ul className="menu menu-horizontal p-0 text-slate-400">
+				<div className="navbar-end hidden lg:flex font-bold">
+					<ul className="menu menu-horizontal p-0 text-black">
 						{navItems}
-					</ul>
+					</ul>   
+				</div>
+				<div className='lg:hidden'>
+				    <label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost">
+					  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					  </svg>
+					</label>
 				</div>
 			</nav>
-		);
-};
+		)
+}
 
 export default Nav;

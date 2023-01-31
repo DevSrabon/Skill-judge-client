@@ -11,6 +11,9 @@ import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
 import Complier from "../pages/Complier/Complier";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import AllUsers from "../pages/Dashboard/AllUsers";
+import AddContents from "../pages/Dashboard/AddContents";
 
 
 export const router = createBrowserRouter([
@@ -68,14 +71,27 @@ export const router = createBrowserRouter([
 				element: <SingleQnA></SingleQnA>,
 			},
 			{
-				path: "/free",
-
+				path: "/free", 
 				element: <Complier />,
 			},
-		],
+			{
+				path: '/dashboard',
+				element: <Dashboard/>,
+				children: [
+					{
+						path: '/dashboard/all-users',
+						element: <AllUsers/>
+					},
+					{
+						path: '/dashboard/add-contents',
+						element: <AddContents/>
+					}
+				]
+			}
+		]
 	},
 	{
 		path: "*",
 		element: <NotFound></NotFound>,
-	},
+	}
 ]);
