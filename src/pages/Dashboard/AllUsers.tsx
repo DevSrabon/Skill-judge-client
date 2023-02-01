@@ -17,7 +17,7 @@ const AllUsers = () => {
         }
     })
     
-    const handleDeleteUser = (userId) => { 
+    const handleDeleteUser = (userId: string) => { 
         fetch(`http://localhost:5000/user/${userId}`,{
             method: 'DELETE'
         })
@@ -43,7 +43,7 @@ const AllUsers = () => {
                     <td>{usr.name}</td>
                     <td>{usr.email}</td>
                     <td><button onClick={() => handleDeleteUser(usr._id)} className="btn btn-sm bg-black">Delete</button></td>
-                   </tr>)
+                </tr>)
             }  
           </tbody>
          </table>

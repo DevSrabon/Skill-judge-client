@@ -37,8 +37,8 @@ const Nav = () => {
 
     return (
 		<nav className="fixed bg-[#faf7f5] bg-opacity-30 backdrop-filter backdrop-blur-lg shadow-md  z-50 w-full px-6 py-3 flex justify-between items-center right-0 top-0 mb-20">
-				<div className="navbar-start flex">
-					<div className="dropdown">
+			<div className="navbar-start flex">
+				<div className="dropdown">
 						<label
 							onClick={() => setIsOpen(!isOpen)}
 							tabIndex={0}
@@ -63,24 +63,24 @@ const Nav = () => {
 								{navItems}
 							</ul>
 						)}
-					</div>
-					<Link to="/" className="btn btn-ghost normal-case text-black text-3xl">
-					  <img className='ml-2' src={logo} alt=''/><span>Skill Judge</span> 
-					</Link>
 				</div>
-				<div className="navbar-end hidden lg:flex font-bold">
-					<ul className="menu menu-horizontal p-0 text-black">
-						{navItems}
-					</ul>   
-				</div>
-				<div className='lg:hidden'>
-				    <label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost">
-					  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-					  </svg>
-					</label>
-				</div>
-			</nav>
+				<Link to="/" className="btn btn-ghost normal-case text-black text-3xl">
+					<img className='ml-2' src={logo} alt=''/><span>Skill Judge</span> 
+				</Link>
+			</div>
+			<div className="navbar-end hidden lg:flex font-bold">
+				<ul className="menu menu-horizontal p-0 text-black">
+					{navItems}
+				</ul>   
+			</div>
+			<div className='lg:hidden'>
+				<label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</label>
+			</div>
+		</nav>
 		)
 }
 
