@@ -1,3 +1,4 @@
+
 .quiz-container {
     text-align: center;
 }
@@ -12,7 +13,7 @@
     height: auto;
 
     /* Visual  */
-    background-color: gray;
+    /* background-color: gray; */
     padding: 16px;
     border-radius: 16px;
     color: white;
@@ -26,7 +27,7 @@
 
 .list-li {
     margin-top: 8px;
-    background-color: darkgray;
+    background-color: black;
     padding: 16px;
     border: 3px solid white;
     border-radius: 20px;
@@ -44,6 +45,7 @@
 .question-text {
     color: darkblue;
     font-size: 24px;
+    font-weight: 700;
 }
 
 /* Final Results  */
@@ -68,7 +70,7 @@
 }
 
 .button {
-    background-color: red;
+    background-color: chocolate;
     /* Green */
     border: none;
     color: white;
