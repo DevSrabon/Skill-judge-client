@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import QuizTopicCard from "./QuizTopicCard";
+import Spinner from "../../../SharedComponent/Spinner/Spinner";
 
 interface IQuizTopicCard {
 	_id: string;
@@ -16,7 +17,9 @@ const QuizTopicCards = () => {
 			return data;
 		},
 	});
-	console.log(data);
+	if (isLoading) {
+		<Spinner />;
+	}
 	return (
 		<div className="w-[90%] mx-auto grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5 my-5">
 			{data.map((quiz: IQuizTopicCard) => (
