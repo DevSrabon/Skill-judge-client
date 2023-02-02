@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-
 import Home from "../pages/Home/Home";
 import Booking from "../pages/Home/Booking/Booking";
 import Login from "../pages/login/Login";
@@ -11,7 +10,8 @@ import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
 import Complier from "../pages/Complier/Complier";
-
+import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
+import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
 
 export const router = createBrowserRouter([
 	{
@@ -71,6 +71,16 @@ export const router = createBrowserRouter([
 				path: "/free",
 
 				element: <Complier />,
+			},
+			{
+				path: "/quiz",
+				element: <QuizTopicCards />,
+			},
+			{
+				path: "/quiz/:name",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
+				element: <QuizQuesCards/>,
 			},
 		],
 	},
