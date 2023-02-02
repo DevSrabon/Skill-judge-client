@@ -1,6 +1,5 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React from "react";
 import { useLoaderData } from "react-router-dom";
 import CheckOutForm from "./CheckOutForm";
 
@@ -23,11 +22,9 @@ interface IBook {
     const bookings: any= useLoaderData();
     const booking: IBook = bookings[0]
 
-
-
 	return (
-		<div className=" mx-3 md:mx-20 h-[60vh] ">
-			<h3 className="text-3xl">Payment for {booking.title}</h3>
+		<div className="w-96 lg:w-[440px] p-10 my-10 shadow-2xl mx-auto ">
+			<h3 className="text-3xl font-semibold">Payment for {booking.title}</h3>
 			<p className="text-xl mt-4 text-violet-400">
                 Please pay <strong>${booking.price}</strong> for get { booking.title}{" "}
 			</p>
