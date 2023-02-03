@@ -44,10 +44,9 @@ function Complier() {
 			.post(`${process.env.REACT_APP_API_URL}/compiler`, {
 				code: userCode,
 				language: userLang,
-				input: userInput,
 			})
 			.then((res) => {
-				setUserOutput(res.data.output);
+				setUserOutput(res.data);
 			})
 			.then(() => {
 				setLoading(false);
@@ -60,7 +59,7 @@ function Complier() {
 	};
 
 	return (
-		<div className="Complier mb-10">
+		<div className="Complier mb-10 mx-5 md:mx-10">
 			<ComNav
 				userLang={userLang}
 				setUserLang={setUserLang}
@@ -87,20 +86,14 @@ function Complier() {
 						Run
 					</button>
 				</div>
-				<div className="right-container">
-					<h4>Input:</h4>
-					<div className="input-box">
-						<textarea
-							id="code-inp"
-							onChange={(e) => setUserInput(e.target.value)}></textarea>
-					</div>
+				<div className={`right-container ${userTheme}`}>
 					<h4>Output:</h4>
 					{loading ? (
 						<div className="spinner-box">
 							<Spinner />
 						</div>
 					) : (
-						<div className="output-box">
+						<div className={`output-box ${userTheme}`}>
 							<pre>{userOutput}</pre>
 							<button
 								onClick={() => {

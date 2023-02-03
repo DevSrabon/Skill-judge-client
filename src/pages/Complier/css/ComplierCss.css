@@ -1,6 +1,6 @@
 .main {
     display: flex;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 10px);
 }
 
 .left-container {
@@ -104,4 +104,12 @@ h4 {
 
 .run-btn:active {
     background-color: #6e9427;
+}
+.light{
+    background-color: white;
+    color: black;
+}
+.vs-dark{
+    background-color: black;
+    
 }
