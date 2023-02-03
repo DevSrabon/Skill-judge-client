@@ -51,6 +51,7 @@ const CheckoutForm: React.FC<Props> = ({ booking }) => {
 			type: "card",
 			card,
 		});
+		console.log(paymentMethod);
 		if (error) {
 			console.log(error);
 			setCardError(error.message);
