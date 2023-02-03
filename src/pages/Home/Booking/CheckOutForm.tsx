@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { BookType } from "../../../types/types";
 import { useAuth } from "../../../contexts/AuthProvider";
 import Spinner from "../../../SharedComponent/Spinner/Spinner";
-import { useAuth } from "../../../contexts/AuthProvider";
 
 interface Props {
 	booking: BookType

@@ -1,82 +1,93 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
+import ProfileUpdateModal from './ProfileUpdateModal';
+
+
 
 const MyProfile = () => {
     const { user }: any = useAuth();
-    const { register, handleSubmit } = useForm();
+    const [profileData, setProfileData]: any = useState({});
+    const [isModalOpen, setIsModalOpen]: any = useState(true);
 
-    const userEmail = user?.email;
-    const url = `${process.env.REACT_APP_API_URL}/user?email=${userEmail}`
+    // console.log(user);
+    // const url = `http://localhost:5000/user?email=${user?.email}`
 
-    const { isLoading, error, refetch, data } = useQuery({
-        queryKey: ['user'],
+    const { isLoading, error, refetch, data }: any = useQuery({
+        queryKey: ['user', user?.email],
         queryFn: () =>
-            fetch(url, {
+            fetch(`http://localhost:5000/user?email=${user?.email}`, {
                 headers: {
                     // authorization: `bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => res.json())
     })
 
+    useEffect(() => {
+        if (data?.length) {
+            setProfileData(data[0]);
+        }
+
+    }, [data])
+
+
+    // console.log("data", data);
+
     if (isLoading) return <p>Loading...</p>
     // if (error) return 'An error has occurred: ' + error.message
     if (error) return <p>An error has occurred</p>
 
-    const { name, email, mobile, address } = data[0];
-
-
-    const saveChanges = (data, e) => {
-        e.preventDefault();
-        console.log(data);
-    }
+    // const { name, email, occupation, mobile, address } = data[0];
 
     return (
-        <div className='my-12 w-full max-w-lg mx-auto text-center border rounded-lg p-10'>
-            <h2 className='text-3xl font-bold'>My Profile</h2>
-            <form onSubmit={handleSubmit(saveChanges)}>
-                {/* Name */}
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Name</span>
-                    </label>
-                    <input type="text" {...register('name')} defaultValue={name} required className="input input-bordered w-full max-w-lg" />
+        <div className="w-full max-w-xl mx-auto border rounded-lg my-20">
+            <div className='flex justify-between'>
+                <h2 className='text-xl font-bold px-4'>My Profile</h2>
+                <div className="avatar">
+                    <div className="w-24 rounded">
+                        <img src={profileData?.photo} alt="user" />
+                    </div>
                 </div>
+            </div>
+            <hr />
+            <table className="table w-full">
+                <tbody>
 
-                {/* Email */}
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Email</span>
-                    </label>
-                    <input type="email" {...register('email')} defaultValue={email} readOnly className="input input-bordered w-full max-w-lg" />
-                </div>
+                    <tr>
+                        <th>Name</th>
+                        <td>{profileData?.name}</td>
+                    </tr>
 
-                {/* Mobile */}
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Mobile</span>
-                    </label>
-                    <input type="tel" {...register('mobile')} placeholder="Your Mobile Number" defaultValue={mobile} required className="input input-bordered w-full max-w-lg" />
-                </div>
+                    <tr>
+                        <th>Email</th>
+                        <td>{profileData?.email}</td>
+                    </tr>
 
-                {/* Address */}
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Address</span>
-                    </label>
-                    <input type="text" {...register('address')} placeholder="Your Address" defaultValue={address} required className="input input-bordered w-full max-w-lg" />
-                </div>
+                    <tr>
+                        <th>Occupation</th>
+                        <td>{profileData?.occupation}</td>
+                    </tr>
 
-                {/* Photo */}
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Photo</span>
-                    </label>
-                    <input type="file" {...register('photo')} placeholder="Your Address" required className="file-input file-input-bordered w-full max-w-lg" />
-                </div>
-                <button type='submit' className="btn btn-info btn-sm my-4">Save Changes</button>
-            </form>
+                    <tr>
+                        <th>Mobile</th>
+                        <td>{profileData?.mobile}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Address</th>
+                        <td>{profileData?.address}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <label htmlFor="profile-modal" className="btn btn-outline btn-primary w-full">Update Info</label>
+            {
+                isModalOpen &&
+                <ProfileUpdateModal
+                    profile={profileData}
+                    refetch={refetch}
+                    setIsModalOpen={setIsModalOpen}>
+                </ProfileUpdateModal>
+            }
         </div>
     );
 };
