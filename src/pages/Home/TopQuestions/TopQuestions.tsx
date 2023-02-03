@@ -59,6 +59,7 @@ const TopQuestions = () => {
             </div>
         </div>
     );
+
 };
 
 export default TopQuestions;

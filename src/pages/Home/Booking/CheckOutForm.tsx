@@ -1,8 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState} from "react";
 import { BookType } from "../../../types/types";
-import { AuthContext } from "../../../contexts/AuthProvider";
 import Spinner from "../../../SharedComponent/Spinner/Spinner";
+import { useAuth } from "../../../contexts/AuthProvider";
 
 interface Props {
 	booking: BookType
@@ -10,7 +10,7 @@ interface Props {
 
 const CheckoutForm: React.FC<Props> = ({ booking }) => {
 	const { price, _id } = booking;
-	const { user, loading } = useContext(AuthContext);
+	const { user, loading }:any = useAuth();
 	const { displayName: name, email } = user;
     
 	const [cardError, setCardError] = useState<any>("");
@@ -51,6 +51,7 @@ const CheckoutForm: React.FC<Props> = ({ booking }) => {
 			type: "card",
 			card,
 		});
+		console.log(paymentMethod);
 		if (error) {
 			console.log(error);
 			setCardError(error.message);
