@@ -23,7 +23,7 @@ code {
   }
 
   ul li::after {
-    @apply content-[''] bg-[#ff004f] h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-500;
+    @apply content-[''] bg-[#ff004f] h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
   }
 
   ul li:hover::after {
