@@ -11,10 +11,10 @@ const UseOurApp = () => {
 				/>
 			</div>
 			<div className="lg:col-span-2">
-				<h2 className="sm:text-3xl md:text-4xl font-bold text-gray-400 mb-4 md:mb-8 text-center md:text-left">
+				<h2 className="sm:text-3xl md:text-4xl font-bold text-pink-800 dark:text-gray-400 mb-4 md:mb-8 text-center md:text-left">
 					Easy And Modern Way To Use Our Application
 				</h2>
-				<p className="text-gray-400 text-justify">
+				<p className=" dark:text-gray-400 text-justify">
 					With real time transaction. It will allow you to enroll our premium
 					courses to learn programming languages and increase your problem
 					solving skills.

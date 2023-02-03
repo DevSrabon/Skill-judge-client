@@ -41,7 +41,7 @@ function Complier() {
 
 		// Post request to compile endpoint
 		axios
-			.post(`http://localhost:5000/compiler`, {
+			.post(`${process.env.REACT_APP_API_URL}/compiler`, {
 				code: userCode,
 				language: userLang,
 			})
