@@ -78,7 +78,7 @@ const Nav = () => {
 				<Link to={"/quiz"}>Quiz</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={""}>About</Link>
+				<Link to={""}>About Us</Link>
 			</li>
 			{user?.uid ? (
 				<>

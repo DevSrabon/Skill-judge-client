@@ -42,7 +42,7 @@ const TopQuestion = () => {
                         {data[0]?.question}
                     </p>
                     <h4 className="text-lg mt-3  mb-2">Description:</h4>
-                    <p className="text-gray-50">{data[0]?.info}</p>
+                    <p className="text black dark:text-gray-50">{data[0]?.info}</p>
                     <h4 className="text-lg mt-3  mb-2">
                         How To Solve Problem Explain With Step By Step:
                     </h4>
