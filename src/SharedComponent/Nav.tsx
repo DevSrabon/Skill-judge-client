@@ -79,7 +79,7 @@ const Nav = () => {
 				<Link to={"/quiz"}>Quiz</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={""}>About Us</Link>
+				<Link to={""}>About</Link>
 			</li>
 			{user?.uid ? (
 				<>
