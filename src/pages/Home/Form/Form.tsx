@@ -5,7 +5,7 @@ const Form = () => {
 		<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 lg:gap-16 lg:20 mb-5 md:mb-10">
 			<div className="lg:col-span-3">
 				<img
-					src="https://i.ibb.co/pvcmjMB/flat-design.png"
+					src="https://i.ibb.co/5v0d4zG/6230545-1.png"
 					className="w-full"
 					alt=""
 				/>
@@ -14,7 +14,7 @@ const Form = () => {
 				<div
 					className="flex flex-col gap-5 justify-center items-center"
 					id="contact">
-					<h2 className="text-4xl font-bold text-gray-400">
+					<h2 className="text-4xl font-bold text-pink-800 dark:text-gray-400">
 						Contact With us
 					</h2>
 					<form

@@ -22,17 +22,24 @@ const Services = () => {
 					<span className="font-bold tracking-wider uppercase dark:text-violet-400">
 						Pricing
 					</span>
-					<h2 className="text-4xl font-bold lg:text-5xl text-gray-400">
+					<h2 className="text-4xl font-bold lg:text-5xl text-pink-800 dark:text-gray-400">
 						Services We Provide
 					</h2>
 				</div>
-				<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-16 my-2 md:my-3 -mx-4 ">
+				<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-16 my-2 md:my-3 -mx-2  md:-mx-4 ">
 					{serviceData.map((service: any) => (
 						<div
 							key={service._id}
-							className="col-span-1 p-6 space-y-6 rounded shadow-xl sm:p-8 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100">
+							className="col-span-1 p-6 space-y-6 rounded shadow-xl sm:p-8 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100 hover:-mt-4 md:hover:-mt-10">
 							<div className="space-y-2">
-								<h4 className="text-2xl font-bold">{service.title}</h4>
+								<h4
+									className={`${
+										service.price === "Free"
+											? "text-pink-800"
+											: "text-violet-400"
+									} text-2xl font-bold`}>
+									{service.title}
+								</h4>
 								<span className="text-6xl font-bold">$ {service.price}</span>
 							</div>
 							<p className="my-5 leading-relaxed dark:text-gray-400">
@@ -45,7 +52,9 @@ const Services = () => {
 								}>
 								<button
 									type="button"
-									className="inline-block px-5 py-3 mt-3 font-semibold tracking-wider text-center rounded bg-gray-800 text-violet-400 dark:bg-violet-400 dark:text-gray-900 ">
+									className={`${
+										service.price === "Free" ? "text-white" : "text-violet-400"
+									}  inline-block px-5 py-3 mt-3 font-semibold tracking-wider text-center rounded bg-gray-800 dark:bg-violet-400 dark:text-gray-900 `}>
 									{service.btn}
 								</button>
 							</Link>
