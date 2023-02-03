@@ -10,8 +10,10 @@ import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
 import Complier from "../pages/Complier/Complier";
+import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
+
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +50,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/signup",
+				element: <Signup />,
+			},
+			{
+				path: "/my-profile",
+				element: <MyProfile></MyProfile>
+			},
 
                 element: <Signup />,
             },

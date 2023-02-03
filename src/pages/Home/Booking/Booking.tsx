@@ -4,23 +4,23 @@ import { useLoaderData } from "react-router-dom";
 import CheckOutForm from "./CheckOutForm";
 
 
-const stripePromise: any | null = loadStripe(process.env.REACT_APP_STRIPE_PK?? '');
+const stripePromise: any | null = loadStripe(process.env.REACT_APP_STRIPE_PK ?? '');
 console.log(stripePromise)
 
 
 const Payment = () => {
-interface IBook {
-        title: string;
-        _id: string;
-        price: string | boolean;
-        detail: string;
-        duration: string;
-        btn: string;
-        plan: string;
-    
-    }
-    const bookings: any= useLoaderData();
-    const booking: IBook = bookings[0]
+	interface IBook {
+		title: string;
+		_id: string;
+		price: string | boolean;
+		detail: string;
+		duration: string;
+		btn: string;
+		plan: string;
+
+	}
+	const bookings: any = useLoaderData();
+	const booking: IBook = bookings[0]
 
 	return (
 		<div className="w-96 lg:w-[440px] p-10 my-10 rounded-lg dark:shadow-white dark:shadow-sm shadow-xl mx-auto dark:bg-white ">
