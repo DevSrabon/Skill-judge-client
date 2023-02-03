@@ -1,8 +1,8 @@
+import logo from '../assets/Logo/icons8-productivity-64.png';
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvider";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import logo from "../assets/logo.png";
 
 const Nav = () => {
 	const { user, signOutUser }: any = useAuth();
@@ -13,7 +13,6 @@ const Nav = () => {
 	useEffect(() => {
 		setMounted(true);
 	}, []);
-
 	if (!mounted) return null;
 
 	const handleLogout = () => {
@@ -154,6 +153,13 @@ const Nav = () => {
 							{navItems}
 						</ul>
 					</div>
+          <div className='lg:hidden'>
+				<label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</label>
+			</div>
 				</div>
 			</div>
 		</nav>
