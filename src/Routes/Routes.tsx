@@ -57,8 +57,7 @@ export const router = createBrowserRouter([
 				element: <MyProfile></MyProfile>
 			},
 
-                element: <Signup />,
-            },
+             
             {
                 path: "/qna",
                 loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
