@@ -91,7 +91,7 @@ const Nav = () => {
 							Logout
 						</Link>
 					</li>
-					<li className="grid items-center">
+					<li className="grid items-center justify-center">
 						<Link to="my-profile">
 							{user.photoURL ? (
 								<img
