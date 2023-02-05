@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../SharedComponent/Spinner/Spinner";
+import ErrorSpinner from "../../../SharedComponent/Spinner/ErrorSpinner";
 
 interface QuestionType {
     _id: string;
@@ -14,7 +15,7 @@ interface QuestionType {
 }
 
 const TopQuestions = () => {
-    const { data = [], isLoading } = useQuery({
+    const { data = [], isLoading, isError } = useQuery({
         queryKey: ["top-questions"],
         queryFn: async () => {
             const res = await fetch(
@@ -26,6 +27,9 @@ const TopQuestions = () => {
     });
     if (isLoading) {
         return <Spinner />;
+    }
+    if (isError) {
+        return <ErrorSpinner />;
     }
     return (
 			<div>

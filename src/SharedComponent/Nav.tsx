@@ -1,8 +1,9 @@
-import logo from '../assets/Logo/icons8-productivity-64.png';
+import logo from "../assets/Logo/icons8-productivity-64.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvider";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { FaUserAlt } from "react-icons/fa";
 
 const Nav = () => {
 	const { user, signOutUser }: any = useAuth();
@@ -78,13 +79,29 @@ const Nav = () => {
 				<Link to={"/quiz"}>Quiz</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={""}>About Us</Link>
+				<Link to={""}>About</Link>
 			</li>
 			{user?.uid ? (
 				<>
 					<li className="hover:text-orange-400">
+						<Link to="/dashboard">DashBoard</Link>
+					</li>
+					<li className="hover:text-orange-400">
 						<Link onClick={handleLogout} to="">
 							Logout
+						</Link>
+					</li>
+					<li className="grid items-center">
+						<Link to="my-profile">
+							{user.photoURL ? (
+								<img
+									className="w-10 rounded-full"
+									src={user.photoURL}
+									alt="user"
+								/>
+							) : (
+								<FaUserAlt className="w-10 rounded-full" />
+							)}
 						</Link>
 					</li>
 				</>
@@ -111,7 +128,7 @@ const Nav = () => {
 							<button
 								className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
 								onClick={() => setNavbar(!navbar)}>
-								{navbar ?  (
+								{navbar ? (
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										className="w-6 h-6"
@@ -125,7 +142,7 @@ const Nav = () => {
 											d="M4 6h16M4 12h16M4 18h16"
 										/>
 									</svg>
-								):(
+								) : (
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										className="w-6 h-6"
@@ -137,7 +154,7 @@ const Nav = () => {
 											clipRule="evenodd"
 										/>
 									</svg>
-								) }
+								)}
 							</button>
 						</div>
 					</div>
@@ -147,19 +164,12 @@ const Nav = () => {
 					<div
 						onClick={() => setNavbar(!navbar)}
 						className={`text-center flex-1 justify-self-center items-center pb-3 mt-8 lg:block md:pb-0 md:mt-0 cursor-pointer ${
-							navbar ? "hidden":"block"  
+							navbar ? "hidden" : "block"
 						}`}>
 						<ul className="items-center justify-center font-semibold  space-y-8 lg:flex lg:space-x-6 lg:space-y-0  dark:text-white">
 							{navItems}
 						</ul>
 					</div>
-          <div className='lg:hidden'>
-				<label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
-					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-					</svg>
-				</label>
-			</div>
 				</div>
 			</div>
 		</nav>

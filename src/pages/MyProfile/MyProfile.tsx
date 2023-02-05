@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 import ProfileUpdateModal from './ProfileUpdateModal';
+import Spinner from '../../SharedComponent/Spinner/Spinner';
 
 
 
@@ -33,7 +34,7 @@ const MyProfile = () => {
 
     // console.log("data", data);
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <Spinner/>
     // if (error) return 'An error has occurred: ' + error.message
     if (error) return <p>An error has occurred</p>
 

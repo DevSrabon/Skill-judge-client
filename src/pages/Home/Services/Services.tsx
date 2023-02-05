@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Spinner from "../../../SharedComponent/Spinner/Spinner";
+import ErrorSpinner from "../../../SharedComponent/Spinner/ErrorSpinner";
 
 const Services = () => {
-	const { data: serviceData = [], isLoading } = useQuery({
+	const { data: serviceData = [], isLoading, isError } = useQuery({
 		queryKey: ["services"],
 		queryFn: async () => {
 			const res = fetch(`${process.env.REACT_APP_API_URL}/services`);
@@ -13,6 +14,9 @@ const Services = () => {
 	});
 	if (isLoading) {
 		return <Spinner />;
+	}
+	if (isError) {
+		return <ErrorSpinner />;
 	}
 
 	return (
