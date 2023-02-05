@@ -11,13 +11,12 @@ const MyProfile = () => {
     const [profileData, setProfileData]: any = useState({});
     const [isModalOpen, setIsModalOpen]: any = useState(true);
 
-    // console.log(user);
-    // const url = `http://localhost:5000/user?email=${user?.email}`
+
 
     const { isLoading, error, refetch, data }: any = useQuery({
         queryKey: ['user', user?.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/user?email=${user?.email}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/user?email=${user?.email}`, {
                 headers: {
                     // authorization: `bearer ${localStorage.getItem('token')}`
                 }
