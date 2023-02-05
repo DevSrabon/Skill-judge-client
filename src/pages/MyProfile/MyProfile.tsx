@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 import ProfileUpdateModal from './ProfileUpdateModal';
 import Spinner from '../../SharedComponent/Spinner/Spinner';
+import ErrorSpinner from '../../SharedComponent/Spinner/ErrorSpinner';
 
 
 
@@ -11,13 +12,12 @@ const MyProfile = () => {
     const [profileData, setProfileData]: any = useState({});
     const [isModalOpen, setIsModalOpen]: any = useState(true);
 
-    // console.log(user);
-    // const url = `http://localhost:5000/user?email=${user?.email}`
+
 
     const { isLoading, error, refetch, data }: any = useQuery({
         queryKey: ['user', user?.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/user?email=${user?.email}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/user?email=${user?.email}`, {
                 headers: {
                     // authorization: `bearer ${localStorage.getItem('token')}`
                 }
@@ -36,7 +36,7 @@ const MyProfile = () => {
 
     if (isLoading) return <Spinner/>
     // if (error) return 'An error has occurred: ' + error.message
-    if (error) return <p>An error has occurred</p>
+    if (error) return <ErrorSpinner/>
 
     // const { name, email, occupation, mobile, address } = data[0];
 

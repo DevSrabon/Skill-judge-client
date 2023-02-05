@@ -39,7 +39,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
                     console.log(userInfo);
 
                     //save post to the database
-                    fetch(`http://localhost:5000/updateUser?email=${profile?.email}`, {
+                    fetch(`${process.env.REACT_APP_API_URL}/updateUser?email=${profile?.email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',
