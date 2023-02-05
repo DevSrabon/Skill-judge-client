@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Quiz.css";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../../../contexts/AuthProvider";
+import { useNavigate} from "react-router-dom";
 
 const QuizQuesCard = ({ question }) => {
 	const { user }:any = useAuth();
@@ -11,7 +12,7 @@ const QuizQuesCard = ({ question }) => {
 	const [wrong, setWrong] = useState<number>(0);
 	const [isCorrect, setIsCorrect] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
-	console.log(question[currentQuestion].id)
+	const navigate = useNavigate();
 
 	const optionClick = (e:any): void => {
 		setIsActive(true);
@@ -52,6 +53,7 @@ const QuizQuesCard = ({ question }) => {
 			.then((data) => {
 				if (data.acknowledged) {
 					toast.success("Saved");
+					navigate('/')
 				} else {
 					toast.error(data.message);
 				}
@@ -84,7 +86,7 @@ const QuizQuesCard = ({ question }) => {
 				</div>
 			) : (
 				<div className="question-card">
-					<h2>
+					<h2 className="text-black font-medium dark:text-white">
 						Question: {currentQuestion + 1} out of {question.length}
 					</h2>
 					<h3 className="question-text dark:text-white">
@@ -116,7 +118,7 @@ const QuizQuesCard = ({ question }) => {
 					</ul>
 					{currentQuestion > 0 && (
 						<button className="button mr-3" onClick={previous}>
-							Pre
+							Prev
 						</button>
 					)}
 

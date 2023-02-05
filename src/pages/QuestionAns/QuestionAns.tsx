@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../../contexts/AuthProvider";
 import SingleQAns from "./SingleQAns";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "../../SharedComponent/Spinner/Spinner";
 
 const QuestionAns = () => {
 	const { user }: any = useAuth();
@@ -42,7 +43,7 @@ const QuestionAns = () => {
 	};
 
 
-  	const { data: qnaData = [], refetch } = useQuery({
+  	const { data: qnaData = [], refetch, isLoading } = useQuery({
 			queryKey: ["qna"],
 			queryFn: async () => {
 				const res = await fetch(
@@ -52,6 +53,9 @@ const QuestionAns = () => {
 				return data;
 			},
 		});
+	if (isLoading) {
+		return <Spinner/>
+	}
 	return (
 		<div className="mx-5 md:mx-20 mt-10 ">
 			<div className="flex justify-end mb-5">
