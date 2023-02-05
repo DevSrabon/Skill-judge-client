@@ -29,7 +29,7 @@ const TopQuestion = () => {
         content = <Spinner />;
     }
     if (error) {
-        content = <p>Something Went Wrong!</p>;
+        content = <p>Something Went Wrong!!!</p>;
     }
     if (data.length === 1 && data) {
         content = (
