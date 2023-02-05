@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 import ProfileUpdateModal from './ProfileUpdateModal';
 import Spinner from '../../SharedComponent/Spinner/Spinner';
+import ErrorSpinner from '../../SharedComponent/Spinner/ErrorSpinner';
 
 
 
@@ -35,7 +36,7 @@ const MyProfile = () => {
 
     if (isLoading) return <Spinner/>
     // if (error) return 'An error has occurred: ' + error.message
-    if (error) return <p>An error has occurred</p>
+    if (error) return <ErrorSpinner/>
 
     // const { name, email, occupation, mobile, address } = data[0];
 

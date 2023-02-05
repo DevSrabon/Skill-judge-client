@@ -39,22 +39,25 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
                     console.log(userInfo);
 
                     //save post to the database
-                    fetch(`http://localhost:5000/updateUser?email=${profile?.email}`, {
-                        method: 'PUT',
-                        headers: {
-                            'content-type': 'application/json',
-                            // authorization: `bearer ${localStorage.getItem('token')}`
-                        },
-                        body: JSON.stringify(userInfo)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log(data);
-                            toast.success('Your information updated successfully');
-                            refetch();
-                            // navigate('/my-profile');
-                            setIsModalOpen(false);
-                        })
+                    fetch(
+											`${process.env.REACT_APP_API_URL}/updateUser?email=${profile?.email}`,
+											{
+												method: "PUT",
+												headers: {
+													"content-type": "application/json",
+													// authorization: `bearer ${localStorage.getItem('token')}`
+												},
+												body: JSON.stringify(userInfo),
+											}
+										)
+											.then((res) => res.json())
+											.then((data) => {
+												console.log(data);
+												toast.success("Your information updated successfully");
+												refetch();
+												// navigate('/my-profile');
+												setIsModalOpen(false);
+											});
                 }
             })
     }
