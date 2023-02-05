@@ -88,6 +88,11 @@ const Nav = () => {
 							Logout
 						</Link>
 					</li>
+					<li className="hover:text-orange-400">
+						<Link to="/dashboard">
+							Dashboard
+						</Link>
+					</li>
 				</>
 			) : (
 				<li className="hover:text-orange-400">
