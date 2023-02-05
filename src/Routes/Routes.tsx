@@ -54,12 +54,33 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/signup",
-				        element: <Signup />,
-			      },
-			      {
-				      path: "/my-profile",
-				      element: <MyProfile></MyProfile>
-			      },
+				element: <Signup />,
+			},
+			{
+				path: "/my-profile",
+				element: <MyProfile></MyProfile>
+			},
+
+             
+            {
+                path: "/qna",
+                loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
+                element: <QuestionAns></QuestionAns>,
+            },
+            {
+                path: "/singleqna/:id",
+                loader: ({ params }) =>
+                    fetch(
+                        `${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`
+                    ),
+                element: <SingleQnA></SingleQnA>,
+            },
+            {
+                path: "/free",
+
+                element: <Complier />,
+            },
+
             {
                 path: "/quiz",
                 element: <QuizTopicCards />,
@@ -78,10 +99,6 @@ export const router = createBrowserRouter([
 				loader: ({ params }) =>
 					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
 				element: <SingleQnA></SingleQnA>,
-			},
-			{
-				path: "/free", 
-				element: <Complier />,
 			},
 			{
 				path: '/dashboard',
