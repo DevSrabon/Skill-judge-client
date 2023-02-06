@@ -67,10 +67,10 @@ const Nav = () => {
 	const navItems = (
 		<>
 			<li className="hover:text-orange-400">
-				<Link to={""}>Home</Link>
+				<Link to={"/"}>Home</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={"qna"}>QnA</Link>
+				<Link to={"/qna"}>QnA</Link>
 			</li>
 			<li className="hover:text-orange-400">
 				<Link to={""}>Categories</Link>
@@ -79,7 +79,7 @@ const Nav = () => {
 				<Link to={"/quiz"}>Quiz</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={""}>About</Link>
+				<Link to={"/about-us"}>About</Link>
 			</li>
 			{user?.uid ? (
 				<>
@@ -114,7 +114,7 @@ const Nav = () => {
 	);
 
 	return (
-		<nav className="fixed dark:bg-dark bg-opacity-30 backdrop-filter backdrop-blur-lg shadow-md  z-50 w-full md:px-5 py-1  right-0 top-0 mb-20">
+		<nav className="fixed bg-white dark:bg-dark bg-opacity-30 backdrop-filter backdrop-blur-lg shadow-md  z-50 w-full md:px-5 py-1  right-0 top-0 mb-20">
 			<div className="justify-between px-4 mx-auto lg:items-center lg:flex">
 				<div>
 					<div className="flex items-center justify-between  lg:block">
@@ -123,15 +123,14 @@ const Nav = () => {
 								<img src={logo} className="w-16 " alt="" />
 							</h2>
 						</Link>
-						<div className="lg:hidden flex items-center justify-center">
-							<div className="cursor-default">{renderThemeChanger()}</div>
+						<div className="lg:hidden flex items-center gap-1 justify-center">
 							<button
 								className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
 								onClick={() => setNavbar(!navbar)}>
 								{navbar ? (
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
+										className="w-6 h-6 dark:text-white"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
@@ -145,7 +144,7 @@ const Nav = () => {
 								) : (
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
+										className="w-6 h-6 dark:text-white"
 										viewBox="0 0 20 20"
 										fill="currentColor">
 										<path
@@ -156,11 +155,11 @@ const Nav = () => {
 									</svg>
 								)}
 							</button>
+							<div className="cursor-default">{renderThemeChanger()}</div>
 						</div>
 					</div>
 				</div>
 				<div className="flex items-center dark:text-white gap-4">
-					<div className="hidden lg:block">{renderThemeChanger()}</div>
 					<div
 						onClick={() => setNavbar(!navbar)}
 						className={`text-center flex-1 justify-self-center items-center pb-3 mt-8 lg:block md:pb-0 md:mt-0 cursor-pointer ${
@@ -170,6 +169,7 @@ const Nav = () => {
 							{navItems}
 						</ul>
 					</div>
+					<div className="hidden lg:block">{renderThemeChanger()}</div>
 				</div>
 			</div>
 		</nav>
