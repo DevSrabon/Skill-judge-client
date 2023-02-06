@@ -33,13 +33,13 @@ const TopQuestions = () => {
     }
     return (
 			<div>
-				<h2 className="text-2xl text-pink-800 dark:text-gray-400 md:text-4xl font-bold ">
+				<h2 className="text-2xl text-center text-pink-800 dark:text-gray-400 md:text-4xl font-bold ">
 					Top Problem Solving Question
 				</h2>
 				<div className="grid grid-cols-1 gap-1 md:gap-10 md:grid-cols-2 lg:grid-cols-3 ">
 					{data.map((top: QuestionType) => (
-						<div className="hover:-mt-2 md:hover:-mt-5">
-							<div className="mt-5 w-full p-5 hover:shadow-2xl dark:bg-gray-900 dark:text-gray-100 rounded-2xl shadow-xl ">
+						<div className="hover:-mt-2 md:hover:-mt-5 transition-all duration-300 ease-in-out">
+							<div className="mt-3 md:mt-10 w-full p-5 hover:shadow-2xl dark:bg-gray-900 dark:text-gray-100 rounded-2xl shadow-xl ">
 								<h4 className="text-xl text-pink-800 dark:text-white font-semibold">
 									{top?.name}
 								</h4>

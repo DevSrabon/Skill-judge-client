@@ -16,6 +16,7 @@ import AddContents from "../pages/Dashboard/AddContents";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -113,7 +114,11 @@ export const router = createBrowserRouter([
 						element: <AddContents/>
 					}
 				]
-			}
+            },
+            {
+                path: '/about-us',
+                element: <AboutUs/>
+            }
 		]
 	},
 	{

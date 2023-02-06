@@ -34,7 +34,7 @@ const Services = () => {
 					{serviceData.map((service: any) => (
 						<div
 							key={service._id}
-							className="col-span-1 p-6 space-y-6 rounded shadow-xl sm:p-8 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100 hover:-mt-4 md:hover:-mt-10">
+							className="col-span-1 p-6 space-y-6 rounded shadow-xl sm:p-8 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100 hover:-mt-4 md:hover:-mt-10 transition-all duration-300 ease-in-out">
 							<div className="space-y-2">
 								<h4
 									className={`${
