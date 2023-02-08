@@ -14,7 +14,7 @@ const Main = () => {
 		}
     return (
 			<div>
-				<div className='pb-20'>
+				<div className='pb-[4.5rem]'>
 					<Nav></Nav>
 				</div>
 				<Outlet></Outlet>

@@ -10,6 +10,7 @@ const Nav = () => {
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState<Boolean>(false);
 	const [navbar, setNavbar] = useState<Boolean>(true);
+	const [dropDown, setDropDown] = useState<Boolean>(false);
 
 	useEffect(() => {
 		setMounted(true);
@@ -63,50 +64,69 @@ const Nav = () => {
 			);
 		}
 	};
-
-	const navItems = (
+	const dropDownItems = (
 		<>
 			<li className="hover:text-orange-400">
-				<Link to={"/"}>Home</Link>
+				<Link to="my-profile">My Profile</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={"/qna"}>QnA</Link>
-			</li>
-			<li className="hover:text-orange-400">
-				<Link to={""}>Categories</Link>
-			</li>
-			<li className="hover:text-orange-400">
-				<Link to={"/quiz"}>Quiz</Link>
+				<Link to="/dashboard">DashBoard</Link>
 			</li>
 			<li className="hover:text-orange-400">
 				<Link to={"/about-us"}>About</Link>
 			</li>
+			<li className="hover:text-orange-400">
+				<Link onClick={handleLogout} to="">
+					Logout
+				</Link>
+			</li>
+		</>
+	);
+
+	const navItems = (
+		<>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/"}>Home</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/qna"}>QnA</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/basic"}>Problems</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/quiz"}>Quiz</Link>
+			</li>
+
 			{user?.uid ? (
 				<>
-					<li className="hover:text-orange-400">
-						<Link to="/dashboard">DashBoard</Link>
-					</li>
-					<li className="hover:text-orange-400">
-						<Link onClick={handleLogout} to="">
-							Logout
-						</Link>
-					</li>
-					<li className="grid items-center justify-center">
-						<Link to="my-profile">
-							{user.photoURL ? (
-								<img
-									className="w-10 rounded-full"
-									src={user.photoURL}
-									alt="user"
-								/>
-							) : (
-								<FaUserAlt className="w-10 rounded-full" />
-							)}
-						</Link>
-					</li>
+					<div className="grid items-center justify-center justify-items-center relative">
+						{user.photoURL ? (
+							<img
+								onClick={() => setDropDown(!dropDown)}
+								className="w-10 rounded-full items-center justify-center"
+								src={user.photoURL}
+								alt="user"
+							/>
+						) : (
+							<FaUserAlt className="w-10 rounded-full" />
+						)}
+						{dropDown && (
+							<ul
+								className="lg:absolute  lg:top-14  lg:-right-12 menu ul lg:bg-white lg:dark:bg-dark lg:bg-opacity-30 lg:backdrop-filter lg:backdrop-blur-2xl lg:shadow-md items-center justify-center lg:z-50 lg:p-2 "
+								onClick={() => {
+									setDropDown(!dropDown);
+									setNavbar(!navbar);
+								}}>
+								{dropDownItems}
+							</ul>
+						)}
+					</div>
 				</>
 			) : (
-				<li className="hover:text-orange-400">
+				<li
+					onClick={() => setNavbar(!navbar)}
+					className="hover:text-orange-400">
 					<Link to={"/login"}>Login</Link>
 				</li>
 			)}
@@ -114,7 +134,7 @@ const Nav = () => {
 	);
 
 	return (
-		<nav className="fixed bg-white dark:bg-dark bg-opacity-30 backdrop-filter backdrop-blur-lg shadow-md  z-50 w-full md:px-5 py-1  right-0 top-0 mb-20">
+		<nav className="fixed bg-white dark:bg-dark bg-opacity-30 backdrop-filter backdrop-blur-xl shadow-md  z-50 w-full md:px-5 py-1  right-0 top-0">
 			<div className="justify-between px-4 mx-auto lg:items-center lg:flex">
 				<div>
 					<div className="flex items-center justify-between  lg:block">
@@ -161,11 +181,11 @@ const Nav = () => {
 				</div>
 				<div className="flex items-center dark:text-white gap-4">
 					<div
-						onClick={() => setNavbar(!navbar)}
+						
 						className={`text-center flex-1 justify-self-center items-center pb-3 mt-8 lg:block md:pb-0 md:mt-0 cursor-pointer ${
 							navbar ? "hidden" : "block"
 						}`}>
-						<ul className="items-center justify-center font-semibold  space-y-8 lg:flex lg:space-x-6 lg:space-y-0  dark:text-white">
+						<ul className="items-center justify-center font-semibold ul  space-y-5 lg:flex lg:space-x-6 lg:space-y-0  dark:text-white">
 							{navItems}
 						</ul>
 					</div>

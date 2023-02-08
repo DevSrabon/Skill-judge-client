@@ -1,15 +1,11 @@
 import React from "react";
 import { QuizTopicCardType } from "../../../types/types";
 import { Link } from "react-router-dom";
-import Spinner from "../../../SharedComponent/Spinner/Spinner";
 interface Props {
 	quiz: QuizTopicCardType;
-	isFetching: any;
 }
-const QuizTopicCard: React.FC<Props> = ({ quiz, isFetching }) => {
-	if (isFetching) {
-		return <Spinner />;
-	}
+const QuizTopicCard: React.FC<Props> = ({ quiz }) => {
+
 	return (
 		<div className="max-w-xs p-6 rounded-md shadow-lg dark:bg-gray-900 dark:text-gray-50">
 			<img
