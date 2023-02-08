@@ -195,14 +195,9 @@ const SingleQAns = ({ qna, user, refetch }) => {
 						name="comment"
 						className="w-full p-0.5 mt-2 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100"
 					/>
-					<input
-						className="btn btn-outline dark:text-white btn-xs"
-						type="submit"
-						value="Reply"
-					/>
 					<>
 						{array?.map((comment) => (
-							<div className="flex gap-2 items-center" key={comment.CommentId}>
+							<div className="flex gap-2 items-center ml-5" key={comment.CommentId}>
 								<div className="flex  gap-2">
 									<img
 										className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700"

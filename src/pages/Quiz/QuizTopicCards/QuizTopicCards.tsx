@@ -21,13 +21,16 @@ const QuizTopicCards = () => {
 	if (isLoading) {
 		return <Spinner />;
 	}
+	if (isFetching) {
+		return <Spinner />;
+	}
 	if (isError) {
 		return <ErrorSpinner/>;
 	}
 	return (
 		<div className="w-[90%] mx-auto grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5 my-5">
 			{data.map((quiz: IQuizTopicCard) => (
-				<QuizTopicCard key={quiz._id} isFetching={isFetching} quiz={quiz} />
+				<QuizTopicCard key={quiz._id} quiz={quiz} />
 			))}
 		</div>
 	);
