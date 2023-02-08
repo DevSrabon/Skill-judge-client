@@ -4,9 +4,12 @@ import { useAuth } from "../contexts/AuthProvider";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { FaUserAlt } from "react-icons/fa";
+import { useUser } from "../contexts/UserProvider";
 
 const Nav = () => {
 	const { user, signOutUser }: any = useAuth();
+	const { dbUser, }: any = useUser();
+	console.log(dbUser);
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState<Boolean>(false);
 	const [navbar, setNavbar] = useState<Boolean>(true);
@@ -30,7 +33,7 @@ const Nav = () => {
 			return (
 				<div onClick={() => setTheme("light")}>
 					<svg
-						xmlns="http://www.w3.org/2000/svg"
+						xmlns="http://www.w3.org/200F0/svg"
 						fill="#0000"
 						viewBox="0 0 22 22"
 						strokeWidth={1.5}
@@ -84,38 +87,51 @@ const Nav = () => {
 	);
 
 	const navItems = (
-    <>
-      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-        <Link to={"/"}>Home</Link>
-      </li>
-      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-        <Link to={"/blog"}>Blog</Link>
-      </li>
-      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-        <Link to={"/qna"}>QnA</Link>
-      </li>
-      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-        <Link to={"/basic"}>Problems</Link>
-      </li>
-      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-        <Link to={"/quiz"}>Quiz</Link>
-      </li>
+		<>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/"}>Home</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/blog"}>Blog</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/qna"}>QnA</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/basic"}>Problems</Link>
+			</li>
+			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+				<Link to={"/quiz"}>Quiz</Link>
+			</li>
 
 			{user?.uid ? (
 				<>
 					<div className="grid items-center justify-center justify-items-center relative">
-						{user.photoURL ? (
-							<img
-								onClick={() => setDropDown(!dropDown)}
-								className="w-10 rounded-full items-center justify-center"
-								src={user.photoURL}
-								alt="user"
-							/>
+						{dbUser?.photo ? (
+							<>
+								<img
+									onClick={() => setDropDown(!dropDown)}
+									className="w-10 rounded-full items-center justify-center"
+									src={dbUser?.photo}
+									alt="user"
+								/>
+							</>
 						) : (
-							<FaUserAlt
-								onClick={() => setDropDown(!dropDown)}
-								className="w-10 rounded-full"
-							/>
+							<>
+								{user?.photo ? (
+									<img
+										onClick={() => setDropDown(!dropDown)}
+										className="w-10 rounded-full items-center justify-center"
+										src={user.photoURL}
+										alt="user"
+									/>
+								) : (
+									<FaUserAlt
+										onClick={() => setDropDown(!dropDown)}
+										className="w-10 rounded-full"
+									/>
+								)}
+							</>
 						)}
 						{dropDown && (
 							<ul

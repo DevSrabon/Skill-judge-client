@@ -1,8 +1,11 @@
 import React from "react";
+import { useUser } from "../../../contexts/UserProvider";
 
 const BasicProblem = () => {
+	const { data }: any = useUser()
+	console.log(data)
 	return (
-		<div className="bg-[#f3f7f7] lg:pl-8 py-10 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-4">
+		<div className="bg-[#f3f7f7] lg:pl-8 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
 			<div className="divide-y md:col-span-2 lg:col-span-3">
 				<div className=" flex justify-between items-center mx-4 md:mx-20 py-5 px-5 bg-white shadow-lg ">
 					<div>
