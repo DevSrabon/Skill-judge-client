@@ -18,116 +18,120 @@ import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import BasicProblem from "../pages/Home/BasicProblem/BasicProblem";
-
-
+import Blog from "../pages/Blog/Blog";
+import SingleBlog from "../pages/Blog/SingleBlog";
 
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
         path: "/",
-        element: <Main />,
+        element: <Home />,
+      },
+      {
+        path: "/book/:id",
+        element: (
+          <PrivateRoute>
+            <Booking />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
+      },
+      {
+        path: "/top-questions/:id",
+        element: <TopQuestion />,
+      },
+      {
+        path: "qna",
+        loader: () => fetch("https://skill-judge-server.vercel.app/qna"),
+        element: <QuestionAns></QuestionAns>,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/my-profile",
+        element: <MyProfile></MyProfile>,
+      },
+
+      {
+        path: "/qna",
+        loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
+        element: <QuestionAns></QuestionAns>,
+      },
+      {
+        path: "/singleqna/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+        element: <SingleQnA></SingleQnA>,
+      },
+      {
+        path: "/free",
+
+        element: <Complier />,
+      },
+
+      {
+        path: "/quiz",
+        element: <QuizTopicCards />,
+      },
+      {
+        path: "/quiz/:name",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
+        element: <QuizQuesCards />,
+      },
+
+      {
+        path: "/singleqna/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+        element: <SingleQnA></SingleQnA>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
         children: [
-            {
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/book/:id",
-                element: (
-                    <PrivateRoute>
-                        <Booking />
-                    </PrivateRoute>
-                ),
-                loader: ({ params }) =>
-                    fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
-            },
-            {
-                path: "/top-questions/:id",
-                element: <TopQuestion />,
-            },
-            {
-                path: "qna",
-                loader: () =>
-                    fetch("https://skill-judge-server.vercel.app/qna"),
-                element: <QuestionAns></QuestionAns>,
-            },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-                path: "/signup",
-				element: <Signup />,
-			},
-			{
-				path: "/my-profile",
-				element: <MyProfile></MyProfile>
-			},
-
-             
-            {
-                path: "/qna",
-                loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-                element: <QuestionAns></QuestionAns>,
-            },
-            {
-                path: "/singleqna/:id",
-                loader: ({ params }) =>
-                    fetch(
-                        `${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`
-                    ),
-                element: <SingleQnA></SingleQnA>,
-            },
-            {
-                path: "/free",
-
-                element: <Complier />,
-            },
-
-            {
-                path: "/quiz",
-                element: <QuizTopicCards />,
-            },
-            {
-                path: "/quiz/:name",
-                loader: ({ params }) =>
-                    fetch(
-                        `${process.env.REACT_APP_API_URL}/quiz/${params.name}`
-                    ),
-                element: <QuizQuesCards />,
-            },
-     
-			{
-				path: "/singleqna/:id",
-				loader: ({ params }) =>
-					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-				element: <SingleQnA></SingleQnA>,
-			},
-			{
-				path: '/dashboard',
-				element: <Dashboard/>,
-				children: [
-					{
-						path: '/dashboard/all-users',
-						element: <AllUsers/>
-					},
-					{
-						path: '/dashboard/add-contents',
-						element: <AddContents/>
-					}
-				]
-            },
-            {
-                path: '/about-us',
-                element: <AboutUs/>
-            },
-            {
-                path: '/basic',
-                element: <BasicProblem/>
-            }
-		]
-	},
-	{
-		path: "*",
-		element: <NotFound></NotFound>,
-	}
+          {
+            path: "/dashboard/all-users",
+            element: <AllUsers />,
+          },
+          {
+            path: "/dashboard/add-contents",
+            element: <AddContents />,
+          },
+        ],
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/basic",
+        element: <BasicProblem />,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "/blog/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
+        element: <SingleBlog></SingleBlog>,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
+  },
 ]);
