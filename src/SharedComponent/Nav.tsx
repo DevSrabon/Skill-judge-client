@@ -73,6 +73,9 @@ const Nav = () => {
 				<Link to={"/qna"}>QnA</Link>
 			</li>
 			<li className="hover:text-orange-400">
+				<Link to={"/blog"}>Blog</Link>
+			</li>
+			<li className="hover:text-orange-400">
 				<Link to={""}>Categories</Link>
 			</li>
 			<li className="hover:text-orange-400">
