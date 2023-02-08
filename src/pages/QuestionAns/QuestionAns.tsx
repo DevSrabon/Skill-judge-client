@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../../contexts/AuthProvider";
@@ -17,7 +15,7 @@ const QuestionAns = () => {
 	} = useForm();
 
 
-	const questionSubmit = (data) => {
+	const questionSubmit = (data:any) => {
 		const questionInfo = {
 			question: data.question,
 			userName: user.displayName,
@@ -43,7 +41,7 @@ const QuestionAns = () => {
 	};
 
 
-  	const { data: qnaData = [], refetch, isLoading } = useQuery({
+  	const { data: qnaData = [], refetch, isLoading, isFetching } = useQuery({
 			queryKey: ["qna"],
 			queryFn: async () => {
 				const res = await fetch(
@@ -54,6 +52,9 @@ const QuestionAns = () => {
 			},
 		});
 	if (isLoading) {
+		return <Spinner/>
+	}
+	if (isFetching) {
 		return <Spinner/>
 	}
 	return (

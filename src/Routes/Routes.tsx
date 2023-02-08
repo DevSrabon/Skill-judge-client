@@ -17,6 +17,7 @@ import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import BasicProblem from "../pages/Home/BasicProblem/BasicProblem";
 
 
 
@@ -118,6 +119,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about-us',
                 element: <AboutUs/>
+            },
+            {
+                path: '/basic',
+                element: <BasicProblem/>
             }
 		]
 	},
