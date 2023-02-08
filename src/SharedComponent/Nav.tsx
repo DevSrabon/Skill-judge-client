@@ -101,45 +101,43 @@ const Nav = () => {
         <Link to={"/quiz"}>Quiz</Link>
       </li>
 
-      {user?.uid ? (
-        <>
-          <div className="grid items-center justify-center justify-items-center relative">
-            {user.photoURL ? (
-              <img
-                onClick={() => setDropDown(!dropDown)}
-                className="w-10 rounded-full items-center justify-center"
-                src={user.photoURL}
-                alt="user"
-              />
-            ) : (
-              <FaUserAlt
-                onClick={() => setDropDown(!dropDown)}
-                className="w-10 rounded-full"
-              />
-            )}
-            {dropDown && (
-              <ul
-                className="lg:absolute  lg:top-14  lg:-right-12 menu ul lg:bg-white lg:dark:bg-dark lg:bg-opacity-30 lg:backdrop-filter lg:backdrop-blur-2xl lg:shadow-md items-center justify-center lg:z-50 lg:p-2 "
-                onClick={() => {
-                  setDropDown(!dropDown);
-                  setNavbar(!navbar);
-                }}
-              >
-                {dropDownItems}
-              </ul>
-            )}
-          </div>
-        </>
-      ) : (
-        <li
-          onClick={() => setNavbar(!navbar)}
-          className="hover:text-orange-400"
-        >
-          <Link to={"/login"}>Login</Link>
-        </li>
-      )}
-    </>
-  );
+			{user?.uid ? (
+				<>
+					<div className="grid items-center justify-center justify-items-center relative">
+						{user.photoURL ? (
+							<img
+								onClick={() => setDropDown(!dropDown)}
+								className="w-10 rounded-full items-center justify-center"
+								src={user.photoURL}
+								alt="user"
+							/>
+						) : (
+							<FaUserAlt
+								onClick={() => setDropDown(!dropDown)}
+								className="w-10 rounded-full"
+							/>
+						)}
+						{dropDown && (
+							<ul
+								className="lg:absolute  lg:top-14  lg:-right-12 menu ul lg:bg-white lg:dark:bg-dark lg:bg-opacity-30 lg:backdrop-filter lg:backdrop-blur-2xl lg:shadow-md items-center justify-center lg:z-50 lg:p-2 "
+								onClick={() => {
+									setDropDown(!dropDown);
+									setNavbar(!navbar);
+								}}>
+								{dropDownItems}
+							</ul>
+						)}
+					</div>
+				</>
+			) : (
+				<li
+					onClick={() => setNavbar(!navbar)}
+					className="hover:text-orange-400">
+					<Link to={"/login"}>Login</Link>
+				</li>
+			)}
+		</>
+	);
 
 	return (
 		<nav className="fixed bg-white dark:bg-dark bg-opacity-30 backdrop-filter backdrop-blur-xl shadow-md  z-50 w-full md:px-5 py-1  right-0 top-0">
