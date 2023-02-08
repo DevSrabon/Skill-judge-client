@@ -1,96 +1,69 @@
-import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
-import { useAuth } from '../../contexts/AuthProvider';
-import ProfileUpdateModal from './ProfileUpdateModal';
-import Spinner from '../../SharedComponent/Spinner/Spinner';
-import ErrorSpinner from '../../SharedComponent/Spinner/ErrorSpinner';
-
-
+import ProfileUpdateModal from "./ProfileUpdateModal";
+import Spinner from "../../SharedComponent/Spinner/Spinner";
+import ErrorSpinner from "../../SharedComponent/Spinner/ErrorSpinner";
+import { useUser } from "../../contexts/UserProvider";
+import { useState } from "react";
 
 const MyProfile = () => {
-    const { user }: any = useAuth();
-    const [profileData, setProfileData]: any = useState({});
-    const [isModalOpen, setIsModalOpen]: any = useState(true);
+	const [isModalOpen, setIsModalOpen]: any = useState(true);
 
+	const { dbUser: profileData, isLoading, error, refetch }: any = useUser();
 
+	if (isLoading) return <Spinner />;
+	if (error) return <ErrorSpinner />;
 
-    const { isLoading, error, refetch, data }: any = useQuery({
-        queryKey: ['user', user?.email],
-        queryFn: () =>
-            fetch(`${process.env.REACT_APP_API_URL}/user?email=${user?.email}`, {
-                headers: {
-                    // authorization: `bearer ${localStorage.getItem('token')}`
-                }
-            }).then(res => res.json())
-    })
+	return (
+		<div className="w-full dark:bg-white max-w-xl mx-auto border rounded-lg my-20">
+			<div className="flex justify-between">
+				<h2 className="text-xl font-bold px-4">My Profile</h2>
+				<div className="avatar">
+					<div className="w-24 rounded">
+						<img src={profileData?.photo} alt="user" />
+					</div>
+				</div>
+			</div>
+			<hr />
+			<table className="table w-full">
+				<tbody>
+					<tr>
+						<th>Name</th>
+						<td>{profileData?.name}</td>
+					</tr>
 
-    useEffect(() => {
-        if (data?.length) {
-            setProfileData(data[0]);
-        }
+					<tr>
+						<th>Email</th>
+						<td>{profileData?.email}</td>
+					</tr>
 
-    }, [data])
+					<tr>
+						<th>Occupation</th>
+						<td>{profileData?.occupation}</td>
+					</tr>
 
+					<tr>
+						<th>Mobile</th>
+						<td>{profileData?.mobile}</td>
+					</tr>
 
-    // console.log("data", data);
-
-    if (isLoading) return <Spinner/>
-    // if (error) return 'An error has occurred: ' + error.message
-    if (error) return <ErrorSpinner/>
-
-    // const { name, email, occupation, mobile, address } = data[0];
-
-    return (
-        <div className="w-full max-w-xl mx-auto border rounded-lg my-20">
-            <div className='flex justify-between'>
-                <h2 className='text-xl font-bold px-4'>My Profile</h2>
-                <div className="avatar">
-                    <div className="w-24 rounded">
-                        <img src={profileData?.photo} alt="user" />
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <table className="table w-full">
-                <tbody>
-
-                    <tr>
-                        <th>Name</th>
-                        <td>{profileData?.name}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Email</th>
-                        <td>{profileData?.email}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Occupation</th>
-                        <td>{profileData?.occupation}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Mobile</th>
-                        <td>{profileData?.mobile}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Address</th>
-                        <td>{profileData?.address}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <label htmlFor="profile-modal" className="btn btn-outline btn-primary w-full">Update Info</label>
-            {
-                isModalOpen &&
-                <ProfileUpdateModal
-                    profile={profileData}
-                    refetch={refetch}
-                    setIsModalOpen={setIsModalOpen}>
-                </ProfileUpdateModal>
-            }
-        </div>
-    );
+					<tr>
+						<th>Address</th>
+						<td>{profileData?.address}</td>
+					</tr>
+				</tbody>
+			</table>
+			<label
+				htmlFor="profile-modal"
+				className="btn btn-outline btn-primary w-full">
+				Update Info
+			</label>
+			{isModalOpen && (
+				<ProfileUpdateModal
+					profile={profileData}
+					refetch={refetch}
+					setIsModalOpen={setIsModalOpen}></ProfileUpdateModal>
+			)}
+		</div>
+	);
 };
 
 export default MyProfile;
