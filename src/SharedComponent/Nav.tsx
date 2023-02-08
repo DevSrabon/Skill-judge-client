@@ -84,19 +84,22 @@ const Nav = () => {
 	);
 
 	const navItems = (
-		<>
-			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-				<Link to={"/"}>Home</Link>
-			</li>
-			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-				<Link to={"/qna"}>QnA</Link>
-			</li>
-			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-				<Link to={"/basic"}>Problems</Link>
-			</li>
-			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-				<Link to={"/quiz"}>Quiz</Link>
-			</li>
+    <>
+      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+        <Link to={"/"}>Home</Link>
+      </li>
+      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+        <Link to={"/blog"}>Blog</Link>
+      </li>
+      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+        <Link to={"/qna"}>QnA</Link>
+      </li>
+      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+        <Link to={"/basic"}>Problems</Link>
+      </li>
+      <li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
+        <Link to={"/quiz"}>Quiz</Link>
+      </li>
 
 			{user?.uid ? (
 				<>
@@ -109,7 +112,10 @@ const Nav = () => {
 								alt="user"
 							/>
 						) : (
-							<FaUserAlt className="w-10 rounded-full" />
+							<FaUserAlt
+								onClick={() => setDropDown(!dropDown)}
+								className="w-10 rounded-full"
+							/>
 						)}
 						{dropDown && (
 							<ul
