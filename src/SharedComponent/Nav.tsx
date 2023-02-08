@@ -109,7 +109,10 @@ const Nav = () => {
 								alt="user"
 							/>
 						) : (
-							<FaUserAlt className="w-10 rounded-full" />
+							<FaUserAlt
+								onClick={() => setDropDown(!dropDown)}
+								className="w-10 rounded-full"
+							/>
 						)}
 						{dropDown && (
 							<ul
