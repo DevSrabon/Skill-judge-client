@@ -25,7 +25,7 @@ const SingleQAns = ({ qna, user, refetch }) => {
 		},
     });
     
-    const handleReplyDelete = (id) => {
+    const handleReplyDelete = (id:any) => {
         fetch(`${process.env.REACT_APP_API_URL}/deletereply/${id}`, {
             method: "DELETE",
             headers: {
@@ -64,7 +64,7 @@ const SingleQAns = ({ qna, user, refetch }) => {
 				qFetch();
 			});
 	};
-	const handleDelete = (id) => {
+	const handleDelete = (id:any) => {
 		console.log(id);
 		fetch(`${process.env.REACT_APP_API_URL}/deleteqna/${id}`, {
 			method: "DELETE",
@@ -81,7 +81,7 @@ const SingleQAns = ({ qna, user, refetch }) => {
 				}
 			});
 	};
-	const handleEdit = (data) => {
+	const handleEdit = (data:any) => {
 		const editData = data.question;
 		fetch(`${process.env.REACT_APP_API_URL}/editqna/${_id}`, {
 			method: "PUT",

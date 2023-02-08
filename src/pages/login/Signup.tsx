@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-// import useToken from '../hooks/useToken';
 
 const Signup = () => {
 	type FormValues = {
@@ -11,7 +10,7 @@ const Signup = () => {
 		email: string;
 		password: string;
 	};
-	const { createUser, createUserWithGoogle, updateUser }: any = useContext(AuthContext);
+	const { createUser, createUserWithGoogle, updateUser, setLoading }: any = useContext(AuthContext);
 	const [error, setError] = useState<string>('');
 	const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 	// const [userEmail, setUserEmail] = useState('');
@@ -48,11 +47,12 @@ const Signup = () => {
 				updateUser({ displayName: data.name })
 					.then(() => {
 						saveUser(data.name, data.email);
+						toast.success('SignUp Successful');
+						navigate('/');
+						setLoading(false);
 					})
 					.catch(err => console.log(err))
 				console.log(user);
-				toast.success('SignUp Successful');
-				navigate('/');
 			})
 			.catch(err => {
 				console.log(err);
