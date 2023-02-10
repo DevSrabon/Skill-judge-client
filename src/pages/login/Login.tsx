@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 // import useToken from '../hooks/useToken';
 import PasswordResetModal from './PasswordResetModal';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Login = () => {
 
@@ -79,15 +80,15 @@ const Login = () => {
 	}
 
 	return (
-		<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
-			<div className="lg:col-span-2">
-				<img
-					src="https://i.ibb.co/MMnnGR2/6300830.jpg"
-					className="w-full"
-					alt="money"
-				/>
+		<div className="grid grid-cols-1 items-center md:grid-cols-2  gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
+			<div className=" flex justify-end">
+				<Player
+					autoplay
+					loop
+					className="w-96"
+					src="https://assets10.lottiefiles.com/packages/lf20_JNfP0LIyMH.json"></Player>
 			</div>
-			<div className="lg:col-span-2">
+			<div className="">
 				<div className="w-full max-w-sm mx-auto shadow-xl p-8 rounded-md">
 					<h2 className="text-xl">Login</h2>
 					<form onSubmit={handleSubmit(handleLogin)} className="form-control">
