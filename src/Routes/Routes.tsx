@@ -22,6 +22,7 @@ import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 
+
 export const router = createBrowserRouter([
 	{
 		path: "/",
