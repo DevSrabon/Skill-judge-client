@@ -32,7 +32,7 @@ const AboutUs = () => {
 			<div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5 md:mt-8">
 				{" "}
 				{data.map((team: any) => (
-					<div className=" w-full p-4 rounded-xl shadow-2xl bg-white dark:bg-gray-800 dark:text-gray-100 divider-y">
+					<div className=" w-96 p-4 rounded-xl shadow-2xl bg-white dark:bg-gray-800 dark:text-gray-100 divider-y">
 						<img
 							src={team.img}
 							alt={team.name}
