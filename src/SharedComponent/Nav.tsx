@@ -9,7 +9,6 @@ import { useUser } from "../contexts/UserProvider";
 const Nav = () => {
 	const { user, signOutUser }: any = useAuth();
 	const { dbUser, }: any = useUser();
-	console.log(dbUser);
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState<Boolean>(false);
 	const [navbar, setNavbar] = useState<Boolean>(true);
@@ -77,7 +76,7 @@ const Nav = () => {
 				<Link to={dbUser.role === "admin" ? '/dashboard' : '/userDashboard'}>DashBoard</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to={"/about-us"}>About</Link>
+				<Link to={"/about-us"}>About Us</Link>
 			</li>
 			<li className="hover:text-orange-400">
 				<Link onClick={handleLogout} to="">
@@ -119,11 +118,11 @@ const Nav = () => {
 							</>
 						) : (
 							<>
-								{user?.photo ? (
+								{user?.photoURL ? (
 									<img
 										onClick={() => setDropDown(!dropDown)}
 										className="w-10 rounded-full items-center justify-center"
-										src={user.photoURL}
+										src={user?.photoURL}
 										alt="user"
 									/>
 								) : (

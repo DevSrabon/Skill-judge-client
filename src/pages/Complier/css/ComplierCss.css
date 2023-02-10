@@ -1,20 +1,20 @@
-.main {
+/* .main {
     display: flex;
-    height: calc(100vh - 10px);
-}
+    height: 80vh;
+} */
 
 .left-container {
     position: relative;
     flex: 60%;
-    height: calc(100vh - 50px);
+    height: 80vh;
 }
 
 .right-container {
     flex: 40%;
-    height: calc(100vh - 50px);
+    height: 80vh;
     display: flex;
     flex-direction: column;
-    background-color: #242424;
+    background-color: #1e1e1e;
     border-left: 3px solid #1f65e6;
     padding: 5px;
 }
@@ -29,7 +29,7 @@
 
 .spinner-box {
     flex: 50%;
-    background-color: #242424;
+    background-color: #1e1e1e;
     overflow-y: auto;
     display: flex;
     justify-content: center;
@@ -42,7 +42,7 @@
 
 .output-box {
     flex: 50%;
-    background-color: #242424;
+    background-color: #1e1e1e;
     overflow-y: auto;
     color: white;
     position: relative;
@@ -51,7 +51,7 @@
 .clear-btn {
     position: absolute;
     bottom: 14px;
-    right: 18px;
+    right: 70px;
     width: 80px;
     height: 40px;
     font-size: 22px;
@@ -78,7 +78,7 @@ h4 {
     width: 100%;
     height: 100%;
     resize: none;
-    background-color: #242424;
+    background-color: #1e1e1e;
     color: whitesmoke;
     padding: 5px;
 }
@@ -90,7 +90,7 @@ h4 {
 .run-btn {
     position: absolute;
     bottom: 10px;
-    right: 18px;
+    right: 70px;
     width: 80px;
     height: 40px;
     font-size: 22px;
@@ -110,6 +110,22 @@ h4 {
     color: black;
 }
 .vs-dark{
-    background-color: black;
+    background-color: #1e1e1e;
     
+}
+@media only screen and (max-width: 767px) {
+    .left-container {
+        height: 40vh;
+    };
+        .right-container {
+            height: 40vh;}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .left-container {
+            height: 40vh;
+        };
+    
+        .right-container {
+            height: 40vh;
+        };
 }

@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Two sum",
+        "difficulty":"Easy",
+        "maxScore": "5",
+        "skills":"Python (basic)",
+        "successRate": "49.4",
+        "types": "Addition.",
+        "task":"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+        "example1":"Input: nums = [2,7,11,15], target = 9 <br/>Output: [0,1] <br/>Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].",
+        "example2":"Input: nums = [3,2,4], target = 6 <br/> Output: [1,2]",
+        "constraints1":"2 <= nums.length <= 104",
+        "constraints2":"-109 <= nums[i] <= 109",
+        "constraints3":"-109 <= target <= 109"
+    },
+    {
+			"title": "Add Two Numbers",
+			"difficulty": "Medium",
+			"maxScore": "5",
+			"skills": "Python (basic)",
+			"successRate": "40.2",
+			"types": "Addition.",
+			"task": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+			"example1": "Input: l1 = [2,4,3], l2 = [5,6,4]<br/>Output: [7,0,8]<br/>Explanation: 342 + 465 = 807.",
+			"example1img": "https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg",
+			"example2": "0 <= Node.val <= 9",
+			"constraints1": "The number of nodes in each linked list is in the range [1, 100].",
+			"constraints2": "0 <= Node.val <= 9",
+			"constraints3": "It is guaranteed that the list represents a number that does not have leading zeros."
+		},
+    {
+			"title": "Median of Two Sorted Arrays",
+			"difficulty": "Hard",
+			"maxScore": "5",
+			"skills": "Python (basic)",
+			"successRate": "35.9",
+			"types": "Addition.",
+			"task": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+			"example1": "Input: l1 = [2,4,3], l2 = [5,6,4]<br/>Output: [7,0,8]<br/>Explanation: 342 + 465 = 807.",
+			"example1img": "https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg",
+			"example2": "0 <= Node.val <= 9",
+			"constraints1": "The number of nodes in each linked list is in the range [1, 100].",
+			"constraints2": "0 <= Node.val <= 9",
+			"constraints3": "It is guaranteed that the list represents a number that does not have leading zeros."
+		}
+    
+]

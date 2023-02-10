@@ -17,52 +17,48 @@ import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import BasicProblem from "../pages/Home/BasicProblem/BasicProblem";
+import BasicProblem from "../pages/BasicProblem/BasicProblem";
 import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
+import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
+
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/book/:id",
-        element: (
-          <PrivateRoute>
-            <Booking />
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
-      },
-      {
-        path: "/top-questions/:id",
-        element: <TopQuestion />,
-      },
-      {
-        path: "qna",
-        loader: () => fetch("https://skill-judge-server.vercel.app/qna"),
-        element: <QuestionAns></QuestionAns>,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-      {
-        path: "/my-profile",
-        element: <MyProfile></MyProfile>,
-      },
-
+	{
+		path: "/",
+		element: <Main />,
+		children: [
+			{
+				path: "/",
+				element: <Home />,
+			},
+			{
+				path: "/book/:id",
+				element: (
+					<PrivateRoute>
+						<Booking />
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
+			},
+			{
+				path: "/top-questions/:id",
+				element: <TopQuestion />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <Signup />,
+			},
+			{
+				path: "/my-profile",
+				element: <MyProfile></MyProfile>,
+			},
       {
         path: "/qna",
         loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
@@ -137,3 +133,5 @@ export const router = createBrowserRouter([
     element: <NotFound></NotFound>,
   },
 ]);
+
+		
