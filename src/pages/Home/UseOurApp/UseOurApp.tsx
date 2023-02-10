@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UseOurApp = () => {
 	return (
@@ -19,9 +20,11 @@ const UseOurApp = () => {
 					courses to learn programming languages and increase your problem
 					solving skills.
 				</p>
-				<button className="p-4 my-5 bg-emerald-500 rounded-xl text-white w-full text-center md:text-left md:w-28">
-					Read More
-				</button>
+				<Link to="/signup">
+					<button className="p-3 my-3 bg-emerald-500 rounded-xl text-white w-full text-center md:text-left w-40">
+						Create a account
+					</button>
+				</Link>
 			</div>
 		</div>
 	);
