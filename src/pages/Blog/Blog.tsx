@@ -9,7 +9,10 @@ const Blog = () => {
   return (
     <div className="mx-10">
       {blogData.map((data: any) => (
-        <div key={data._id} className="card md:card-side rounded-md shadow-2xl dark:bg-slate-700 bg-slate-200 mt-3">
+        <div
+          key={data._id}
+          className="card md:card-side rounded-md shadow-2xl dark:bg-slate-700 bg-slate-200 mt-3"
+        >
           <figure className="w-96">
             <img
               className="m-2 rounded-md"
@@ -46,7 +49,8 @@ const Blog = () => {
                 to={data._id}
                 className="bg-gray-400 hover:bg-gray-600 text-center rounded-xl flex items-center justify-center gap-2"
               >
-                Continuing Reading ...<BsBoxArrowUpRight className="w-6 h-6"></BsBoxArrowUpRight>
+                Continuing Reading ...
+                <BsBoxArrowUpRight className="w-6 h-6"></BsBoxArrowUpRight>
               </Link>
             </div>
           </div>
