@@ -197,7 +197,9 @@ const SingleQAns = ({ qna, user, refetch }) => {
 					/>
 					<>
 						{array?.map((comment) => (
-							<div className="flex gap-2 items-center ml-5" key={comment.CommentId}>
+							<div
+								className="flex gap-2 items-center ml-5"
+								key={comment.CommentId}>
 								<div className="flex  gap-2">
 									<img
 										className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700"
@@ -209,7 +211,9 @@ const SingleQAns = ({ qna, user, refetch }) => {
 										<p>{comment?.comments}</p>
 									</div>
 								</div>
-								<div onClick={()=>handleReplyDelete(comment?._id)} className=" p-2 rounded-full bg-slate-200 ">
+								<div
+									onClick={() => handleReplyDelete(comment?._id)}
+									className=" p-2 rounded-full bg-slate-200 ">
 									<MdDelete className="text-info" />
 								</div>
 							</div>

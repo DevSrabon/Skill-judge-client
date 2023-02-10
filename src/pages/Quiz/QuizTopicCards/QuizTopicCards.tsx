@@ -28,7 +28,7 @@ const QuizTopicCards = () => {
 		return <ErrorSpinner/>;
 	}
 	return (
-		<div className="w-[90%] mx-auto grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5 my-5">
+		<div className="w-[90%] mx-auto grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5 my-4">
 			{data.map((quiz: IQuizTopicCard) => (
 				<QuizTopicCard key={quiz._id} quiz={quiz} />
 			))}
