@@ -4,9 +4,10 @@ import { useAuth } from "../../contexts/AuthProvider";
 import SingleQAns from "./SingleQAns";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../SharedComponent/Spinner/Spinner";
-
+import { useState } from "react";
 const QuestionAns = () => {
 	const { user }: any = useAuth();
+	    const [search, setSearch] = useState("");
 	const {
 		register,
 		handleSubmit,
@@ -39,6 +40,10 @@ const QuestionAns = () => {
 				}
 			});
 	};
+		 const handleSearch = (e:any) => {
+				e.preventDefault();
+				setSearch(e.target.value.toLowerCase());
+			};
 
 
   	const { data: qnaData = [], refetch, isLoading, isFetching } = useQuery({
@@ -59,6 +64,14 @@ const QuestionAns = () => {
 	}
 	return (
 		<div className="mx-5 md:mx-20 mt-10 ">
+			<div className="grid justify-center">
+				<input
+					type="search"
+					placeholder="Search here"
+					className="input input-bordered w-full max-w-xs text-center "
+					onChange={handleSearch}
+				/>
+			</div>
 			<div className="flex justify-end mb-5">
 				<label
 					htmlFor="my-modal-3"
@@ -107,15 +120,16 @@ const QuestionAns = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div>
-        <input type="text" placeholder="Type your question" className="input w-full input-bordered"
-           onChange={handleSearchChange}
-           />
-        </div> */}
 			<div className=" w-full max-w-2xl mx-auto">
-				{qnaData?.map((qna: any) => (
-					<SingleQAns key={qna._id} qna={qna} user={user} refetch={refetch} />
-				))}
+				{qnaData
+					?.filter((item: any) => {
+						return search?.toLowerCase() === ""
+							? item
+							: item?.question?.toLowerCase().includes(search);
+					})
+					.map((qna: any) => (
+						<SingleQAns key={qna._id} qna={qna} user={user} refetch={refetch} />
+					))}
 			</div>
 		</div>
 	);

@@ -117,6 +117,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/blog",
+        		loader: () => fetch(`${process.env.REACT_APP_API_URL}/blog`),
 				element: <Blog></Blog>,
 			},
 			{
