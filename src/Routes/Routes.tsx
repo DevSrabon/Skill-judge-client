@@ -20,9 +20,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import BasicProblem from "../pages/BasicProblem/BasicProblem";
 import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
-import UserDashboard from "../pages/UserDashboard/UserDashboard";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
-
 
 export const router = createBrowserRouter([
 	{
@@ -59,79 +57,85 @@ export const router = createBrowserRouter([
 				path: "/my-profile",
 				element: <MyProfile></MyProfile>,
 			},
-      {
-        path: "/qna",
-        loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-        element: <QuestionAns></QuestionAns>,
-      },
-      {
-        path: "/singleqna/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-        element: <SingleQnA></SingleQnA>,
-      },
-      {
-        path: "/free", 
-        element: <Complier />,
-      }, 
-      {
-        path: "/quiz",
-        element: <QuizTopicCards />,
-      },
-      {
-        path: "/quiz/:name",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
-        element: <QuizQuesCards />,
-      }, 
-      {
-        path: "/singleqna/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-        element: <SingleQnA></SingleQnA>,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-        children: [
-          {
-            path: "/dashboard/all-users",
-            element: <AllUsers />,
-          },
-          {
-            path: "/dashboard/add-contents",
-            element: <AddContents />,
-          },
-        ],
-      },
-      {
-        path: '/userDashboard',
-        element: <PrivateRoute><UserDashboard/></PrivateRoute>
-      },
-      {
-        path: "/about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "/basic",
-        element: <BasicProblem />,
-      },
-      {
-        path: "/blog",
-        element: <Blog></Blog>,
-      },
-      {
-        path: "/blog/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
-        element: <SingleBlog></SingleBlog>,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <NotFound></NotFound>,
-  },
-]);
 
-		
+			{
+				path: "/qna",
+				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
+				element: <QuestionAns />,
+			},
+			{
+				path: "/singleqna/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+				element: <SingleQnA></SingleQnA>,
+			},
+			{
+				path: "/free",
+
+				element: <Complier />,
+			},
+
+			{
+				path: "/quiz",
+				element: <QuizTopicCards />,
+			},
+			{
+				path: "/quiz/:name",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
+				element: <QuizQuesCards />,
+			},
+
+			{
+				path: "/singleqna/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+				element: <SingleQnA></SingleQnA>,
+			},
+			{
+				path: "/dashboard",
+				element: <Dashboard />,
+				children: [
+					{
+						path: "/dashboard/all-users",
+						element: <AllUsers />,
+					},
+					{
+						path: "/dashboard/add-contents",
+						element: <AddContents />,
+					},
+				],
+			},
+			{
+				path: "/about-us",
+				element: <AboutUs />,
+			},
+			{
+				path: "/basic",
+				element: <BasicProblem />,
+			},
+			{
+				path: "/blog",
+				loader: () =>
+					fetch(`${process.env.REACT_APP_API_URL}/blog`),
+				element: <Blog></Blog>,
+			},
+			{
+				path: "/blog/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
+				element: <SingleBlog></SingleBlog>,
+			},
+			{
+				path: "/problems/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/problems/${params.id}`),
+				element: <ProblemDetails></ProblemDetails>,
+			},
+		],
+	},
+	{
+		path: "*",
+		element: <NotFound></NotFound>,
+	},
+]);

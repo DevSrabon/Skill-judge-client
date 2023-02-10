@@ -23,7 +23,7 @@ const BasicProblem = () => {
 		return <Spinner/>
 	}
 	return (
-		<div className="bg-[#f3f7f7] md:pl-16 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+		<div className="bg-[#f3f7f7] md:pl-16 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-[100vh]">
 			<div className="flex flex-col divide-y md:col-span-2 lg:col-span-3">
 				{data
 					?.filter((item: any) => {
