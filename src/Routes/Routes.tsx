@@ -47,11 +47,6 @@ export const router = createBrowserRouter([
 				element: <TopQuestion />,
 			},
 			{
-				path: "qna",
-				loader: () => fetch("https://skill-judge-server.vercel.app/qna"),
-				element: <QuestionAns></QuestionAns>,
-			},
-			{
 				path: "/login",
 				element: <Login />,
 			},
@@ -67,7 +62,7 @@ export const router = createBrowserRouter([
 			{
 				path: "/qna",
 				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-				element: <QuestionAns></QuestionAns>,
+				element: <QuestionAns/>,
 			},
 			{
 				path: "/singleqna/:id",
