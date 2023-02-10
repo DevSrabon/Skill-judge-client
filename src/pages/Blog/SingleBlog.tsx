@@ -5,10 +5,10 @@ const SingleBlog = () => {
   	const blogData: any = useLoaderData();
 console.log(blogData);
     return (
-      <div className="mx-5 md:mx-20">
+      <div className="mx-5 md:px-20 dark:bg-slate-600">
         {blogData.map((data: any) => (
-          <div key={data._id} className="grid md:grid-cols-3 gap-3 my-5">
-            <div className="md:col-span-2">
+          <div key={data._id} className="grid md:grid-cols-3 gap-3 py-5">
+            <div className="md:col-span-2 dark:text-white ">
               <h1 className="text-3xl mb-3">{data.blogTitle}</h1>
               <div className="flex gap-6">
                 <div className="flex gap-3">
@@ -23,15 +23,15 @@ console.log(blogData);
               <hr className="my-2"></hr>
               <p>{data.blogAbout}</p>
             </div>
-            <div className="card shadow-md bg-slate-200 md:col-span-1">
+            <div className="card shadow-md bg-slate-200 dark:bg-cyan-900 md:col-span-1">
               <div className="flex md:flex-col gap-6 md:gap-0 items-center">
                 <img
                   className="w-24 h-24 my-3 md:w-52 md:h-52 rounded-full ml-5 md:m-0 md:my-5"
                   src={data.authorPicture}
-                  alt=""
+                  alt={data.authorName}
                 />
 
-                <div className="bg-slate-300 w-full rounded-md">
+                <div className="bg-slate-300 dark:bg-zinc-700 dark:text-white w-full rounded-md">
                   <h1 className="font-semibold text-center">
                     About Author & Post
                   </h1>

@@ -17,9 +17,11 @@ import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import BasicProblem from "../pages/Home/BasicProblem/BasicProblem";
+import BasicProblem from "../pages/BasicProblem/BasicProblem";
 import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
+import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
+
 
 export const router = createBrowserRouter([
   {
@@ -128,6 +130,12 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
         element: <SingleBlog></SingleBlog>,
+      },
+      {
+        path: "/problems/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/problems/${params.id}`),
+        element: <ProblemDetails></ProblemDetails>,
       },
     ],
   },

@@ -40,13 +40,13 @@ const Blog = () => {
                 {data.comment}
               </p>
               <p>
-                <span className="font-bold">LIke : </span> {data.like}
+                <span className="font-bold">Like : </span> {data.like}
               </p>
               <Link
                 to={data._id}
                 className="bg-gray-400 hover:bg-gray-600 text-center rounded-xl flex items-center justify-center gap-2"
               >
-                Continuing Reading ...<BsBoxArrowUpRight></BsBoxArrowUpRight>
+                Continuing Reading ...<BsBoxArrowUpRight className="w-6 h-6"></BsBoxArrowUpRight>
               </Link>
             </div>
           </div>
