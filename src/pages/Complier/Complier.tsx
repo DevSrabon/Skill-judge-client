@@ -23,7 +23,7 @@ function Complier() {
 
 	// State variable to set users output
 	const [userOutput, setUserOutput] = useState<string>("");
-
+	console.log(userInput);
 	// Loading state variable to show spinner
 	// while fetching data
 	const [loading, setLoading] = useState<boolean>(false);
@@ -59,7 +59,7 @@ function Complier() {
 	};
 
 	return (
-		<div className="Complier mb-10 mx-5 md:mx-10">
+		<div className="Complier mb-10 mx-5 gap-10 md:mx-10 divided-y">
 			<ComNav
 				userLang={userLang}
 				setUserLang={setUserLang}
@@ -68,11 +68,11 @@ function Complier() {
 				fontSize={fontSize}
 				setFontSize={setFontSize}
 			/>
-			<div className="main">
-				<div className="left-container">
+			<div className="grid grid-cols-1 lg:grid-cols-3">
+				<div className="left-container lg:col-span-2">
 					<Editor
 						options={options}
-						height="calc(100vh - 50px)"
+						height="80vh"
 						width="100%"
 						theme={userTheme}
 						language={userLang}
@@ -86,8 +86,8 @@ function Complier() {
 						Run
 					</button>
 				</div>
-				<div className={`right-container ${userTheme}`}>
-					<h4>Output:</h4>
+				<div className={`right-container ${userTheme} lg:col-span-1`}>
+					<h4 className="">Output:</h4>
 					{loading ? (
 						<div className="spinner-box">
 							<Spinner />

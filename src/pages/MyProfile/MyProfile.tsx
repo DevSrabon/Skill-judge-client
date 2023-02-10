@@ -3,11 +3,13 @@ import Spinner from "../../SharedComponent/Spinner/Spinner";
 import ErrorSpinner from "../../SharedComponent/Spinner/ErrorSpinner";
 import { useUser } from "../../contexts/UserProvider";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthProvider";
 
 const MyProfile = () => {
 	const [isModalOpen, setIsModalOpen]: any = useState(true);
 
 	const { dbUser: profileData, isLoading, error, refetch }: any = useUser();
+	const {user}:any =useAuth()
 
 	if (isLoading) return <Spinner />;
 	if (error) return <ErrorSpinner />;
@@ -18,7 +20,11 @@ const MyProfile = () => {
 				<h2 className="text-xl font-bold px-4">My Profile</h2>
 				<div className="avatar">
 					<div className="w-24 rounded">
-						<img src={profileData?.photo} alt="user" />
+						{profileData?.photo ? (
+							<img src={profileData?.photo} alt="user" />
+						) : (
+							<img src={user?.photoURL} alt="user" />
+						)}
 					</div>
 				</div>
 			</div>

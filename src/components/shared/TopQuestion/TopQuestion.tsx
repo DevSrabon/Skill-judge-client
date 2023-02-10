@@ -1,24 +1,11 @@
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import useFetchQuestionData from "../../../reactQueryHooks/useFetchQuestionData";
 import Spinner from "../../../SharedComponent/Spinner/Spinner";
 
 const TopQuestion = () => {
     const { id } = useParams();
-    const {
-        data = [],
-        isLoading,
-        error,
-    } = useQuery({
-        queryKey: ["single-questions"],
-        queryFn: async () => {
-            const res = await fetch(
-                `${process.env.REACT_APP_API_URL}/top-questions/${id}`
-            );
-            const data = await res.json();
-            return data;
-        },
-    });
+    const { data, isLoading, error } = useFetchQuestionData(id!);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -31,7 +18,7 @@ const TopQuestion = () => {
     if (error) {
         content = <p>Something Went Wrong!!!</p>;
     }
-    if (data.length === 1 && data) {
+    if (data?.length === 1 && data) {
         content = (
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
                 <div className="lg:mb-0 mb-4">
@@ -42,13 +29,15 @@ const TopQuestion = () => {
                         {data[0]?.question}
                     </p>
                     <h4 className="text-lg mt-3  mb-2">Description:</h4>
-                    <p className="text black dark:text-gray-50">{data[0]?.info}</p>
+                    <p className="text black dark:text-gray-50">
+                        {data[0]?.info}
+                    </p>
                     <h4 className="text-lg mt-3  mb-2">
                         How To Solve Problem Explain With Step By Step:
                     </h4>
                     <ul className="mt-3 mb-3 bg-slate-50 p-3">
                         <>
-                            {data[0]?.pseudocode.map(
+                            {data[0]?.pseudocode?.map(
                                 (psc: string, index: number) => (
                                     <li key={index} className="text-black">
                                         {index + 1}-{psc}

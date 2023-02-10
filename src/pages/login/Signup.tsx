@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Signup = () => {
 	type FormValues = {
@@ -77,20 +78,18 @@ const Signup = () => {
 	}
 
 	return (
-		<div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
-			<div className="lg:col-span-2">
-				<img
-					src="https://i.ibb.co/JcL8bw4/sign-page-abstract-concept-illustration-enter-application-mobile-screen-user-login-form-website-page.jpg"
-					className="w-full"
-					alt="money"
-				/>
+		<div className="grid grid-cols-1 items-center md:grid-cols-2  gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
+			<div className=" flex justify-end">
+				<Player
+					autoplay
+					loop
+					className='w-96'
+					src="https://assets7.lottiefiles.com/packages/lf20_qmvs7uqa.json"></Player>
 			</div>
-			<div className="lg:col-span-2">
+			<div className="">
 				<div className="w-full max-w-sm mx-auto shadow-xl p-8 rounded-md">
 					<h2 className="text-xl">Sign Up</h2>
-					<form
-						onSubmit={handleSubmit(handleSignup)}
-						className="form-control">
+					<form onSubmit={handleSubmit(handleSignup)} className="form-control">
 						{/* Name */}
 						<label className="label">
 							<span className="label-text">Name</span>
@@ -141,7 +140,7 @@ const Signup = () => {
 						<input
 							type="submit"
 							value="Sign Up"
-							className="btn btn-accent w-full max-w-sm mt-5"
+							className="btn btn-accent text-white w-full max-w-sm mt-5"
 						/>
 						<p>
 							Already have an account?{" "}

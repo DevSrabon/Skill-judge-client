@@ -28,12 +28,12 @@ const ComNav = ({
 				onChange={(e) => setUserLang(e.value)}
 				placeholder={userLang}
 			/>
-			<Select
+			{/* <Select
 				options={themes}
 				value={userTheme}
 				onChange={(e) => setUserTheme(e.value)}
 				placeholder={userTheme}
-			/>
+			/> */}
 			<label>Font Size</label>
 			<input
 				type="range"
