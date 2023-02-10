@@ -32,7 +32,7 @@ const BasicProblem = () => {
 							: item?.difficulty?.includes(search);
 					})
 					.map((problem: any) => (
-						<div className=" flex justify-between items-center mx-4 py-5 px-5 bg-white shadow-lg ">
+						<div className=" flex flex-col gap-3 md:flex-row justify-between items-center mx-4 py-5 px-5 bg-white shadow-lg ">
 							<div>
 								<h3 className="text-xl">{problem.title}</h3>
 								<small>
