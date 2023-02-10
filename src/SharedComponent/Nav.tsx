@@ -67,13 +67,14 @@ const Nav = () => {
 			);
 		}
 	};
+	
 	const dropDownItems = (
 		<>
 			<li className="hover:text-orange-400">
 				<Link to="my-profile">My Profile</Link>
 			</li>
 			<li className="hover:text-orange-400">
-				<Link to="/dashboard">DashBoard</Link>
+				<Link to={dbUser.role === "admin" ? '/dashboard' : '/userDashboard'}>DashBoard</Link>
 			</li>
 			<li className="hover:text-orange-400">
 				<Link to={"/about-us"}>About</Link>

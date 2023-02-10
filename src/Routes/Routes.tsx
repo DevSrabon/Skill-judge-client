@@ -20,6 +20,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import BasicProblem from "../pages/Home/BasicProblem/BasicProblem";
 import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
+import UserDashboard from "../pages/UserDashboard/UserDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -74,11 +75,9 @@ export const router = createBrowserRouter([
         element: <SingleQnA></SingleQnA>,
       },
       {
-        path: "/free",
-
+        path: "/free", 
         element: <Complier />,
-      },
-
+      }, 
       {
         path: "/quiz",
         element: <QuizTopicCards />,
@@ -88,8 +87,7 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
         element: <QuizQuesCards />,
-      },
-
+      }, 
       {
         path: "/singleqna/:id",
         loader: ({ params }) =>
@@ -109,6 +107,10 @@ export const router = createBrowserRouter([
             element: <AddContents />,
           },
         ],
+      },
+      {
+        path: '/userDashboard',
+        element: <PrivateRoute><UserDashboard/></PrivateRoute>
       },
       {
         path: "/about-us",
