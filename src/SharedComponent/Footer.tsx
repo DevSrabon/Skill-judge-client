@@ -31,9 +31,6 @@ const Footer = () => {
 					<Link to={""} className="link link-hover">
 						Jobs
 					</Link>
-					<Link to={""} className="link link-hover">
-						Press kit
-					</Link>
 				</div>
 				<div>
 					<span className="footer-title">Legal</span>
