@@ -1,23 +1,26 @@
-import { useContext, useState } from 'react';
+import { useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { toast } from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
+import { toast } from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 // import useToken from '../hooks/useToken';
-import PasswordResetModal from './PasswordResetModal';
-import { Player } from '@lottiefiles/react-lottie-player';
+import PasswordResetModal from "./PasswordResetModal";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Login = () => {
-
 	type FormValues = {
 		email: string;
 		password: string;
 	};
 
 	const { loginUser, createUserWithGoogle }: any = useContext(AuthContext);
-	const [error, setError] = useState('');
-	const { register, formState: { errors }, handleSubmit } = useForm<FormValues>();
+	const [error, setError] = useState("");
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm<FormValues>();
 
 	// const [userEmail, setUserEmail] = useState('');
 	// const [token] = useToken(userEmail);
@@ -33,51 +36,51 @@ const Login = () => {
 	const saveUser = (name: string, email: string) => {
 		const user = { name, email };
 		fetch(`${process.env.REACT_APP_API_URL}/user`, {
-			method: 'POST',
+			method: "POST",
 			headers: {
-				'content-type': 'application/json'
+				"content-type": "application/json",
 			},
-			body: JSON.stringify(user)
+			body: JSON.stringify(user),
 		})
-			.then(res => res.json())
-			.then(data => {
+			.then((res) => res.json())
+			.then((data) => {
 				// setUserEmail(user.email);
 				console.log(data);
-			})
+			});
 	};
 
-	const handleLogin: SubmitHandler<FormValues> = data => {
-		setError('');
+	const handleLogin: SubmitHandler<FormValues> = (data) => {
+		setError("");
 		loginUser(data.email, data.password)
-			.then(result => {
+			.then((result) => {
 				const user = result.user;
 				console.log(user);
 				// setUserEmail(data.email);
-				toast.success('Login Successful');
+				toast.success("Login Successful");
 				// e.target.reset();
 				navigate(from, { replace: true });
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(err);
-				setError(err.message)
-			})
+				setError(err.message);
+			});
 	};
 
 	const handleGoogleLogin = () => {
-		setError('');
+		setError("");
 		createUserWithGoogle()
-			.then(result => {
+			.then((result) => {
 				const user = result.user;
 				console.log(user);
 				saveUser(user.displayName, user.email);
-				toast.success('Login Successful');
+				toast.success("Login Successful");
 				navigate(from, { replace: true });
 			})
-			.catch(err => {
-				console.log(err)
+			.catch((err) => {
+				console.log(err);
 				setError(err.message);
-			})
-	}
+			});
+	};
 
 	return (
 		<div className="grid grid-cols-1 items-center md:grid-cols-2  gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">

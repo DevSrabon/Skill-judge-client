@@ -5,6 +5,7 @@ import SingleQAns from "./SingleQAns";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../SharedComponent/Spinner/Spinner";
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 const QuestionAns = () => {
 	const { user }: any = useAuth();
 	    const [search, setSearch] = useState("");
@@ -63,14 +64,15 @@ const QuestionAns = () => {
 		return <Spinner/>
 	}
 	return (
-		<div className="mx-5 md:mx-20 mt-10 h-[100vh]">
+		<div className="mx-5 md:mx-20 mt-10 -">
 			<div className="grid justify-center">
 				<input
 					type="search"
-					placeholder="Search here"
+					placeholder="Search Question"
 					className="input input-bordered w-full max-w-xs text-center "
 					onChange={handleSearch}
 				/>
+				<FaSearch className="text-[#b7bcc5] -mt-8 ml-2 text-xl"/>
 			</div>
 			<div className="flex justify-end mb-5">
 				<label
