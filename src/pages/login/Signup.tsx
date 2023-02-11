@@ -58,6 +58,7 @@ const Signup = () => {
 			.catch(err => {
 				console.log(err);
 				setError(err.message);
+				setLoading(false);
 			})
 	};
 
@@ -69,11 +70,13 @@ const Signup = () => {
 				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('SignUp Successful');
+				setLoading(false);
 				navigate('/');
 			})
 			.catch(err => {
 				console.log(err)
 				setError(err.message);
+				setLoading(false);
 			})
 	}
 
