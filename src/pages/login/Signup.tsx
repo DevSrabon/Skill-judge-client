@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Player } from '@lottiefiles/react-lottie-player';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
 	type FormValues = {
@@ -14,14 +15,13 @@ const Signup = () => {
 	const { createUser, createUserWithGoogle, updateUser, setLoading }: any = useContext(AuthContext);
 	const [error, setError] = useState<string>('');
 	const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
-	// const [userEmail, setUserEmail] = useState('');
-	// const [token] = useToken(userEmail);
+	const [userEmail, setUserEmail] = useState<string>('');
+	const [token] = useToken(userEmail);
 	const navigate = useNavigate();
 
-
-	// if (token) {
-	//     navigate('/');
-	// }
+	if (token) {
+		navigate('/');
+	}
 
 
 	const saveUser = (name: string, email: string) => {
@@ -36,8 +36,9 @@ const Signup = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
-				// setUserEmail(email);
+				setUserEmail(email);
 			})
+			.catch(error => console.error(error));
 	};
 
 	const handleSignup: SubmitHandler<FormValues> = data => {
@@ -49,7 +50,7 @@ const Signup = () => {
 					.then(() => {
 						saveUser(data.name, data.email);
 						toast.success('SignUp Successful');
-						navigate('/');
+						// navigate('/');
 						setLoading(false);
 					})
 					.catch(err => console.log(err))
@@ -58,6 +59,7 @@ const Signup = () => {
 			.catch(err => {
 				console.log(err);
 				setError(err.message);
+				setLoading(false);
 			})
 	};
 
@@ -69,11 +71,13 @@ const Signup = () => {
 				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('SignUp Successful');
-				navigate('/');
+				setLoading(false);
+				// navigate('/');
 			})
 			.catch(err => {
 				console.log(err)
 				setError(err.message);
+				setLoading(false);
 			})
 	}
 

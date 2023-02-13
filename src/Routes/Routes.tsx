@@ -22,7 +22,6 @@ import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 
-
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -62,7 +61,7 @@ export const router = createBrowserRouter([
 			{
 				path: "/qna",
 				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-				element: <QuestionAns/>,
+				element: <QuestionAns />,
 			},
 			{
 				path: "/singleqna/:id",
@@ -117,7 +116,8 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/blog",
-        		loader: () => fetch(`${process.env.REACT_APP_API_URL}/blog`),
+				loader: () =>
+					fetch(`${process.env.REACT_APP_API_URL}/blog`),
 				element: <Blog></Blog>,
 			},
 			{

@@ -8,7 +8,7 @@ const Blog = () => {
   console.log(Date());
   return (
     <div className="mx-10">
-      {blogData.map((data: any) => (
+      {blogData?.map((data: any) => (
         <div
           key={data._id}
           className="card md:card-side rounded-md shadow-2xl dark:bg-slate-700 bg-slate-200 mt-3"

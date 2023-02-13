@@ -63,7 +63,7 @@ const QuestionAns = () => {
 		return <Spinner/>
 	}
 	return (
-		<div className="mx-5 md:mx-20 mt-10 ">
+		<div className="mx-5 md:mx-20 mt-10 h-[100vh]">
 			<div className="grid justify-center">
 				<input
 					type="search"
