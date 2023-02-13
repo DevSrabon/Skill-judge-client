@@ -3,10 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-
-// import useToken from '../hooks/useToken';
 import PasswordResetModal from './PasswordResetModal';
 import { Player } from '@lottiefiles/react-lottie-player';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -19,16 +18,16 @@ const Login = () => {
 	const [error, setError] = useState('');
 	const { register, formState: { errors }, handleSubmit } = useForm<FormValues>();
 
-	// const [userEmail, setUserEmail] = useState('');
-	// const [token] = useToken(userEmail);
+	const [userEmail, setUserEmail] = useState<string>('');
+	const [token] = useToken(userEmail);
 
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || "/";
 
-	// if (token) {
-	//     navigate(from, { replace: true });
-	// }
+	if (token) {
+		navigate(from, { replace: true });
+	}
 
 	const saveUser = (name: string, email: string) => {
 		const user = { name, email };
@@ -41,7 +40,7 @@ const Login = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				// setUserEmail(user.email);
+				setUserEmail(email);
 				console.log(data);
 			})
 	};
@@ -52,14 +51,13 @@ const Login = () => {
 			.then(result => {
 				const user = result.user;
 				console.log(user);
-				// setUserEmail(data.email);
 				toast.success('Login Successful');
-				// e.target.reset();
-				navigate(from, { replace: true });
+				setUserEmail(data.email);
+				setLoading(false);
+				// navigate(from, { replace: true });
 			})
 			.catch(err => {
 				console.log(err);
-				toast.error('Email or Password is not correct!');
 				setError(err.message);
 				setLoading(false);
 			})
@@ -73,11 +71,10 @@ const Login = () => {
 				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('Login Successful');
-				navigate(from, { replace: true });
+				// navigate(from, { replace: true });
 			})
 			.catch(err => {
 				console.log(err);
-				toast.error('An Error Occurred');
 				setError(err.message);
 				setLoading(false);
 			})
