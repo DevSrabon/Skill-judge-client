@@ -19,7 +19,7 @@ const UserProvider = ({ children }: { children: ReactElement }) => {
 		queryFn: () =>
 			fetch(`${process.env.REACT_APP_API_URL}/user?email=${user?.email}`, {
 				headers: {
-					// authorization: `bearer ${localStorage.getItem('token')}`
+					authorization: `bearer ${localStorage.getItem('token')}`
 				},
 			}).then((res) => res.json()),
 	});
