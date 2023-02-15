@@ -1,25 +1,25 @@
-import { useQuery } from '@tanstack/react-query'; 
-import { useUser as useAuth } from '../../contexts/UserProvider';
+import { Link } from "react-router-dom";
 
-const UserDashboard = () => {
-    const {user}: any = useAuth()
-    console.log(user?.email) 
-
-    const {data: savedQuiz} = useQuery({
-        queryKey: ['savedQuiz', user?.email],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/savedQuiz?email=${user?.email}`)
-            const data = await res.json()
-            return data;
-        }
-    }) 
-    console.log(savedQuiz)
+const UserDashboard = () => { 
 
     return (
-        <div>
-            <h1>This is user dashboard</h1>
+        <div className="drawer drawer-mobile">
+         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+         <div className="drawer-content flex flex-col items-center justify-center">
+         {/* <!-- Page content here --> */}
+         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> 
+         </div> 
+         <div className="drawer-side">
+          <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+           <ul className="menu p-4 w-80 bg-base-100 text-base-content border">
+             {/* <!-- Sidebar content here --> */}
+             <li><Link to={''}>Sidebar Item 1</Link></li>
+             <li><Link to={''}>Sidebar Item 2</Link></li>
+           </ul> 
+         </div>
         </div>
-    );
-};
+    )
+    
+}
 
 export default UserDashboard;

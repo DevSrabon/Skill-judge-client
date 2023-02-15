@@ -70,7 +70,7 @@ const Nav = () => {
 	const dropDownItems = (
 		<>
 			<li className="hover:text-orange-400">
-				<Link to="my-profile">My Profile</Link>
+				<Link to={'/my-profile'}>My Profile</Link>
 			</li>
 			<li className="hover:text-orange-400">
 				<Link to={dbUser.role === "admin" ? '/dashboard' : '/userDashboard'}>DashBoard</Link>
