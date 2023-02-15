@@ -9,9 +9,9 @@ function App() {
 			<UserProvider>
 				<RouterProvider router={router}></RouterProvider>
 			</UserProvider>
-			<Toaster />
+			<Toaster/>
 		</div>
-	);
-}
+	)
+};
 
 export default App;

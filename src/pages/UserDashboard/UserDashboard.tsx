@@ -1,18 +1,18 @@
 import { useQuery } from '@tanstack/react-query'; 
-import { useUser } from '../../contexts/UserProvider';
+import { useUser as useAuth } from '../../contexts/UserProvider';
 
 const UserDashboard = () => {
-    const {dbUser}: any = useUser()
+    const {user}: any = useAuth()
+    console.log(user?.email) 
 
     const {data: savedQuiz} = useQuery({
-        queryKey: ['savedQuiz', dbUser?.email],
+        queryKey: ['savedQuiz', user?.email],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/savedQuiz?email=${dbUser?.email}`)
+            const res = await fetch(`http://localhost:5000/savedQuiz?email=${user?.email}`)
             const data = await res.json()
             return data;
         }
-    })
-
+    }) 
     console.log(savedQuiz)
 
     return (
