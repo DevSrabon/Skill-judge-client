@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import Complier from "../Complier/Complier";
+import Compiler from "../../components/shared/Compiler/components/Compiler/Compiler";
+
 
 const ProblemDetails = () => {
 	const data: any = useLoaderData();
@@ -34,7 +35,7 @@ const ProblemDetails = () => {
 				</ul>
 			</div>
 			<div className="col-span-3">
-				<Complier />
+				<Compiler />
 			</div>
 		</div>
 	);
