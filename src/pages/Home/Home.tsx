@@ -11,8 +11,7 @@ const Home = () => {
             <EasyToStart />
             <TopQuestions />
             <Services />
-            <Form/>
-           
+            <Form/>           
         </div>
     );
 };

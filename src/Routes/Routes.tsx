@@ -9,7 +9,6 @@ import TopQuestion from "../components/shared/TopQuestion/TopQuestion";
 import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
-import Complier from "../pages/Complier/Complier";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import AddContents from "../pages/Dashboard/AddContents";
@@ -21,6 +20,9 @@ import BasicProblem from "../pages/BasicProblem/BasicProblem";
 import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
+import UserDashboard from "../pages/UserDashboard/UserDashboard";
+import Compiler from "../components/shared/Compiler/components/Compiler/Compiler";
+
 
 export const router = createBrowserRouter([
 	{
@@ -70,11 +72,9 @@ export const router = createBrowserRouter([
 				element: <SingleQnA></SingleQnA>,
 			},
 			{
-				path: "/free",
-
-				element: <Complier />,
-			},
-
+				path: "/free", 
+				element: <Compiler />,
+			}, 
 			{
 				path: "/quiz",
 				element: <QuizTopicCards />,
@@ -84,8 +84,7 @@ export const router = createBrowserRouter([
 				loader: ({ params }) =>
 					fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
 				element: <QuizQuesCards />,
-			},
-
+			}, 
 			{
 				path: "/singleqna/:id",
 				loader: ({ params }) =>
@@ -105,6 +104,10 @@ export const router = createBrowserRouter([
 						element: <AddContents />,
 					},
 				],
+			},
+			{
+				path: '/userDashboard',
+				element: <UserDashboard/>
 			},
 			{
 				path: "/about-us",
