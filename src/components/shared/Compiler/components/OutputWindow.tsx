@@ -8,7 +8,7 @@ const OutputWindow = ({ outputDetails }) => {
       // compilation error
       return (
         <pre className="px-2 py-1 font-normal text-xs text-red-500">
-          {(outputDetails?.compile_output)}
+          {atob(outputDetails?.compile_output)}
         </pre>
       );
     } else if (statusId === 3) {
@@ -28,14 +28,14 @@ const OutputWindow = ({ outputDetails }) => {
     } else {
       return (
         <pre className="px-2 py-1 font-normal text-xs text-red-500">
-          {(outputDetails?.stderr)}
+          {atob(outputDetails?.stderr)}
         </pre>
       );
     }
   };
   return (
     <>
-      <h1 className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
+      <h1 className="font-bold text-xl bg-clip-text text-transparent dark:text-white bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
         Output
       </h1>
       <div className="w-full h-56 bg-[#1e293b] rounded-md text-white font-normal text-sm overflow-y-auto">

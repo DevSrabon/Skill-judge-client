@@ -8,26 +8,32 @@ import LanguagesDropdown from "../LanguagesDropdown";
 import OutputDetails from "../OutputDetails";
 import OutputWindow from "../OutputWindow";
 import ThemeDropdown from "../ThemeDropdown";
-
-interface ILanguage 
-{
-    id: number;
-    name: string;
-    label: string;
-    value: string;
+import { toast } from "react-hot-toast";
+import { useAuth } from "../../../../../contexts/AuthProvider";
+interface ILanguage {
+	id: number;
+	name: string;
+	label: string;
+	value: string;
 }
-const Compiler = () => {
+interface ITheme {
+	value: string;
+	label: string;
+}type Props = {
+	resultOutput?: string | undefined;
+	title?: string | undefined;
+};
+const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 	const [input, setInput] = useState<string>(``);
-	const [output, setOutput] = useState<string>(``);
-	const [theme, setTheme] = useState<{ value: string; label: string }>(
-		{} as { value: string; label: string }
-	);
+	const [theme, setTheme] = useState<ITheme>({} as ITheme);
 	const [outputDetails, setOutputDetails] = useState<string>(``);
 	const [language, setLanguage] = useState<ILanguage>(languageOptions[0]);
 	const [userInput, setUserInput] = useState<string>(``);
 	const [processing, setProcessing] = useState<boolean>(false);
-	const [testCase, setTestCase] = useState<string>(``);
+	const [isCorrect, setIsCorrect] = useState<boolean>(false);
+	const [show,setShow]=useState(false);
 
+	const {user}:any=useAuth()
 	const onSelectChange = (sl: ILanguage) => {
 		console.log("selected Option...", sl);
 		setLanguage(sl);
@@ -55,9 +61,7 @@ const Compiler = () => {
 				method: "POST",
 				headers: {
 					"x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-					"x-rapidapi-key":
-						`${process.env.REACT_APP_COMPILER_API_KEY}`
-,
+					"x-rapidapi-key": `${process.env.REACT_APP_COMPILER_API_KEY}`,
 					"content-type": "application/json",
 					accept: "application/json",
 				},
@@ -90,24 +94,48 @@ const Compiler = () => {
 					method: "GET",
 					headers: {
 						"x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-						"x-rapidapi-key":
-							`${process.env.REACT_APP_COMPILER_API_KEY}`
-,
+						"x-rapidapi-key": `${process.env.REACT_APP_COMPILER_API_KEY}`,
 						"content-type": "application/json",
 					},
 				});
 				jsonGetSolution = await getSolution.json();
 				setOutputDetails(jsonGetSolution);
+				toast.success("Compile Successful");
 			}
 		}
-		// alert("🚀 ~ file: Com.js:95 ~ handleSubmit ~ result", atob(jsonGetSolution.stdout))
 		if (jsonGetSolution.stdout) {
-			const result = atob(jsonGetSolution.stdout);
-			setOutput(result);
+			const result = atob(jsonGetSolution.stdout).replace(/\n/g, "");
+			if (result === resultOutput) {
+				setIsCorrect(true);
+			} else {setIsCorrect(false);
+		}
 		}
 	};
 
-	const handleThemeChange = (th:any) => {
+	const handleResultSubmit = () => {
+			fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify({
+					correct: isCorrect,
+					email: user?.email,
+					title: title,
+				}),
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.acknowledged) {
+						toast.success("Saved");
+						setShow(true);
+					} else {
+						toast.error(data.message);
+					}
+				});
+		};
+
+	const handleThemeChange = (th: any) => {
 		console.log("theme...", th);
 		const theme = th;
 
@@ -122,6 +150,7 @@ const Compiler = () => {
 			setTheme({ value: "oceanic-next", label: "Oceanic Next" })
 		);
 	}, []);
+
 
 	return (
 		<>
@@ -154,8 +183,8 @@ const Compiler = () => {
 
 						<div className="flex gap-2">
 							<button
-								onClick={() => setTestCase("hi\n")}
-								disabled={!outputDetails || processing}
+								onClick={handleResultSubmit}
+								disabled={!outputDetails || processing || show}
 								className={classnames(
 									"mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
 									!outputDetails ? "opacity-50" : ""
@@ -163,7 +192,6 @@ const Compiler = () => {
 								Submit
 							</button>
 							<button
-								
 								onClick={handleSubmit}
 								disabled={!input || processing}
 								className={classnames(
@@ -174,15 +202,38 @@ const Compiler = () => {
 							</button>
 						</div>
 					</div>
-					{outputDetails && (
-						<OutputDetails
-							outputDetails={outputDetails}
-							processing={processing}
-						/>
-					)}
-					{output && testCase && (
-						<>{testCase === output ? <p>Success</p> : <p>Failed</p>}</>
-					)}
+					<div className="flex justify-between">
+						{outputDetails && (
+							<OutputDetails
+								outputDetails={outputDetails}
+								processing={processing}
+							/>
+						)}
+						<div className="mt-4">
+							{show && (
+								<>
+									{isCorrect ? (
+										<p className="text-sm">
+											<span className="text-lg font-semibold px-2 py-1 rounded-md bg-gray-100 block mb-2">
+												Congratulation!!
+											</span>
+											Result:{" "}
+											<span className="font-semibold px-2 py-1 rounded-md bg-gray-100">	
+												Passed
+											</span>
+										</p>
+									) : (
+										<p className="text-sm">
+											Result:{" "}
+											<span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+												Failed
+											</span>
+										</p>
+									)}
+								</>
+							)}
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

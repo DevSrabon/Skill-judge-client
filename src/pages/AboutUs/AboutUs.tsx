@@ -29,14 +29,14 @@ const AboutUs = () => {
 			<h1 className="text-4xl text-center font-bold text-pink-800">
 				Our Team Member
 			</h1>
-			<div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5 md:mt-8">
+			<div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mt-5 md:mt-8">
 				{" "}
 				{data.map((team: any) => (
-					<div className=" w-96 p-4 rounded-xl shadow-2xl bg-white dark:bg-gray-800 dark:text-gray-100 divider-y">
+					<div className=" w-96 p-4 rounded-xl shadow-2xl bg-white dark:bg-gray-800 dark:text-gray-100 divider-y grid justify-center">
 						<img
 							src={team.img}
 							alt={team.name}
-							className="h-80 rounded-xl w-full shadow-sm "
+							className="h-80 rounded-xl max-w-sm shadow-sm text-center"
 						/>
 						<h2 className="text-center text-xl font-bold text-pink-800 py-2">
 							{team.name}
@@ -46,10 +46,10 @@ const AboutUs = () => {
 						</h2>
 						<div className="flex justify-center gap-5 text-2xl pt-5 text-info">
 							<a href={team.linkedin}>
-								<AiFillLinkedin className="hover:text-pink-800 hover:text-3xl hover:-mt-2" />
+								<AiFillLinkedin className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 							</a>
 							<a href={team.github}>
-								<AiFillGithub className="hover:text-pink-800 hover:text-3xl hover:-mt-2" />
+								<AiFillGithub className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 							</a>
 							<a href={team.facebook}>
 								<AiFillFacebook className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />

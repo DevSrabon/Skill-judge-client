@@ -20,6 +20,7 @@ const Login = () => {
 
 	const [userEmail, setUserEmail] = useState<string>('');
 	const [token] = useToken(userEmail);
+	console.log(token)
 
 	const navigate = useNavigate();
 	const location = useLocation();
