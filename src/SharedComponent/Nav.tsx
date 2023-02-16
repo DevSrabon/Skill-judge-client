@@ -21,7 +21,7 @@ const Nav = () => {
 
 	const handleLogout = () => {
 		signOutUser()
-			.then(() => {})
+			.then(() => { })
 			.catch((err) => {
 				console.log(err);
 			});
@@ -66,7 +66,7 @@ const Nav = () => {
 			);
 		}
 	};
-	
+
 	const dropDownItems = (
 		<>
 			<li className="hover:text-orange-400">
@@ -111,7 +111,7 @@ const Nav = () => {
 							<>
 								<img
 									onClick={() => setDropDown(!dropDown)}
-									className="w-10 rounded-full items-center justify-center"
+									className="w-10 h-10 rounded-full items-center justify-center"
 									src={dbUser?.photo}
 									alt="user"
 								/>
@@ -121,7 +121,7 @@ const Nav = () => {
 								{user?.photoURL ? (
 									<img
 										onClick={() => setDropDown(!dropDown)}
-										className="w-10 rounded-full items-center justify-center"
+										className="w-10 h-10 rounded-full items-center justify-center"
 										src={user?.photoURL}
 										alt="user"
 									/>
@@ -203,10 +203,9 @@ const Nav = () => {
 				</div>
 				<div className="flex items-center dark:text-white gap-4">
 					<div
-						
-						className={`text-center flex-1 justify-self-center items-center pb-3 mt-8 lg:block md:pb-0 md:mt-0 cursor-pointer ${
-							navbar ? "hidden" : "block"
-						}`}>
+
+						className={`text-center flex-1 justify-self-center items-center pb-3 mt-8 lg:block md:pb-0 md:mt-0 cursor-pointer ${navbar ? "hidden" : "block"
+							}`}>
 						<ul className="items-center justify-center font-semibold ul  space-y-5 lg:flex lg:space-x-6 lg:space-y-0  dark:text-white">
 							{navItems}
 						</ul>

@@ -1,18 +1,16 @@
 import ProfileUpdateModal from "./ProfileUpdateModal";
-import Spinner from "../../SharedComponent/Spinner/Spinner";
-import ErrorSpinner from "../../SharedComponent/Spinner/ErrorSpinner";
 import { useUser } from "../../contexts/UserProvider";
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthProvider";
+import Spinner from "../../SharedComponent/Spinner/Spinner";
 
 const MyProfile = () => {
 	const [isModalOpen, setIsModalOpen]: any = useState(true);
 
-	const { dbUser: profileData, isLoading, error, refetch }: any = useUser();
-	const {user}:any =useAuth()
+	const { dbUser: profileData, refetch }: any = useUser();
+	const { user, loading }: any = useAuth()
 
-	if (isLoading) return <Spinner />;
-	if (error) return <ErrorSpinner />;
+	if (loading) return <Spinner />;
 
 	return (
 		<div className="w-full dark:bg-white max-w-xl mx-auto border rounded-lg my-20">

@@ -4,9 +4,9 @@ import { useUser } from "../../contexts/UserProvider";
 const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 	const imgHostKey = process.env.REACT_APP_imgbb_key;
 
-	const { name, email, occupation, mobile, address } = profile;
-    const { refetch: myfetch }: any = useUser();
-    
+	const { name, email, occupation, mobile, address, photo: dbPhoto } = profile;
+	const { refetch: myfetch }: any = useUser();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -16,53 +16,82 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 		const mobile = form.mobile.value;
 		const address = form.address.value;
 		const photo = form.photo.files[0];
-		console.log(name, email, occupation, mobile, address, photo);
+		console.log(photo);
 
-		//photo hosting system to imgbb
-		const formData = new FormData();
-		formData.append("image", photo);
-		const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
-		fetch(url, {
-			method: "POST",
-			body: formData,
-		})
-			.then((res) => res.json())
-			.then((imgData) => {
-				if (imgData.success) {
-					console.log(imgData.data.url);
-					const userInfo = {
-						name,
-						email,
-						occupation,
-						photo: imgData.data.url,
-						mobile,
-						address,
-					};
-					console.log(userInfo);
 
-					//save post to the database
-					fetch(
-						`${process.env.REACT_APP_API_URL}/updateUser?email=${profile?.email}`,
-						{
-							method: "PUT",
-							headers: {
-								"content-type": "application/json",
-								// authorization: `bearer ${localStorage.getItem('token')}`
-							},
-							body: JSON.stringify(userInfo),
-						}
-					)
-						.then((res) => res.json())
-						.then((data) => {
-							console.log(data);
-							toast.success("Your information updated successfully");
-							refetch();
-							// navigate('/my-profile');
-							setIsModalOpen(false);
-							myfetch();
-						});
+		const userDataUpdate = (userInfo) => {
+			//save post to the database		
+			fetch(
+				`${process.env.REACT_APP_API_URL}/user/updateUser?email=${profile?.email}`,
+				{
+					method: "PATCH",
+					headers: {
+						"content-type": "application/json",
+						// authorization: `bearer ${localStorage.getItem('token')}`
+					},
+					body: JSON.stringify(userInfo),
 				}
-			});
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					toast.success("Your information updated successfully");
+					refetch();
+					// navigate('/my-profile');
+					setIsModalOpen(false);
+					myfetch();
+				});
+
+		}
+
+		if (photo) {
+			console.log('done');
+
+			//photo hosting system to imgbb
+			const formData = new FormData();
+			formData.append("image", photo);
+			const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
+			fetch(url, {
+				method: "POST",
+				body: formData,
+			})
+				.then((res) => res.json())
+				.then((imgData) => {
+					if (imgData.success) {
+						console.log(imgData.data.url);
+						const userInfo = {
+							name,
+							email,
+							occupation,
+							photo: imgData.data.url,
+							mobile,
+							address,
+						};
+						console.log(userInfo);
+
+						// function for updating user
+						userDataUpdate(userInfo);
+					}
+				});
+		}
+		else {
+			console.log('error');
+			const userInfo = {
+				name,
+				email,
+				occupation,
+				mobile,
+				address,
+				photo: dbPhoto
+			};
+			console.log(userInfo);
+
+			// function for updating user
+			userDataUpdate(userInfo);
+
+		}
+
+
 	};
 
 	return (
@@ -115,7 +144,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								type="text"
 								name="occupation"
 								defaultValue={occupation}
-								required
+								// required
 								placeholder="Your Occupation"
 								className="input input-bordered w-full max-w-lg"
 							/>
@@ -131,7 +160,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								name="mobile"
 								defaultValue={mobile}
 								placeholder="Your Mobile Number"
-								required
+								// required
 								className="input input-bordered w-full max-w-lg"
 							/>
 						</div>
@@ -145,7 +174,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								type="text"
 								name="address"
 								defaultValue={address}
-								required
+								// required
 								placeholder="Your Address"
 								className="input input-bordered w-full max-w-lg"
 							/>
@@ -159,7 +188,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 							<input
 								type="file"
 								name="photo"
-								required
+								// required
 								className="file-input file-input-bordered w-full max-w-lg"
 							/>
 						</div>
