@@ -1,9 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import Complier from "../Complier/Complier";
+import Compiler from "../../components/shared/Compiler/components/Compiler/Compiler";
+
 
 const ProblemDetails = () => {
-	const data: any = useLoaderData();
+	const data:any= useLoaderData();
 	const {
 		title,
 		task,
@@ -13,7 +14,19 @@ const ProblemDetails = () => {
 		constraints1,
 		constraints2,
 		constraints3,
+		output,
+	}: {
+		title: string;
+		task: string;
+		example1: string;
+		example1img: string;
+		example2: string;
+		constraints1: string;
+		constraints2: string;
+		constraints3: string;
+		output: string;
 	} = data[0];
+
 	return (
 		<div className="grid sm:grid-cols-1 md:grid-cols-4 gap-5 px-10 dark:text-white dark:bg-gray-800">
 			<div className="md:col-span-1 py-5 dark:bg-gray-800">
@@ -26,15 +39,22 @@ const ProblemDetails = () => {
 					className="w-10"></pre>
 				<p className="mt-4 font-semibold">Example2:</p>
 				<p className="p-3 bg-[#f7f7f8] dark:text-black">{example2}</p>
-				<p className="mt-4 font-semibold">Constraints:</p>
-				<ul>
-					<li className="list-disc">{constraints1}</li>
-					<li className="list-disc">{constraints2}</li>
-					<li className="list-disc">{constraints3}</li>
-				</ul>
+
+				<p className="mt-4 font-semibold">Output:</p>
+				<p className="p-3 bg-[#f7f7f8] dark:text-black">{output}</p>
+				{constraints1 && (
+					<>
+						<p className="mt-4 font-semibold">Constraints:</p>
+						<ul>
+							<li className="list-disc">{constraints1}</li>
+							<li className="list-disc">{constraints2}</li>
+							<li className="list-disc">{constraints3}</li>
+						</ul>
+					</>
+				)}
 			</div>
 			<div className="col-span-3">
-				<Complier />
+				<Compiler resultOutput={output} title={title} />
 			</div>
 		</div>
 	);

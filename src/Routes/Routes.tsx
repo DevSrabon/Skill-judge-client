@@ -9,7 +9,6 @@ import TopQuestion from "../components/shared/TopQuestion/TopQuestion";
 import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
-import Complier from "../pages/Complier/Complier";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import AddContents from "../pages/Dashboard/AddContents";
@@ -22,6 +21,8 @@ import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
+import Compiler from "../components/shared/Compiler/components/Compiler/Compiler";
+
 
 export const router = createBrowserRouter([
 	{
@@ -72,7 +73,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/free", 
-				element: <Complier />,
+				element: <Compiler />,
 			}, 
 			{
 				path: "/quiz",
