@@ -9,7 +9,7 @@ const MyProfile = () => {
 	const [isModalOpen, setIsModalOpen]: any = useState(true);
 
 	const { dbUser: profileData, isLoading, error, refetch }: any = useUser();
-	const {user}:any =useAuth()
+	const {user}:any = useAuth()
 
 	if (isLoading) return <Spinner />;
 	if (error) return <ErrorSpinner />;
@@ -66,7 +66,8 @@ const MyProfile = () => {
 				<ProfileUpdateModal
 					profile={profileData}
 					refetch={refetch}
-					setIsModalOpen={setIsModalOpen}></ProfileUpdateModal>
+					setIsModalOpen={setIsModalOpen}>
+				</ProfileUpdateModal>
 			)}
 		</div>
 	);

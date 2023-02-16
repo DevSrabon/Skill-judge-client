@@ -22,6 +22,7 @@ import Blog from "../pages/Blog/Blog";
 import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
+import UserInfo from "../pages/UserDashboard/UserInfo";
 
 export const router = createBrowserRouter([
 	{
@@ -106,7 +107,13 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/userDashboard',
-				element: <UserDashboard/>
+				element: <UserDashboard/>,
+				children: [
+					{
+						path: '/userDashboard',
+						element: <UserInfo/>
+					}
+				]
 			},
 			{
 				path: "/about-us",

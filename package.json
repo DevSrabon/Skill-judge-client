@@ -37,7 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts  test  --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
-    "coverage":"npm test --coverage --watchAll"
+    "coverage": "npm test --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": [
@@ -62,13 +62,13 @@
     "jest-canvas-mock": "^2.4.0",
     "tailwindcss": "^3.2.4"
   },
-  "jest":{
-    "coverageThreshold":{
-      "global":{
-        "branches":80,
-        "functions":50,
-        "lines":60,
-        "statements":60
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 50,
+        "lines": 60,
+        "statements": 60
       }
     }
   }
