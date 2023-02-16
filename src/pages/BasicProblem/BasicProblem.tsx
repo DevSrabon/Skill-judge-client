@@ -31,8 +31,8 @@ const BasicProblem = () => {
 							? item
 							: item?.difficulty?.includes(search);
 					})
-					.map((problem: any) => (
-						<div className=" flex flex-col gap-3 md:flex-row justify-between items-center mx-4 py-5 px-5 bg-white shadow-lg ">
+					.map((problem: any, i:number) => (
+						<div key={i+1} className=" flex flex-col gap-3 md:flex-row justify-between items-center mx-4 py-5 px-5 bg-white shadow-lg ">
 							<div>
 								<h3 className="text-xl">{problem.title}</h3>
 								<small>
