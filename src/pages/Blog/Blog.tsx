@@ -40,7 +40,7 @@ const Blog = () => {
               </p>
               <p>
                 <span className="font-bold"> Comment: </span>
-                {data.comment}
+                {data.comment ? data.comment.length : 0}
               </p>
               <p>
                 <span className="font-bold">Like : </span> {data.like}
