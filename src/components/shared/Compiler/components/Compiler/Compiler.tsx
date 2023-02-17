@@ -268,13 +268,13 @@ const handleResultSubmit = () => {
 										</p>
 									) : (
 										<p className="text-sm">
-											<span className="text-lg text-white font-semibold px-3 py-2 rounded-md bg-red-400 block mb-2">
+											<span className="text-lg text-white font-semibold px-3 py-2 rounded-md bg-red-700 block mb-2">
 												Sorry!!😥😥😥 <br /> You Have Failed!
 											</span>
-											Result:{" "}
-											<span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+											{/* Result:{" "}
+											<span className="font-semibold px-2 py-1 rounded-md bg-red-700 text-white">
 												Failed
-											</span>
+											</span> */}
 										</p>
 									)}
 								</>
