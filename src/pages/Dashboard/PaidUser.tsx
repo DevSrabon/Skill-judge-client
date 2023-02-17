@@ -25,7 +25,7 @@ const PaidUser = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{paidUser.map((user: IUser, i: number) => (
+						{paidUser?.map((user: IUser, i: number) => (
 							<tr key={user._id}>
 								<th>{i + 1}</th>
 								<td>{user.name}</td>

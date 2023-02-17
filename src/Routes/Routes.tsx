@@ -22,6 +22,8 @@ import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
 import Compiler from "../components/shared/Compiler/components/Compiler/Compiler";
 import PaidUser from "../pages/Dashboard/PaidUser";
+import Quiz from "../pages/Dashboard/Quiz";
+import SingleQuiz from "../pages/UserDashboard/SingleQuiz";
 
 
 export const router = createBrowserRouter([
@@ -72,9 +74,9 @@ export const router = createBrowserRouter([
 				element: <SingleQnA></SingleQnA>,
 			},
 			{
-				path: "/free", 
+				path: "/free",
 				element: <Compiler />,
-			}, 
+			},
 			{
 				path: "/quiz",
 				element: <QuizTopicCards />,
@@ -84,7 +86,7 @@ export const router = createBrowserRouter([
 				loader: ({ params }) =>
 					fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
 				element: <QuizQuesCards />,
-			}, 
+			},
 			{
 				path: "/singleqna/:id",
 				loader: ({ params }) =>
@@ -103,11 +105,21 @@ export const router = createBrowserRouter([
 						path: "/dashboard/paiduser",
 						element: <PaidUser />,
 					},
+					{
+						path: "/dashboard/quiz",
+						element: <Quiz />,
+					},
 				],
 			},
 			{
-				path: '/userDashboard',
-				element: <UserDashboard/>
+				path: "/userDashboard",
+				element: <UserDashboard />,
+				children: [
+					{
+						path: "/userDashboard/quiz",
+						element: <SingleQuiz />,
+					},
+				],
 			},
 			{
 				path: "/about-us",
@@ -119,8 +131,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/blog",
-				loader: () =>
-					fetch(`${process.env.REACT_APP_API_URL}/blog`),
+				loader: () => fetch(`${process.env.REACT_APP_API_URL}/blog`),
 				element: <Blog></Blog>,
 			},
 			{

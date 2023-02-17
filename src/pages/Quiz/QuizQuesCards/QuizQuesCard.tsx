@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../../../contexts/AuthProvider";
 import { useNavigate} from "react-router-dom";
 
-const QuizQuesCard = ({ question }) => {
+const QuizQuesCard = ({ question, name }) => {
 	const { user }:any = useAuth();
 	const [showResults, setShowResults] = useState<boolean>(false);
 	const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -47,13 +47,19 @@ const QuizQuesCard = ({ question }) => {
 			headers: {
 				"content-type": "application/json",
 			},
-			body: JSON.stringify( {score:score, email:user.email, wrong:wrong, percentage:correctAnswer} ),
+			body: JSON.stringify({
+				score: score,
+				email: user.email,
+				wrong: wrong,
+				percentage: correctAnswer,
+				name,
+			}),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.acknowledged) {
 					toast.success("Saved");
-					navigate('/')
+					navigate("/");
 				} else {
 					toast.error(data.message);
 				}
