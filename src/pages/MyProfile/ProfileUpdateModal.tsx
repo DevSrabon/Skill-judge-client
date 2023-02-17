@@ -5,7 +5,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 	const imgHostKey = process.env.REACT_APP_imgbb_key;
 
 	const { name, email, occupation, mobile, address, photo: dbPhoto } = profile;
-	const { refetch: myfetch }: any = useUser();
+	const { refetch: myfetch, isLoading }: any = useUser();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -16,18 +16,16 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 		const mobile = form.mobile.value;
 		const address = form.address.value;
 		const photo = form.photo.files[0];
-		console.log(photo);
 
-
+		//Function for updating user info
 		const userDataUpdate = (userInfo) => {
-			//save post to the database		
 			fetch(
 				`${process.env.REACT_APP_API_URL}/user/updateUser?email=${profile?.email}`,
 				{
 					method: "PATCH",
 					headers: {
 						"content-type": "application/json",
-						// authorization: `bearer ${localStorage.getItem('token')}`
+						authorization: `bearer ${localStorage.getItem('token')}`
 					},
 					body: JSON.stringify(userInfo),
 				}
@@ -45,8 +43,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 		}
 
 		if (photo) {
-			console.log('done');
-
 			//photo hosting system to imgbb
 			const formData = new FormData();
 			formData.append("image", photo);
@@ -59,7 +55,7 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 				.then((imgData) => {
 					if (imgData.success) {
 						console.log(imgData.data.url);
-						const userInfo = {
+						const userInfo: any = {
 							name,
 							email,
 							occupation,
@@ -67,16 +63,14 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 							mobile,
 							address,
 						};
-						console.log(userInfo);
 
-						// function for updating user
+						// function for updating user info
 						userDataUpdate(userInfo);
 					}
 				});
 		}
 		else {
-			console.log('error');
-			const userInfo = {
+			const userInfo: any = {
 				name,
 				email,
 				occupation,
@@ -84,7 +78,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 				address,
 				photo: dbPhoto
 			};
-			console.log(userInfo);
 
 			// function for updating user
 			userDataUpdate(userInfo);
@@ -144,7 +137,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								type="text"
 								name="occupation"
 								defaultValue={occupation}
-								// required
 								placeholder="Your Occupation"
 								className="input input-bordered w-full max-w-lg"
 							/>
@@ -160,7 +152,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								name="mobile"
 								defaultValue={mobile}
 								placeholder="Your Mobile Number"
-								// required
 								className="input input-bordered w-full max-w-lg"
 							/>
 						</div>
@@ -174,7 +165,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 								type="text"
 								name="address"
 								defaultValue={address}
-								// required
 								placeholder="Your Address"
 								className="input input-bordered w-full max-w-lg"
 							/>
@@ -188,12 +178,11 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 							<input
 								type="file"
 								name="photo"
-								// required
 								className="file-input file-input-bordered w-full max-w-lg"
 							/>
 						</div>
 
-						<button type="submit" className="btn btn-info my-4 w-full">
+						<button type="submit" disabled={isLoading} className="btn btn-info my-4 w-full">
 							Save Changes
 						</button>
 					</form>
