@@ -19,9 +19,9 @@ const MyProfile = () => {
 				<div className="avatar">
 					<div className="w-24 rounded">
 						{profileData?.photo ? (
-							<img src={profileData?.photo} alt="user" />
+							<img src={profileData?.photo} alt={profileData.name} />
 						) : (
-							<img src={user?.photoURL} alt="user" />
+							<img src={user?.photoURL} alt={user.displayName} />
 						)}
 					</div>
 				</div>
