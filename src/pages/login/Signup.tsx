@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Player } from '@lottiefiles/react-lottie-player';
 import useToken from '../../hooks/useToken';
+import Spinner from '../../SharedComponent/Spinner/Spinner';
 
 const Signup = () => {
 	type FormValues = {
@@ -12,7 +13,7 @@ const Signup = () => {
 		email: string;
 		password: string;
 	};
-	const { createUser, createUserWithGoogle, updateUser, setLoading }: any = useContext(AuthContext);
+	const { createUser, createUserWithGoogle, updateUser, loading, setLoading }: any = useContext(AuthContext);
 	const [error, setError] = useState<string>('');
 	const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 	const [userEmail, setUserEmail] = useState<string>('');
@@ -81,6 +82,10 @@ const Signup = () => {
 			})
 	}
 
+	if (loading) {
+		return <Spinner></Spinner>
+	}
+
 	return (
 		<div className="grid grid-cols-1 items-center md:grid-cols-2  gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
 			<div className=" flex justify-end">
@@ -143,6 +148,7 @@ const Signup = () => {
 						{error && <p className="text-red-700">{error}</p>}
 						<input
 							type="submit"
+							disabled={loading}
 							value="Sign Up"
 							className="btn btn-accent text-white w-full max-w-sm mt-5"
 						/>
@@ -156,6 +162,7 @@ const Signup = () => {
 					</form>
 					<button
 						onClick={handleGoogleLogin}
+						disabled={loading}
 						className="btn btn-outline w-full max-w-sm">
 						SignUp With Google
 					</button>
