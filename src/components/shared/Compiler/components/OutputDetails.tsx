@@ -1,6 +1,11 @@
 import React from "react";
+import Spinner from "../../../../SharedComponent/Spinner/Spinner";
 const OutputDetails = ({ outputDetails, processing}) => {
+	if (processing) {
+	return <Spinner/>
 
+	
+}
   return (
 		<>
 			{outputDetails && (
