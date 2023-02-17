@@ -81,6 +81,8 @@ const CheckoutForm: React.FC<Props> = ({ booking }) => {
 				price,
 				transactionId: paymentIntent.id,
 				paymentId: _id,
+				email,
+				name
 			};
 
 			fetch(`${process.env.REACT_APP_API_URL}/payments`, {
