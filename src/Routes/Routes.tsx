@@ -67,7 +67,11 @@ export const router = createBrowserRouter([
 			{
 				path: "/qna",
 				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-				element: <QuestionAns />,
+				element: (
+					<PrivateRoute>
+						<QuestionAns />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/singleqna/:id",
@@ -93,11 +97,19 @@ export const router = createBrowserRouter([
 				path: "/singleqna/:id",
 				loader: ({ params }) =>
 					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-				element: <SingleQnA></SingleQnA>,
+				element: (
+					<PrivateRoute>
+						<SingleQnA></SingleQnA>
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard",
-				element: <Dashboard />,
+				element: (
+					<PrivateRoute>
+						<Dashboard />
+					</PrivateRoute>
+				),
 				children: [
 					{
 						path: "/dashboard/all-users",
@@ -119,7 +131,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/userDashboard",
-				element: <UserDashboard />,
+				element: (
+					<PrivateRoute>
+						<UserDashboard />
+					</PrivateRoute>
+				),
 				children: [
 					{
 						path: "/userDashboard/quiz",
@@ -127,7 +143,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: "/userDashboard/singlesubmission",
-						element: <SingleSubmission/>,
+						element: <SingleSubmission />,
 					},
 				],
 			},
@@ -154,7 +170,11 @@ export const router = createBrowserRouter([
 				path: "/problems/:id",
 				loader: ({ params }) =>
 					fetch(`${process.env.REACT_APP_API_URL}/problems/${params.id}`),
-				element: <ProblemDetails></ProblemDetails>,
+				element: (
+					<PrivateRoute>
+						<ProblemDetails></ProblemDetails>
+					</PrivateRoute>
+				),
 			},
 		],
 	},
