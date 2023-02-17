@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import PasswordResetModal from './PasswordResetModal';
 import { Player } from '@lottiefiles/react-lottie-player';
 import useToken from '../../hooks/useToken';
+import Spinner from '../../SharedComponent/Spinner/Spinner';
 
 const Login = () => {
 
@@ -14,7 +15,7 @@ const Login = () => {
 		password: string;
 	};
 
-	const { loginUser, createUserWithGoogle, setLoading }: any = useContext(AuthContext);
+	const { loginUser, createUserWithGoogle, loading, setLoading }: any = useContext(AuthContext);
 	const [error, setError] = useState('');
 	const { register, formState: { errors }, handleSubmit } = useForm<FormValues>();
 
@@ -81,6 +82,10 @@ const Login = () => {
 			})
 	}
 
+	if (loading) {
+		return <Spinner></Spinner>
+	}
+
 	return (
 		<div className="grid grid-cols-1 items-center md:grid-cols-2  gap-4 md:gap-5 pt-5 lg:pt-10 mb-5">
 			<div className=" flex justify-end">
@@ -144,6 +149,7 @@ const Login = () => {
 					<input
 						type="submit"
 						value="Login"
+						disabled={loading}
 						className="btn btn-accent w-full max-w-sm"
 					/>
 					<p>
@@ -156,6 +162,7 @@ const Login = () => {
 				</form>
 				<button
 					onClick={handleGoogleLogin}
+					disabled={loading}
 					className="btn btn-outline w-full max-w-sm">
 					Continue With Google
 				</button>
