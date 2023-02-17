@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 
+
 const SingleSubmission = () => {
     const { user }: any = useAuth();
     const { data: quiz }: any = useQuery({
