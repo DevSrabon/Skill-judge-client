@@ -5,15 +5,13 @@ import { HiAcademicCap, HiLocationMarker } from "react-icons/hi";
 import { HiLightBulb } from "react-icons/hi"; 
 
 
-const UserDashboard = () => {  
-       
+const UserDashboard = () => {
 
     return (
         <div className="drawer drawer-mobile">
          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-         <div className="drawer-content flex flex-col items-center">
-           <Outlet/>  
-           <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> 
+         <div className="drawer-content flex flex-col">
+          <Outlet/>  
          </div> 
          <div className="drawer-side"> 
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
@@ -27,7 +25,8 @@ const UserDashboard = () => {
            </ul> 
          </div>
         </div>
-    )   
+    )
+
 }
 
 export default UserDashboard;

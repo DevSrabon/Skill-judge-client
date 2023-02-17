@@ -29,6 +29,7 @@ const UserProvider = ({ children }: { children: ReactElement }) => {
 			setDbUser(data[0]);
 		}
 	}, [data]);
+	
 	const userInfo = {
 		isLoading,
 		error,
@@ -40,6 +41,7 @@ const UserProvider = ({ children }: { children: ReactElement }) => {
 		<USER_CONTEXT.Provider value={userInfo}>{children}</USER_CONTEXT.Provider>
 	);
 };
+
 export const useUser = () => {
 	const context = useContext(USER_CONTEXT);
 	return context;
