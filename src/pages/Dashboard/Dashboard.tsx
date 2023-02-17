@@ -32,9 +32,6 @@ const Dashboard = () => {
 										Paid User
 									</Link>
 								</li>
-							</>
-						) : (
-							<>
 								<li className="border rounded-md">
 									<Link
 										className="bg-emerald-500 focus:bg-black focus:text-white"
@@ -42,6 +39,9 @@ const Dashboard = () => {
 										All Quiz
 									</Link>
 								</li>
+							</>
+						) : (
+							<>
 							</>
 						)}
 					</ul>
