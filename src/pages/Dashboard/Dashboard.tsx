@@ -11,7 +11,7 @@ const Dashboard = () => {
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
           <ul className="menu gap-y-2 font-bold p-4 w-80"> 
             <li className="border rounded-md"><Link className="bg-emerald-500 focus:bg-black focus:text-white" to={"/dashboard/all-users"}>All Users</Link></li>
-            <li className="border rounded-md"><Link className="bg-emerald-500 focus:bg-black focus:text-white" to={"/dashboard/add-contents"}>Add Contents</Link></li>
+            <li className="border rounded-md"><Link className="bg-emerald-500 focus:bg-black focus:text-white" to={"/dashboard/paiduser"}>Paid User</Link></li>
           </ul> 
          </div>
         </div>
