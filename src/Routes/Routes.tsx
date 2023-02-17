@@ -24,6 +24,8 @@ import Compiler from "../components/shared/Compiler/components/Compiler/Compiler
 import PaidUser from "../pages/Dashboard/PaidUser";
 import Quiz from "../pages/Dashboard/Quiz";
 import SingleQuiz from "../pages/UserDashboard/SingleQuiz";
+import AllSubmission from "../pages/Dashboard/AllSubmission";
+import SingleSubmission from "../pages/UserDashboard/SingleSubmission";
 
 
 export const router = createBrowserRouter([
@@ -109,6 +111,10 @@ export const router = createBrowserRouter([
 						path: "/dashboard/quiz",
 						element: <Quiz />,
 					},
+					{
+						path: "/dashboard/allsubmission",
+						element: <AllSubmission />,
+					},
 				],
 			},
 			{
@@ -118,6 +124,10 @@ export const router = createBrowserRouter([
 					{
 						path: "/userDashboard/quiz",
 						element: <SingleQuiz />,
+					},
+					{
+						path: "/userDashboard/singlesubmission",
+						element: <SingleSubmission/>,
 					},
 				],
 			},

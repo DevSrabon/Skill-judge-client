@@ -24,22 +24,23 @@ const SingleQuiz = () => {
 			<div className="overflow-x-auto">
 				<table className="table table-zebra w-full">
 					<thead>
-						<tr>
+						<tr className="text-center">
 							<th>Attempt</th>
 							<th>Quiz Name</th>
 							<th>Email Address</th>
+							<th>Total Mark</th>
 							<th>Score</th>
 							<th>Wrong</th>
 							<th>Accuracy</th>
-
 						</tr>
 					</thead>
 					<tbody>
 						{quiz?.map((user: any, i: number) => (
-							<tr key={user?._id}>
+							<tr className="text-center" key={user?._id}>
 								<th>{i + 1}</th>
 								<td>{user?.name}</td>
 								<td>{user?.email}</td>
+								<td>{user?.score + user?.wrong}</td>
 								<td>{user?.score}</td>
 								<td>{user?.wrong}</td>
 								<td>{user?.percentage}%</td>
