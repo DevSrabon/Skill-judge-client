@@ -1,5 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 import { useUser } from "../../contexts/UserProvider";
+import { FaUserFriends } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
+import { MdQuiz } from "react-icons/md";
+import { BsFillCursorFill } from "react-icons/bs";
 
 const Dashboard = () => {
   const {dbUser}:any = useUser()
@@ -20,8 +24,9 @@ const Dashboard = () => {
 							<>
 								<li className="border rounded-md">
 									<Link
-										className="bg-emerald-500 focus:bg-black focus:text-white"
+										className="bg-emerald-400 hover:bg-emerald-500 focus:bg-emerald-800 focus:text-white"
 										to={"/dashboard/all-users"}>
+										<FaUserFriends />
 										All Users
 									</Link>
 								</li>
@@ -29,27 +34,29 @@ const Dashboard = () => {
 									<Link
 										className="bg-emerald-500 focus:bg-black focus:text-white"
 										to={"/dashboard/paiduser"}>
+                      <FaUserTie/>
 										Paid User
 									</Link>
 								</li>
 								<li className="border rounded-md">
 									<Link
 										className="bg-emerald-500 focus:bg-black focus:text-white"
-										to={"/dashboard/quiz"}>
+                    to={"/dashboard/quiz"}>
+                    <MdQuiz/>
 										All Quiz
 									</Link>
 								</li>
 								<li className="border rounded-md">
 									<Link
 										className="bg-emerald-500 focus:bg-black focus:text-white"
-										to={"/dashboard/allsubmission"}>
+                    to={"/dashboard/allsubmission"}>
+                    <BsFillCursorFill/>
 										All Submission
 									</Link>
 								</li>
 							</>
 						) : (
-							<>
-							</>
+							<></>
 						)}
 					</ul>
 				</div>
