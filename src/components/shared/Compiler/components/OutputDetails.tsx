@@ -19,7 +19,7 @@ const OutputDetails = ({ outputDetails, processing}) => {
 					<p className="text-sm">
 						Memory:{" "}
 						<span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
-							{(outputDetails?.memory * 0.0001).toFixed(2)}mb
+							{(outputDetails?.memory * 0.00001).toFixed(2)}mb
 						</span>
 					</p>
 					<p className="text-sm">

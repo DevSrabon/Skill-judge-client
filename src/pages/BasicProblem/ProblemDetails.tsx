@@ -28,7 +28,7 @@ const ProblemDetails = () => {
 	} = data[0];
 
 	return (
-		<div className="grid sm:grid-cols-1 md:grid-cols-4 gap-5 px-10 dark:text-white dark:bg-gray-800">
+		<div className="grid sm:grid-cols-1 md:grid-cols-5 gap-5  px-2 md:px-5 dark:text-white dark:bg-gray-800">
 			<div className="md:col-span-1 py-5 dark:bg-gray-800">
 				<h2 className="text-xl font-bold">{title}</h2>
 				<p className="text-justify">{task}</p>
@@ -53,7 +53,7 @@ const ProblemDetails = () => {
 					</>
 				)}
 			</div>
-			<div className="col-span-3">
+			<div className="col-span-4">
 				<Compiler resultOutput={output} title={title} />
 			</div>
 		</div>
