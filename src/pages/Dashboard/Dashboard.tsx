@@ -39,6 +39,13 @@ const Dashboard = () => {
 										All Quiz
 									</Link>
 								</li>
+								<li className="border rounded-md">
+									<Link
+										className="bg-emerald-500 focus:bg-black focus:text-white"
+										to={"/dashboard/allsubmission"}>
+										All Submission
+									</Link>
+								</li>
 							</>
 						) : (
 							<>
