@@ -12,7 +12,7 @@ const PAID_USER_CONTEXT = createContext<unknown>(null);
 
 const PaidUserProvider = ({ children }: { children: ReactElement }) => {
 	const { user }: any = useAuth();
-	const [paidUser, serPaidUser]: any = useState({});
+	const [paidUser, setPaidUser]: any = useState({});
 
 	const { isLoading, error, refetch, data }: any = useQuery({
 		queryKey: ["paid"],
@@ -26,7 +26,7 @@ const PaidUserProvider = ({ children }: { children: ReactElement }) => {
 console.log(paidUser)
 	useEffect(() => {
 		if (data?.length) {
-			serPaidUser(data);
+			setPaidUser(data);
 		}
 	}, [data]);
 	const userInfo = {
