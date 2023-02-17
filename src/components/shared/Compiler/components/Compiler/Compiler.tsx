@@ -258,7 +258,7 @@ const handleResultSubmit = () => {
 								<>
 									{isCorrect ? (
 										<p className="text-sm">
-											<span className="text-lg font-semibold px-3 py-2 rounded-md bg-gray-100 block mb-2">
+											<span className="text-lg font-semibold px-3 py-2 rounded-md bg-green-400 text-white block mb-2">
 												Congratulation!!
 											</span>
 											Result:{" "}
