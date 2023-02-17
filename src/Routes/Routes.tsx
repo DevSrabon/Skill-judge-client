@@ -11,7 +11,6 @@ import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUsers from "../pages/Dashboard/AllUsers";
-import AddContents from "../pages/Dashboard/AddContents";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
 import QuizQuesCards from "../pages/Quiz/QuizQuesCards/QuizQuesCards";
@@ -22,6 +21,7 @@ import SingleBlog from "../pages/Blog/SingleBlog";
 import ProblemDetails from "../pages/BasicProblem/ProblemDetails";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
 import Compiler from "../components/shared/Compiler/components/Compiler/Compiler";
+import PaidUser from "../pages/Dashboard/PaidUser";
 
 
 export const router = createBrowserRouter([
@@ -100,8 +100,8 @@ export const router = createBrowserRouter([
 						element: <AllUsers />,
 					},
 					{
-						path: "/dashboard/add-contents",
-						element: <AddContents />,
+						path: "/dashboard/paiduser",
+						element: <PaidUser />,
 					},
 				],
 			},
