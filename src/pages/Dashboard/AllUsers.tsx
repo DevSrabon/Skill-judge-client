@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 interface Iuser{
     name: string;
@@ -8,21 +9,26 @@ interface Iuser{
 
 const AllUsers = () => {
 
-    const {data: allUsres = []} = useQuery({
-        queryKey: ['user'],
-        queryFn: async () => {
-           const res = await fetch(`${process.env.REACT_APP_API_URL}/all-users`)
-           const data = await res.json()
-           return data; 
-        }
-    })
+    const { data: allUsres = [], refetch } = useQuery({
+			queryKey: ["user"],
+			queryFn: async () => {
+				const res = await fetch(`${process.env.REACT_APP_API_URL}/all-users`);
+				const data = await res.json();
+				return data;
+			},
+		});
     
     const handleDeleteUser = (userId: string) => { 
-        fetch(`${process.env.REACT_APP_API_URL}/${userId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
 					method: "DELETE",
-				})
-					.then((res) => res.json())
-					.then((data) => console.log(data));
+				})  
+					.then((res) => {
+						res.json();
+					})
+            .then((data) => {
+                toast.success("User deleted successfully");
+                refetch();
+            });
     }
 
     return (
