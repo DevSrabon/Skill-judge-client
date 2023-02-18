@@ -1,3 +1,4 @@
+import Communities from './Communities/Communities';
 import EasyToStart from './EasyToStart/EasyToStart';
 import Form from './Form/Form';
 import Services from './Services/Services';
@@ -9,6 +10,7 @@ const Home = () => {
         <div className='max-w-[90%] mx-auto'>
             <UseOurApp />
             <EasyToStart />
+            <Communities/>
             <TopQuestions />
             <Services />
             <Form/>           
