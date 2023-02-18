@@ -1,3 +1,4 @@
+import Banner from './Banner/Banner';
 import EasyToStart from './EasyToStart/EasyToStart';
 import Form from './Form/Form';
 import Services from './Services/Services';
@@ -6,14 +7,16 @@ import UseOurApp from './UseOurApp/UseOurApp';
 
 const Home = () => {
     return (
-        <div className='max-w-[90%] mx-auto'>
-            <UseOurApp />
-            <EasyToStart />
-            <TopQuestions />
-            <Services />
-            <Form/>           
-        </div>
-    );
+			<>
+				<Banner />
+				<div className="max-w-[90%] mx-auto">
+					<EasyToStart />
+					<TopQuestions />
+					<Services />
+					<Form />
+				</div>
+			</>
+		);
 };
 
 export default Home;
