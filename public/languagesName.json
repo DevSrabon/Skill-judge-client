@@ -1,0 +1,42 @@
+[
+    { 
+        "name": "JavaScript",
+        "id": "1" 
+    },
+    { 
+        "name": "Python",
+        "id": "2" 
+    },
+    { 
+        "name": "Java",
+        "id": "3" 
+    },
+    { 
+        "name": "C++",
+        "id": "4" 
+    },
+    { 
+        "name": "C#",
+        "id": "5" 
+    },
+    { 
+        "name": "C",
+        "id": "6" 
+    },
+    { 
+        "name": "RUST",
+        "id": "7" 
+    },
+    { 
+            "name": "TypeScript",
+            "id": "8" 
+    },
+    { 
+            "name": "Ruby",
+            "id": "9"
+    },
+    { 
+            "name": "Go",
+            "id": "10" 
+    }
+]
