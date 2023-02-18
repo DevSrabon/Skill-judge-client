@@ -1,3 +1,4 @@
+import Accordion from '../../components/shared/Accordion/Accordion';
 import Communities from './Communities/Communities';
 import EasyToStart from './EasyToStart/EasyToStart';
 import Form from './Form/Form';
@@ -13,7 +14,8 @@ const Home = () => {
             <Communities/>
             <TopQuestions />
             <Services />
-            <Form/>           
+            <Form/> 
+            <Accordion/>          
         </div>
     );
 };
