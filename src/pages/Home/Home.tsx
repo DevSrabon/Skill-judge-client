@@ -6,6 +6,7 @@ import Form from './Form/Form';
 import Services from './Services/Services';
 import SharpenSkill from './SharpenSkill/SharpenSkill';
 import TopQuestions from './TopQuestions/TopQuestions';
+import Languages from './Languages/Languages';
 
 const Home = () => {
 return (
@@ -14,6 +15,7 @@ return (
 			<div className="max-w-[90%] mx-auto">
 				<SharpenSkill />
 				<EasyToStart />
+				<Languages/>
         <Communities/>
 				<TopQuestions />
 				<Services />
