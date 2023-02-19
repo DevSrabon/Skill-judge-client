@@ -1,40 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
   .container {
-      max-width: 1350px;
-      width: 91.66% !important;
-      margin: 0 auto;
+    max-width: 1350px;
+    width: 91.66% !important;
+    margin: 0 auto;
   }
 }
+
 body {
   margin: 0;
-  
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
-li{
+
+li {
   list-style: none;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 @layer utilities {
-  .ul > li {
+  .ul>li {
     @apply relative tracking-[1px];
   }
 
-  .ul > li::after {
+  .ul>li::after {
     @apply content-[''] bg-[#ff004f] h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
   }
 
-  .ul > li:hover::after {
+  .ul>li:hover::after {
     @apply w-[100%];
   }
 }

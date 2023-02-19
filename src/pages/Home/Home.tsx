@@ -7,19 +7,19 @@ import TopQuestions from './TopQuestions/TopQuestions';
 import UseOurApp from './UseOurApp/UseOurApp';
 
 const Home = () => {
-    return (
-
-			<>
-				<Banner />
-				<div className="max-w-[90%] mx-auto">
-        <SharpenSkill />
-					<EasyToStart />
-					<TopQuestions />
-					<Services />
-					<Form />
-				</div>
-			</>
-		);
+	return (
+		<>
+			<Banner />
+			<div className="max-w-[90%] mx-auto">
+				<SharpenSkill />
+				<EasyToStart />
+				<TopQuestions />
+				<Services />
+				<Form />
+			</div>
+		</>
+	);
+}
 
 
 export default Home;
