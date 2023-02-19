@@ -1,9 +1,10 @@
 import { useCallback } from "react";
 import Particles from "react-particles";
-import type { Container, Engine,} from "tsparticles-engine";
+import type { Container, Engine, } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import "./styles.css";
 import PrimaryButton from "../../../components/shared/PrimaryButton/PrimaryButton";
+import { Link } from "react-router-dom";
 
 function Banner() {
 	const particlesInit = useCallback(async (engine: Engine) => {
@@ -15,7 +16,7 @@ function Banner() {
 		await loadFull(engine);
 	}, []);
 	const particlesLoaded = useCallback(
-		async (container: Container | undefined ) => {
+		async (container: Container | undefined) => {
 			await console.log(container);
 		},
 		[]
@@ -35,7 +36,7 @@ function Banner() {
 					and push your coding practice.
 				</h4>
 				<div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-3">
-					<PrimaryButton>Get Started</PrimaryButton>
+					<Link to={'/login'}><PrimaryButton>Get Started</PrimaryButton></Link>
 					<p className="text-[#9f8f91] text-justify">
 						You must complete our beginner-friendly <br /> initiation challenge
 						in order to sign up.
