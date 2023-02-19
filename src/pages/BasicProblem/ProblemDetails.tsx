@@ -4,7 +4,7 @@ import Compiler from "../../components/shared/Compiler/components/Compiler/Compi
 
 
 const ProblemDetails = () => {
-	const data:any= useLoaderData();
+	const data: any = useLoaderData();
 	const {
 		title,
 		task,
@@ -26,6 +26,10 @@ const ProblemDetails = () => {
 		constraints3: string;
 		output: string;
 	} = data[0];
+
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div className="grid sm:grid-cols-1 md:grid-cols-5 gap-5  px-2 md:px-5 dark:text-white dark:bg-gray-800">
