@@ -1,0 +1,49 @@
+
+.btn {
+    background: var(--background);
+    color: #fff;
+    padding: .8em 1.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+
+    --background: linear-gradient(45deg, #8614ce, #ff0057);
+    --border-size: 2px;
+    --accent-color: #0AF;
+}
+
+.btn.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 40px;
+    background: var(--accent-color);
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.slide:hover::before,
+.btn.slide:focus::before {
+    transform: scaleX(1);
+}
+
+.btn.slide {
+    transition: color 300ms ease-in-out;
+    z-index: 1;
+    transform: scaleX(1);
+    
+}
+
+
+.btn.slide:hover,
+.btn.slide:focus {
+    color: white;
+    border-radius: 40px;
+}
