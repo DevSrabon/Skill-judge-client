@@ -26,6 +26,8 @@ import Quiz from "../pages/Dashboard/Quiz";
 import SingleQuiz from "../pages/UserDashboard/SingleQuiz";
 import AllSubmission from "../pages/Dashboard/AllSubmission";
 import SingleSubmission from "../pages/UserDashboard/SingleSubmission";
+import TermsOfUse from "../SharedComponent/TermsOfUse";
+import Form from "../pages/Home/Form/Form";
 
 
 export const router = createBrowserRouter([
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
+			},
+			{
+				path: '/terms-of-use',
+				element: <TermsOfUse></TermsOfUse>
+			},
+			{
+				path: 'contact-us',
+				element: <Form></Form>
 			},
 			{
 				path: "/book/:id",
