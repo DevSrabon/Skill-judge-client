@@ -24,17 +24,17 @@ const Communities = () => {
     return (
         <section className="container mb-20">
             <div className="space-y-10 w-8/12 text-center mx-auto">
-                <h2 className="text-6xl font-normal text-white">
+                <h2 className="text-6xl font-semibold dark:font-normal text-black dark:text-white">
                     An occupied Skill Judge Platform community
                 </h2>
-                <p className="text-xl font-light text-white ">
+                <p className="text-xl font-light text-black dark:text-white">
                     Skill Judge is a collective effort by its users. They are
                     creators—authoring problem solving platform to teach various
                     techniques,problem solving with solutions that enlighten
                     others, and commenting with constructive feedback.
                 </p>
             </div>
-            <div className="rounded-lg mt-14 bg-red-400 grid grid-cols-3">
+            <div className="rounded-lg mt-14 bg-stone-800 dark:bg-red-400 shadow-xl grid grid-cols-3">
                 <div className="flex py-[70px] space-y-5 justify-center items-center flex-col">
                     <h3 className="text-7xl font-semibold text-white">
                         <CountUp end={data && data?.users} start={0} />

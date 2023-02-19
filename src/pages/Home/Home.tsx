@@ -1,3 +1,4 @@
+import Accordion from '../../components/shared/Accordion/Accordion';
 import Communities from './Communities/Communities';
 import Banner from './Banner/Banner';
 import EasyToStart from './EasyToStart/EasyToStart';
@@ -17,10 +18,10 @@ return (
 				<TopQuestions />
 				<Services />
 				<Form />
+        <Accordion/> 
 			</div>
 		</>
 	);
 }
-
 
 export default Home;
