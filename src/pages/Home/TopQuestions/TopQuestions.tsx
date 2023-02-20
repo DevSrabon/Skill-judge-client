@@ -39,7 +39,7 @@ const TopQuestions = () => {
     return (
         <div>
             <h2 className="text-2xl text-center text-pink-800 dark:text-gray-400 md:text-4xl font-bold ">
-                Top Problem Solving Question
+                Top Problem Solving Questions
             </h2>
             <div className="grid grid-cols-1 gap-1 md:gap-10 md:grid-cols-2 lg:grid-cols-3 ">
                 {data.map((top: QuestionType) => (
