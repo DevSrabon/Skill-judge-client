@@ -15,7 +15,7 @@ const Footer = () => {
             <div>
              <h1 className="mt-8 mb-4 font-semibold">Top Languages</h1>
              <div className="grid grid-cols-6 gap-y-3 gap-x-[7px]">
-                <span className="bg-slate-300 btn btn-xs border-none hover:bg-emerald-400 text-black rounded-2xl">JavaScript</span>
+                <span className="bg-slate-300 btn btn-xs border-none hover:bg-emerald-400 text-black rounded-2xl text-[8px] lg:text-[10px]">JavaScript</span>
                 <span className="bg-slate-300 btn btn-xs border-none hover:bg-emerald-400 text-black rounded-2xl text-center">C</span>
                 <span className="bg-slate-300 btn btn-xs border-none hover:bg-emerald-400 text-black rounded-2xl text-center">C++</span>
                 <span className="bg-slate-300 btn btn-xs border-none hover:bg-emerald-400 text-black rounded-2xl text-center">C#</span>

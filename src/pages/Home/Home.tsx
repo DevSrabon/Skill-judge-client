@@ -1,4 +1,4 @@
-import Accordion from '../../components/shared/Accordion/Accordion';
+// import Accordion from '../../components/shared/Accordion/Accordion';
 import Communities from './Communities/Communities';
 import Banner from './Banner/Banner';
 import EasyToStart from './EasyToStart/EasyToStart';
@@ -12,20 +12,20 @@ import UserReviews from './UserReviews/UserReviews';
 const Home = () => {
 	return (
 		<>
-			<Banner />
+			<Banner/>
 			<div className="max-w-[90%] mx-auto">
-				<SharpenSkill />
-				<EasyToStart />
-				<Languages />
-				<Communities />
-				<TopQuestions />
-				<Services />
-				<UserReviews></UserReviews>
-				<Form />
-				<Accordion />
+				<SharpenSkill/>
+				<EasyToStart/>
+				<Languages/>
+				<Communities/>
+				<TopQuestions/>
+				<Services/>
+				<UserReviews/>
+				<Form/>
+				{/* <Accordion/> */}
 			</div>
 		</>
-	);
+	)
 }
 
 export default Home;
