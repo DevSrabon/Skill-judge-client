@@ -45,7 +45,7 @@ code {
     height: 27px;
     display: inline-block;
     fill: #000;
-    transition: all .3s;
+    transition: all .5s;
 }
 .scroll-to-top:hover svg {
     fill: #fff;

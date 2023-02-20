@@ -8,7 +8,7 @@ import ScrollToTop from "react-scroll-to-top";
 function App() {
 	return (
 		<div className="dark:bg-black">
-		   <ScrollToTop smooth color="#F87171" />
+		   <ScrollToTop smooth color="#6f00ff" />
 			<UserProvider>
 				<PaidUserProvider>
 					<RouterProvider router={router}></RouterProvider>

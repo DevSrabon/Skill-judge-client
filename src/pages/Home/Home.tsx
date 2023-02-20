@@ -1,3 +1,4 @@
+import React, { useRef } from 'react'
 import Accordion from '../../components/shared/Accordion/Accordion';
 import Communities from './Communities/Communities';
 import EasyToStart from './EasyToStart/EasyToStart';
