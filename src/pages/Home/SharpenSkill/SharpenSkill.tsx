@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SharpenSkill = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 bg-[#5B3A3A] rounded-xl p-4 md:p-8 lg:p-16'>
+        <div className='mt-12 grid grid-cols-1 md:grid-cols-2 bg-[#5B3A3A] rounded-xl p-4 md:p-8 lg:p-16'>
             <div className="text-white p-4">
                 <CgCodeSlash className="bg-red-500 p-4 text-6xl rounded-xl mb-4" />
                 <h3 className="text-3xl font-bold mb-4">Sharpen Your Coding Skills</h3>

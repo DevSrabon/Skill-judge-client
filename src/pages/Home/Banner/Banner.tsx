@@ -24,7 +24,7 @@ function Banner() {
 	return (
 		<div className="relative flex justify-center items-center">
 			<div className="absolute text-center z-10">
-				<h1 className="text-[#ff4d4d] text-4xl md:text-7xl lg:text-8xl mb-2">
+				<h1 className=" text-red-500 text-4xl md:text-7xl lg:text-8xl mb-2">
 					Achieve mastery
 				</h1>
 				<h1 className="text-[white] text-4xl md:text-7xl lg:text-8xl mb-5">
