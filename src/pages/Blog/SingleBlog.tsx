@@ -1,22 +1,35 @@
-import React from "react";
-import { FaUser } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider";
+import { useUser } from "../../contexts/UserProvider";
 const SingleBlog = () => {
-  const blogData: any = useLoaderData();
   const { user }: any = useAuth();
-console.log(blogData[0]._id);
+
   console.log(user);
+	const { dbUser }: any = useUser();
+console.log(dbUser);
+  
+  const params = useParams();
+
+const [blogData, setBlogData] = useState<any>([]);
+
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
+    .then((response) => response.json())
+    .then((data) => setBlogData(data));
+}, [params]);
+
+console.log(blogData);
 
   const submitComment = (e) => {
     e?.preventDefault();
     fetch(`${process.env.REACT_APP_API_URL}/blog/comment`, {
       method: "PATCH",
       body: JSON.stringify({
-        id: blogData[0]._id,
-        name: user.displayName,
-        uid: user.uid,
-        userImage: user.photoURL,
+        blogId: blogData[0]._id,
+        name: dbUser.name,
+        userId: dbUser._id,
+        userImage: dbUser.photo,
         comment: e.target.comment.value,
       }),
       headers: {
@@ -24,11 +37,15 @@ console.log(blogData[0]._id);
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+         fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
+           .then((response) => response.json())
+           .then((data) => setBlogData(data));
+      });
   };
 
   return (
-    <div className="mx-5 md:px-20 dark:bg-slate-600">
+    <div className="px-5 md:px-20 bg-[#232427] text-white">
       {blogData.map((data: any) => (
         <div key={data._id} className="grid md:grid-cols-3 gap-3 py-5">
           <div className="md:col-span-2 dark:text-white ">
@@ -46,7 +63,7 @@ console.log(blogData[0]._id);
             <hr className="my-2"></hr>
             <p>{data.blogAbout}</p>
           </div>
-          <div className="card shadow-md bg-slate-200 dark:bg-cyan-900 md:col-span-1">
+          <div className="card shadow-md bg-cyan-900 md:col-span-1">
             <div className="flex md:flex-col gap-6 md:gap-0 items-center">
               <img
                 className="w-24 h-24 my-3 md:w-52 md:h-52 rounded-full ml-5 md:m-0 md:my-5"
@@ -54,7 +71,7 @@ console.log(blogData[0]._id);
                 alt={data.authorName}
               />
 
-              <div className="bg-slate-300 dark:bg-zinc-700 dark:text-white w-full rounded-md">
+              <div className="bg-zinc-700 text-white w-full rounded-md">
                 <h1 className="font-semibold text-center">
                   About Author & Post
                 </h1>
@@ -90,12 +107,12 @@ console.log(blogData[0]._id);
       {blogData[0]?.comment && (
         <div>
           {blogData[0]?.comment?.map((comment) => (
-            <div className="shadow-md p-5 my-5">
+            <div className="shadow-md rounded-xl p-3 bg-zinc-900 my-5">
               <div className="flex gap-5">
                 <img
-                  src={comment.userImage ? comment.userImage : <FaUser />}
+                  src={comment.userImage}
                   alt=""
-                  className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700"
+                  className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700"
                 />
                 <h2 className="text-sm font-semibold leading-none">
                   {comment.name}
@@ -107,25 +124,24 @@ console.log(blogData[0]._id);
         </div>
       )}
 
-{
-  user &&
+      {user && (
         <form
-        onSubmit={submitComment}
-        className="flex justify-center gap-10 my-10"
-      >
-        <input
-          type="text"
-          name="comment"
-          placeholder="Your Comment"
-          className="border border-blue-500 p-2 rounded-md text-xs w-full ransition ease-in-out hover:-translate-y-1 hover:scale-110 focus:-translate-y-1 focus:scale-110 duration-75"
-        />
+          onSubmit={submitComment}
+          className="flex justify-center gap-10 py-10"
+        >
+          <input
+            type="text"
+            name="comment"
+            placeholder="Your Comment"
+            className="border border-blue-500 p-2 rounded-md text-xs w-full ransition ease-in-out hover:-translate-x-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 duration-75"
+          />
 
-        <input
-          type="submit"
-          className="border border-sky-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 rounded-xl p-1 text-xl cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-75"
-        />
-      </form>
-}
+          <input
+            type="submit"
+            className="border border-sky-700 active:bg-slate-300 rounded-xl p-1 text-xl cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-75"
+          />
+        </form>
+      )}
     </div>
   );
 };

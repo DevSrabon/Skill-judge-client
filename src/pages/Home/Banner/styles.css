@@ -1,16 +1,24 @@
 #tsparticles {
-    height: 90vh;
+    height: 85vh;
     width: 100vw;
-    /* position: relative; */
-    top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-            /* background-color: #16171b; */
-                background-image: url(https://uploads-ssl.webflow.com/62e3ee1…/631a5d4…_noise-50.png);
-                background-position: 0px 0px;
-                background-size: 200px 200px;
-                font-family: 'IBM Plex Sans', sans-serif;
-                color: #fff;
- 
+    margin-top: -72px;
+    
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    #tsparticles {
+            height: 60vh;
+            width: 100vw;
+            margin-top: -72px;
+           
+        }
+}
+@media only screen and (max-width: 600px) {
+    #tsparticles {
+            height: 60vh;
+            width: 100vw;
+            margin-top: -72px;
+            
+        }
 }
