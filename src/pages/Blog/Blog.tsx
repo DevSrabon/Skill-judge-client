@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { Link, useLoaderData } from "react-router-dom";
@@ -7,55 +8,70 @@ const Blog = () => {
   console.log(blogData);
   console.log(Date());
   return (
-    <div className="mx-10">
-      {blogData?.map((data: any) => (
-        <div
-          key={data._id}
-          className="card md:card-side rounded-md shadow-2xl dark:bg-slate-700 bg-slate-200 mt-3"
-        >
-          <figure className="w-96">
-            <img
-              className="m-2 rounded-md"
-              src={data.authorPicture}
-              alt="Movie"
-            />
-          </figure>
-          <div className="card-body p-3 ml-4">
-            <h2 className="card-title dark:text-slate-100">{data.blogTitle}</h2>
-            <p className="dark:text-slate-100">
-              {data.blogAbout.slice(0, 200) + "......."}
-            </p>
-            <div className="grid xl:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-3 dark:text-slate-100">
-              <p>
-                <span className="font-bold">Category : </span>
-                {data.category}
-              </p>
-              <p>
-                <span className="font-bold">Author : </span>
-                {data.authorName}
-              </p>
-              <p>
-                <span className="font-bold"> Time Post : </span>
-                {data.timePost}
-              </p>
-              <p>
-                <span className="font-bold"> Comment: </span>
-                {data.comment ? data.comment.length : 0}
-              </p>
-              <p>
-                <span className="font-bold">Like : </span> {data.like}
-              </p>
-              <Link
-                to={data._id}
-                className="bg-gray-400 hover:bg-gray-600 text-center rounded-xl flex items-center justify-center gap-2"
-              >
-                Continuing Reading ...
-                <BsBoxArrowUpRight className="w-6 h-6"></BsBoxArrowUpRight>
-              </Link>
+    <div className="m-10">
+      <h1 className="text-4xl text-center dark:text-white my-3">Developer Blog</h1>
+      <hr />
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+        {blogData?.map((data: any) => (
+          <div
+            key={data._id}
+            className="card items-center rounded-md shadow-2xl bg-[#232427] mt-3 text-white"
+          >
+            <figure className="w-96">
+              <img
+                className="m-2 rounded-md"
+                src={data.authorPicture}
+                alt="Movie"
+              />
+            </figure>
+            <div className="card-body p-3 ml-4">
+              <div className="dark:text-slate-100">
+                <p>
+                  <span className="font-bold text-red-600">Category : </span>
+                  {data.category}
+                </p>
+                <h2 className="card-title dark:text-slate-100">
+                  {data.blogTitle}
+                </h2>
+                <p className="dark:text-slate-100">
+                  {data.blogAbout.slice(0, 200) + "......."}
+                </p>
+              </div>
+              <div className="flex gap-3 items-center">
+                <img
+                  src={data.authorPicture}
+                  className="w-14 h-14 rounded-full"
+                  alt=""
+                />
+                <div>
+                  <p>
+                    <span className="font-bold text-lime-600">Author : </span>
+                    {data.authorName}
+                  </p>
+                  <p>
+                    <span className="font-bold text-teal-600">Time Post :</span>
+                    {moment(data.timePost).fromNow()}
+                  </p>
+                  <p>
+                    <span className="font-bold text-sky-600"> Comment: </span>
+                    {data.comment ? data.comment.length : 0}
+                  </p>
+                </div>
+              </div>
+
+              <button className="card-actions justify-end">
+                <Link
+                  to={data._id}
+                  className="flex gap-3 text-black bg-white hover:bg-gray-500 hover:text-white rounded-xl px-5 py-2 m-1"
+                >
+                  Continuing Reading ...
+                  <BsBoxArrowUpRight className="w-5 h-5"></BsBoxArrowUpRight>
+                </Link>
+              </button>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

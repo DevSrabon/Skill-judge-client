@@ -9,9 +9,10 @@
     position: relative;
     cursor: pointer;
 
-    --background: linear-gradient(45deg, #8614ce, #ff0057);
+    --background: linear-gradient(45deg, #636E81, #B48F5D);
     --border-size: 2px;
-    --accent-color: #0AF;
+    --accent-color: linear-gradient(45deg, #636E81,
+        #8D7E6B);
 }
 
 .btn.slide::before {
@@ -22,7 +23,7 @@
     bottom: 0;
     right: 0;
     z-index: -1;
-    border-radius: 40px;
+    /* border-radius: 40px; */
     background: var(--accent-color);
     transition: transform 300ms ease-in-out;
     transform: scaleX(0);
@@ -45,5 +46,5 @@
 .btn.slide:hover,
 .btn.slide:focus {
     color: white;
-    border-radius: 40px;
+    /* border-radius: 40px; */
 }
