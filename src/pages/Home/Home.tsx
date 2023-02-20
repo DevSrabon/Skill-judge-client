@@ -7,20 +7,22 @@ import Services from './Services/Services';
 import SharpenSkill from './SharpenSkill/SharpenSkill';
 import TopQuestions from './TopQuestions/TopQuestions';
 import Languages from './Languages/Languages';
+import UserReviews from './UserReviews/UserReviews';
 
 const Home = () => {
-return (
+	return (
 		<>
 			<Banner />
 			<div className="max-w-[90%] mx-auto">
 				<SharpenSkill />
 				<EasyToStart />
-				<Languages/>
-        <Communities/>
+				<Languages />
+				<Communities />
 				<TopQuestions />
 				<Services />
+				<UserReviews></UserReviews>
 				<Form />
-        <Accordion/> 
+				<Accordion />
 			</div>
 		</>
 	);
