@@ -1,4 +1,4 @@
-// import Accordion from '../../components/shared/Accordion/Accordion';
+import Accordion from '../../components/shared/Accordion/Accordion';
 import Communities from './Communities/Communities';
 import Banner from './Banner/Banner';
 import EasyToStart from './EasyToStart/EasyToStart';
@@ -22,7 +22,7 @@ const Home = () => {
 				<Services/>
 				<UserReviews/>
 				<Form/>
-				{/* <Accordion/> */}
+				<Accordion/>
 			</div>
 		</>
 	)
