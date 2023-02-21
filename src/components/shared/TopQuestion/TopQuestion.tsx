@@ -56,7 +56,7 @@ const TopQuestion = () => {
         );
     }
 
-    return <div className="container my-10">{content}</div>;
+    return <div className="container">{content}</div>;
 };
 
 export default TopQuestion;

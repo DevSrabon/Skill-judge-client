@@ -6,7 +6,7 @@ import { BsFillBriefcaseFill } from "react-icons/bs";
  
 const Services = () => {
 	return (
-		<section className="mt-12 bg-white dark:bg-gray-900">
+		<section className="bg-white dark:bg-gray-900">
          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
            <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Designed for business teams like yours</h2>
@@ -43,7 +43,7 @@ const Services = () => {
                       <span>Free updates: <span className="font-semibold">6 months</span></span>
                   </li>
               </ul>
-              <Link to={"/login"} className="bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Get started</Link>
+              <Link to={"/compiler"} className="bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Get started</Link>
             </div> 
             <div className="flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 flex-col p-6 mx-auto max-w-lg text-gray-900 bg-white rounded-lg border border-gray-100 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white shadow-xl">
 			  <h1><AiFillPropertySafety className="text-3xl"/></h1>	

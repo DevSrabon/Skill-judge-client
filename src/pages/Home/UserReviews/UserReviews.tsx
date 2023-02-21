@@ -16,10 +16,11 @@ const UserReviews = () => {
             })
     }, [])
     return (
-        <div>
-            <h1 className='text-4xl font-bold text-center dark:text-white'>Check what <br />
-                people say about.</h1>
-
+			<div>
+				<h1 className="text-4xl font-bold text-center dark:text-white">
+					Check what <br />
+					people say about.
+				</h1>
             <Swiper
                 effect={"coverflow"}
                 grabCursor={true}
