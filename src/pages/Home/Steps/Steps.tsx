@@ -8,7 +8,7 @@ const Steps = () => {
   return (
     <div>
       <div className="flex flex-col items-center">
-        <p className="bg-slate-500 p-1 rounded-md">EASY STEPS</p>
+        <p className="bg-slate-500 text-white p-1 rounded-md">EASY STEPS</p>
         <h1 className="text-4xl my-4 font-bold underline underline-offset-8 decoration-emerald-600 decoration-2">
           How It Works
         </h1>
