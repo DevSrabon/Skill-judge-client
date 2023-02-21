@@ -28,6 +28,8 @@ import AllSubmission from "../pages/Dashboard/AllSubmission";
 import SingleSubmission from "../pages/UserDashboard/SingleSubmission";
 import TermsOfUse from "../SharedComponent/TermsOfUse";
 import Form from "../pages/Home/Form/Form";
+import CommunityHome from "../pages/Community/CommunityHome";
+import PostProvider from "../contexts/PostProvider";
 
 
 export const router = createBrowserRouter([
@@ -112,6 +114,10 @@ export const router = createBrowserRouter([
 						<SingleQnA></SingleQnA>
 					</PrivateRoute>
 				),
+			},
+			{
+				path: '/community-home',
+				element: <PostProvider><CommunityHome></CommunityHome></PostProvider>
 			},
 			{
 				path: "/dashboard",
