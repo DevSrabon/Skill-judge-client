@@ -17,7 +17,6 @@ const AboutUs = () => {
 	const {
 		data = [],
 		isLoading,
-		isFetching,
 	} = useQuery({
 		queryKey: ["user"],
 		queryFn: async () => {
@@ -29,15 +28,23 @@ const AboutUs = () => {
 	if (isLoading) {
 		return <Spinner />;
 	}
-	if (isFetching) {
-		return <Spinner />;
-	}
 	return (
-		<div>
-			<div>
-				<h2 className="text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-5">
+		<section className="team-section">
+			<div className="image-layer"></div>
+			<div className="relative">
+				<div className={"dots"}>
+					<span></span>
+				</div>
+				<h2 className=" text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-5">
 					Meet With Our <br className="mt-2" /> Team Members
 				</h2>
+				<div className=" hidden md:block md:absolute md:right-[-30px] lg:right-[304px]">
+					<img
+						src="https://t.commonsupport.com/driveto/images/resource/title-pattern-1.svg"
+						alt=""
+						className="w-44 md:w-64"
+					/>
+				</div>
 			</div>
 			<div className="container">
 				<Swiper
@@ -132,7 +139,7 @@ const AboutUs = () => {
 					</div>
 				</Swiper>
 			</div>
-		</div>
+		</section>
 	);
 };
 
