@@ -22,7 +22,7 @@ const Communities = () => {
     }
 
     return (
-        <section className="container mb-20">
+        <section className="container">
             <div className="space-y-10 w-8/12 text-center mx-auto">
                 <h2 className="text-6xl font-semibold dark:font-normal text-black dark:text-white">
                     An occupied Skill Judge Platform community
