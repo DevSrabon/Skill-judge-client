@@ -9,6 +9,7 @@ import SharpenSkill from './SharpenSkill/SharpenSkill';
 import TopQuestions from './TopQuestions/TopQuestions';
 import Languages from './Languages/Languages';
 import UserReviews from './UserReviews/UserReviews';
+import AboutUs from "../AboutUs/AboutUs";
 
 const Home = () => {
 	return (
@@ -22,6 +23,7 @@ const Home = () => {
 				<TopQuestions/>
 				<Services/>
 				<UserReviews/>
+        <AboutUs/>
 				<Form/>
 				<Accordion/>
 			</div>
