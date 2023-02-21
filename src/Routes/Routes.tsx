@@ -28,7 +28,10 @@ import AllSubmission from "../pages/Dashboard/AllSubmission";
 import SingleSubmission from "../pages/UserDashboard/SingleSubmission";
 import TermsOfUse from "../SharedComponent/TermsOfUse";
 import Form from "../pages/Home/Form/Form";
+import CommunityHome from "../pages/Community/CommunityHome";
+import PostProvider from "../contexts/PostProvider";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+
 
 
 export const router = createBrowserRouter([
@@ -78,7 +81,6 @@ export const router = createBrowserRouter([
         path: "/my-profile",
         element: <MyProfile></MyProfile>,
       },
-
       {
         path: "/qna",
         loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
@@ -94,6 +96,10 @@ export const router = createBrowserRouter([
           fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
         element: <SingleQnA></SingleQnA>,
       },
+      {
+				path: '/community-home',
+				element: <PostProvider><CommunityHome></CommunityHome></PostProvider>
+			},
       {
         path: "/free",
         element: <Compiler />,
