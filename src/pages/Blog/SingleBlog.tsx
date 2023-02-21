@@ -43,7 +43,9 @@ console.log(blogData);
            .then((data) => setBlogData(data));
       });
   };
-
+const removeComment=(data)=>{
+  console.log(data);
+}
   return (
     <div className="px-5 md:px-20 bg-[#232427] text-white">
       {blogData.map((data: any) => (
@@ -114,9 +116,47 @@ console.log(blogData);
                   alt=""
                   className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700"
                 />
-                <h2 className="text-sm font-semibold leading-none">
-                  {comment.name}
-                </h2>
+                <div className="flex items-center justify-between gap-10">
+                  <h2 className="text-sm font-semibold leading-none">
+                    {comment.name}
+                  </h2>
+                  <label
+                    onClick={() => removeComment(comment)}
+                    htmlFor="my-modal-6"
+                    className="bg-gradient-to-r from-slate-900 to-slate-700 py-1 px-3 rounded-xl"
+                  >
+                    Remove
+                  </label>
+
+                  <input
+                    type="checkbox"
+                    id="my-modal-6"
+                    className="modal-toggle"
+                  />
+                  <div className="modal modal-bottom sm:modal-middle text-black">
+                    <div className="modal-box relative">
+                      <label
+                        htmlFor="my-modal-6"
+                        className="btn btn-sm btn-circle absolute right-2 top-2"
+                      >
+                        ✕
+                      </label>
+
+                      <p className="py-4 text-xl">
+                        Are you sure you want to delete your comment?
+                      </p>
+                      <div className="modal-action">
+                        <label
+                          onClick={() => removeComment(comment)}
+                          htmlFor="my-modal-6"
+                          className="btn"
+                        >
+                          Yay!
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>{comment.comment}</div>
             </div>
