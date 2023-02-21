@@ -30,7 +30,7 @@ const Banner = () => {
 	let option:any
 			const renderThemeChanger = () => {
 				if (theme === "dark") {
-					return option={
+					return (option = {
 						autoPlay: true,
 						background: {
 							color: {
@@ -113,13 +113,6 @@ const Banner = () => {
 										selectors: [],
 									},
 								},
-								// connect: {
-								// 	distance: 80,
-								// 	links: {
-								// 		opacity: 0.5,
-								// 	},
-								// 	radius: 60,
-								// },
 								grab: {
 									distance: 400,
 									links: {
@@ -368,12 +361,14 @@ const Banner = () => {
 								options: {
 									character: {
 										value: [
-											"JS",
+											"Js",
+											"Ts",
 											"</>",
-											"<html>",
+											"Go",
+											"F#",
+											"py",
 											"</html>",
 											"<?php",
-											"?>",
 											"$array",
 											"C++",
 											"C",
@@ -385,25 +380,6 @@ const Banner = () => {
 										weight: "400",
 										fill: true,
 									},
-									// char: {
-									// 	value: [
-									// 		"JS",
-									// 		"</>",
-									// 		"<html>",
-									// 		"</html>",
-									// 		"<?php",
-									// 		"?>",
-									// 		"$array",
-									// 		"C++",
-									// 		"C",
-									// 		"C#",
-									// 		"i++",
-									// 	],
-									// 	font: "Verdana",
-									// 	style: "",
-									// 	weight: "400",
-									// 	fill: true,
-									// },
 								},
 								type: "char",
 							},
@@ -594,30 +570,6 @@ const Banner = () => {
 								},
 								width: 1,
 							},
-							// links: {
-							// 	blink: false,
-							// 	color: {
-							// 		value: "#ffffff",
-							// 	},
-							// 	consent: false,
-							// 	distance: 150,
-							// 	enable: true,
-							// 	frequency: 1,
-							// 	opacity: 0.4,
-							// 	shadow: {
-							// 		blur: 5,
-							// 		color: {
-							// 			value: "#000",
-							// 		},
-							// 		enable: false,
-							// 	},
-							// 	triangles: {
-							// 		enable: false,
-							// 		frequency: 1,
-							// 	},
-							// 	width: 1,
-							// 	warp: false,
-							// },
 							repulse: {
 								random: {
 									enable: false,
@@ -638,9 +590,9 @@ const Banner = () => {
 						style: {},
 						themes: [],
 						zLayers: 100,
-					};
+					});
 				} else {
-					return option={
+					return (option = {
 						autoPlay: true,
 						background: {
 							color: {
@@ -937,7 +889,7 @@ const Banner = () => {
 							},
 							opacity: {
 								random: {
-									enable: true,
+									enable: false,
 									minimumValue: 0.1,
 								},
 								value: {
@@ -971,12 +923,14 @@ const Banner = () => {
 								options: {
 									character: {
 										value: [
-											"JS",
+											"Js",
+											"Ts",
 											"</>",
-											"<html>",
+											"Go",
+											"F#",
+											"py",
 											"</html>",
 											"<?php",
-											"?>",
 											"$array",
 											"C++",
 											"C",
@@ -1178,30 +1132,6 @@ const Banner = () => {
 								},
 								width: 1,
 							},
-							// links: {
-							// 	blink: false,
-							// 	color: {
-							// 		value: "#ffffff",
-							// 	},
-							// 	consent: false,
-							// 	distance: 150,
-							// 	enable: true,
-							// 	frequency: 1,
-							// 	opacity: 0.4,
-							// 	shadow: {
-							// 		blur: 5,
-							// 		color: {
-							// 			value: "#000",
-							// 		},
-							// 		enable: false,
-							// 	},
-							// 	triangles: {
-							// 		enable: false,
-							// 		frequency: 1,
-							// 	},
-							// 	width: 1,
-							// 	warp: false,
-							// },
 							repulse: {
 								random: {
 									enable: false,
@@ -1222,7 +1152,7 @@ const Banner = () => {
 						style: {},
 						themes: [],
 						zLayers: 100,
-					};
+					});
 				}
 	};
 	renderThemeChanger()
