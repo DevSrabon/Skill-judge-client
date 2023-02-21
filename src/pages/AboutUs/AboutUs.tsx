@@ -35,14 +35,17 @@ const AboutUs = () => {
 	return (
 		<div>
 			<div>
-				<h2 className="text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-10">Meet With Our <br className="mt-2" /> Team Members</h2>
+				<h2 className="text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-5">
+					Meet With Our <br className="mt-2" /> Team Members
+				</h2>
 			</div>
 			<div className="container">
 				<Swiper
 					effect={"coverflow"}
 					grabCursor={true}
 					centeredSlides={true}
-					slidesPerView={2}
+					loop={true}
+					slidesPerView={"auto"}
 					coverflowEffect={{
 						rotate: 0,
 						stretch: 0,
@@ -54,12 +57,27 @@ const AboutUs = () => {
 					navigation={{
 						nextEl: ".swiper-button-next",
 						prevEl: ".swiper-button-prev",
+						// clickable: true,
 					}}
+					modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
 					autoplay={{
 						delay: 2500,
 						disableOnInteraction: false,
 					}}
-					modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+					breakpoints={{
+						640: {
+							slidesPerView: 2,
+						},
+						768: {
+							slidesPerView: 1,
+						},
+						1024: {
+							slidesPerView: 3,
+						},
+						1560: {
+							slidesPerView: 3,
+						},
+					}}
 					className="swiper-container">
 					{data.map((team: any) => (
 						<div key={team._id}>
@@ -76,7 +94,7 @@ const AboutUs = () => {
 									<div
 										onMouseEnter={() => setActive(false)}
 										onMouseLeave={() => setActive(true)}
-										className="-mt-[60px] px-2 py-3 bg-white w-[80%] transition-all duration-1000 ease-in-out mx-auto rounded shadow-lg">
+										className="-mt-[60px] px-2 py-2 bg-white w-[80%] mx-auto rounded shadow-lg">
 										<h2 className="text-center text-sm md:text-xl font-bold text-pink-800 py-2">
 											{team.name}
 										</h2>
@@ -86,7 +104,7 @@ const AboutUs = () => {
 										<div
 											className={` ${
 												active ? "hidden" : "block"
-											}  flex justify-center gap-5 text-2xl pt-5 text-info`}>
+											}  flex justify-center gap-5 text-2xl pt-3 text-info`}>
 											<a href={team.linkedin}>
 												<AiFillLinkedin className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 											</a>
@@ -110,6 +128,7 @@ const AboutUs = () => {
 						<div className="swiper-button-next slider-arrow">
 							<FaArrowRight />
 						</div>
+						<div className="swiper-pagination"></div>
 					</div>
 				</Swiper>
 			</div>
