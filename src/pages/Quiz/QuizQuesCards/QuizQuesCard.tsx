@@ -7,9 +7,8 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
 const QuizQuesCard = ({ question, name }) => {
-	const { user }:any = useAuth();
+	const { user }: any = useAuth();
 	const [showResults, setShowResults] = useState<boolean>(false);
 	const [currentQuestion, setCurrentQuestion] = useState<number>(0);
 	const [score, setScore] = useState<number>(0);
@@ -17,10 +16,8 @@ const QuizQuesCard = ({ question, name }) => {
 	const [isCorrect, setIsCorrect] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 
-		const progress = Math.round(
-			((currentQuestion + 1) / question.length) * 100
-		);
-		const correctAnswer = Math.round((score * 100) / question.length);
+	const progress = Math.round(((currentQuestion + 1) / question.length) * 100);
+	const correctAnswer = Math.round((score * 100) / question.length);
 	const data = {
 		labels: ["Correct", "Wrong"],
 		datasets: [
@@ -30,7 +27,7 @@ const QuizQuesCard = ({ question, name }) => {
 				backgroundColor: ["rgb(230, 164, 129)", "rgb(235, 91, 14)"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
-				ShadowRoot:Pie
+				ShadowRoot: Pie,
 			},
 		],
 	};
@@ -39,15 +36,15 @@ const QuizQuesCard = ({ question, name }) => {
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [100-correctAnswer, correctAnswer],
+				data: [100 - correctAnswer, correctAnswer],
 				backgroundColor: ["rgb(230, 164, 129)", "rgb(235, 91, 14)"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
-				ShadowRoot:Pie
+				ShadowRoot: Pie,
 			},
 		],
 	};
-	const optionClick = (e:any): void => {
+	const optionClick = (e: any): void => {
 		setIsActive(true);
 		setIsCorrect(e.target.value);
 	};
@@ -57,7 +54,7 @@ const QuizQuesCard = ({ question, name }) => {
 			setScore(score + 1);
 		} else {
 			setScore(score - 0);
-			setWrong(wrong + 1)
+			setWrong(wrong + 1);
 		}
 		if (currentQuestion + 1 < question.length) {
 			setCurrentQuestion(currentQuestion + 1);
@@ -65,7 +62,6 @@ const QuizQuesCard = ({ question, name }) => {
 			setShowResults(true);
 		}
 		setIsActive(false);
-
 	};
 
 	const restartGame = () => {
@@ -74,7 +70,6 @@ const QuizQuesCard = ({ question, name }) => {
 		setShowResults(false);
 	};
 	const handleSave = () => {
-		
 		fetch(`${process.env.REACT_APP_API_URL}/savedquiz`, {
 			method: "POST",
 			headers: {
@@ -98,11 +93,11 @@ const QuizQuesCard = ({ question, name }) => {
 					toast.error(data.message);
 				}
 			});
-	}
+	};
 	const previous = () => {
 		setCurrentQuestion(currentQuestion - 1);
 		setScore(score - 1);
-	}
+	};
 
 	return (
 		<div className="quiz-container ">
@@ -135,18 +130,19 @@ const QuizQuesCard = ({ question, name }) => {
 										<th
 											scope="row"
 											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Final Score
+											Total Questions
 										</th>
-										<td className="px-6 py-4">{score}</td>
+										<td className="px-6 py-4">{question.length}</td>
 									</tr>
 									<tr className="bg-blue-500 border-b border-blue-400">
 										<th
 											scope="row"
 											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Total Questions
+											Final Score
 										</th>
-										<td className="px-6 py-4">{question.length}</td>
+										<td className="px-6 py-4">{score}</td>
 									</tr>
+
 									<tr className="bg-blue-500 border-b border-blue-400">
 										<th
 											scope="row"
