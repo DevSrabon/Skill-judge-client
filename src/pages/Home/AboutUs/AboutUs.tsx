@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
-import './AboutUs.css'
-import Spinner from "../../SharedComponent/Spinner/Spinner";
+import "./AboutUs.css";
+import Spinner from "../../../SharedComponent/Spinner/Spinner";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -14,10 +14,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const AboutUs = () => {
 	const [active, setActive] = React.useState<boolean>(true);
 
-	const {
-		data = [],
-		isLoading,
-	} = useQuery({
+	const { data = [], isLoading } = useQuery({
 		queryKey: ["user"],
 		queryFn: async () => {
 			const res = await fetch(`${process.env.REACT_APP_API_URL}/team`);

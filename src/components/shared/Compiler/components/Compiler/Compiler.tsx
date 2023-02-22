@@ -65,8 +65,6 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 		}
 	};
 
-		
-
 	const handleSubmit = async (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -139,11 +137,13 @@ const handleResultSubmit = () => {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
+			authorization: `bearer ${localStorage.getItem("token")}`,
 		},
 		body: JSON.stringify({
 			correct: isCorrect,
 			email: user?.email,
 			title: title,
+			userName: user?.displayName,
 		}),
 	})
 		.then((res) => res.json())
@@ -155,13 +155,9 @@ const handleResultSubmit = () => {
 					startIt();
 					setConfetti(true);
 					setIsCorrect(true);
-
-				}
-				else {
+				} else {
 					setIsCorrect(false);
-
 				}
-
 			} else {
 				toast.error(data.message);
 			}
@@ -170,7 +166,9 @@ const handleResultSubmit = () => {
 		const [width, height] = useWindowSize();
 
 
-
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 
 	const handleThemeChange = (th: any) => {
