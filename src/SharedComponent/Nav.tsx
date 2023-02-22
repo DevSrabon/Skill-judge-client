@@ -17,7 +17,7 @@ const Nav = () => {
 	useEffect(() => {
 		setMounted(true);
 	}, []);
-	if (!mounted) return null;
+	if(!mounted) return null;
 
 	const handleLogout = () => {
 		signOutUser()
@@ -25,7 +25,7 @@ const Nav = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	};
+	};                              
 
 	const renderThemeChanger = () => {
 		if (theme === "dark") {

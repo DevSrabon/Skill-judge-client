@@ -15,7 +15,7 @@ const Home = () => {
 		<>
 			<Banner/>
 			<div className="max-w-[90%] mx-auto flex flex-col gap-8 md:gap-16">
-				<SharpenSkill />
+				<SharpenSkill/>
 				<Steps/>
 				<Languages/>
 				<Communities/>
