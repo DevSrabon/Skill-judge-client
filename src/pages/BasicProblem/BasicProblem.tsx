@@ -3,26 +3,30 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "../../SharedComponent/Spinner/Spinner";
 import { BiFilterAlt } from "react-icons/bi";
+import ErrorSpinner from "../../SharedComponent/Spinner/ErrorSpinner";
 
 const BasicProblem = () => {
 	const [search, setSearch] = useState<string>("");
 	const [filter, setFilter] = useState<boolean>(false);
-	const { isLoading, error, refetch, data }: any = useQuery({
+	const { isLoading, error, data }: any = useQuery({
 		queryKey: ["user"],
 		queryFn: () =>
 			fetch(`${process.env.REACT_APP_API_URL}/problems`, {
 				headers: {
-					// authorization: `bearer ${localStorage.getItem('token')}`
+					authorization: `bearer ${localStorage.getItem('token')}`
 				},
 			}).then((res) => res.json()),
 	});
-	// 	 const handleChange = (e) => {
-	// 			// e.preventDefault();
-	// 			setSearch(e.target.value);
-	// };
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 
 	if (isLoading) {
 		return <Spinner />;
+	}
+	if (error) {
+		return <ErrorSpinner/>
 	}
 	return (
 		<div className=" bg-[#f3f7f7] md:pb-[40vh] dark:bg-gray-800 md:pl-16 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">

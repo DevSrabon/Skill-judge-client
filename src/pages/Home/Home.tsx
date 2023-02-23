@@ -1,32 +1,33 @@
-import React, { useRef } from 'react'
-import Accordion from '../../components/shared/Accordion/Accordion';
-import Communities from './Communities/Communities';
-import Banner from './Banner/Banner';
-import EasyToStart from './EasyToStart/EasyToStart';
-import Form from './Form/Form';
-import Services from './Services/Services';
-import SharpenSkill from './SharpenSkill/SharpenSkill';
-import TopQuestions from './TopQuestions/TopQuestions';
-import Languages from './Languages/Languages';
-import UserReviews from './UserReviews/UserReviews';
+import Accordion from "../../components/shared/Accordion/Accordion";
+import Communities from "./Communities/Communities";
+import Banner from "./Banner/Banner";
+import Form from "./Form/Form";
+import Services from "./Services/Services";
+import SharpenSkill from "./SharpenSkill/SharpenSkill";
+import TopQuestions from "./TopQuestions/TopQuestions";
+import Languages from "./Languages/Languages";
+import UserReviews from "./UserReviews/UserReviews";
+import AboutUs from "./AboutUs/AboutUs";
+import Steps from "./Steps/Steps";
 
 const Home = () => {
 	return (
 		<>
-			<Banner/>
-			<div className="max-w-[90%] mx-auto">
-				<SharpenSkill/>
-				<EasyToStart/>
-				<Languages/>
-				<Communities/>
-				<TopQuestions/>
-				<Services/>
-				<UserReviews/>
-				<Form/>
-				<Accordion/>
+			<Banner />
+			<div className="max-w-[90%] mx-auto flex flex-col gap-8 md:gap-16">
+				<SharpenSkill />
+				<Languages />
+				<Communities />
+				<TopQuestions />
+				<Services />
+				<Steps />
+				<UserReviews />
+				<AboutUs />
+				<Form />
+				<Accordion />
 			</div>
 		</>
-	)
-}
+	);
+};
 
 export default Home;
