@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import AccordionItem from "./AccordionItem";
 
@@ -5,6 +6,18 @@ const Accordion = () => {
     const [openAccordionBody, setAccordionBody] = useState<boolean | number>(
         false
     );
+
+    const { data } = useQuery({
+        queryKey: ["accordions"],
+        queryFn: async () => {
+            const res = await fetch(
+                `${process.env.REACT_APP_API_URL}/accordions`
+            );
+            const data = await res.json();
+            return data;
+        },
+    });
+    
     const toggleAccordion = (index: number) => {
         if (openAccordionBody === index) {
             return setAccordionBody(false);
@@ -19,11 +32,12 @@ const Accordion = () => {
                 </h2>
             </div>
             <div className="shadow-lg mt-12 w-4/6 mx-auto dark:bg-white ">
-                {[0, 1, 2].map((i) => (
+                {data && data.map((accordion) => (
                     <AccordionItem
-                        key={i}
-                        id={i}
-                        openAccordionBody={openAccordionBody === i}
+                        key={accordion._id}
+                        id={accordion._id}
+                        openAccordionBody={openAccordionBody === accordion._id}
+                        accordion={accordion}
                         toggleAccordion={toggleAccordion}
                     />
                 ))}
