@@ -5,7 +5,7 @@ import { MdOutlineQuiz, MdOutlinePaid } from "react-icons/md";
 import DashWidget from "../../components/shared/Dashboard/Dashboard/DashWidget/DashWidget";
 import AreaChart from "../../components/shared/Dashboard/Dashboard/AreaChart/AreaChart";
 import { useQuery } from "@tanstack/react-query";
-import Spinner from "../../SharedComponent/Spinner/Spinner";
+import Spinner from "../../SharedComponent/Spinner/Spinner"
 import NotFound from "../404";
 
 const DashboardV2 = () => {
