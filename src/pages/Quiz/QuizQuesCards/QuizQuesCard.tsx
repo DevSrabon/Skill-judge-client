@@ -24,7 +24,7 @@ const QuizQuesCard = ({ question, name }) => {
 			{
 				label: "# of Votes",
 				data: [score, wrong],
-				backgroundColor: ["rgb(230, 164, 129)", "rgb(235, 91, 14)"],
+				backgroundColor: ["#2563eb", "rgb(235, 91, 14)"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
 				ShadowRoot: Pie,
@@ -36,8 +36,8 @@ const QuizQuesCard = ({ question, name }) => {
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [100 - correctAnswer, correctAnswer],
-				backgroundColor: ["rgb(230, 164, 129)", "rgb(235, 91, 14)"],
+				data: [correctAnswer, 100 - correctAnswer],
+				backgroundColor: ["#2563eb", "rgb(235, 91, 14)"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
 				ShadowRoot: Pie,

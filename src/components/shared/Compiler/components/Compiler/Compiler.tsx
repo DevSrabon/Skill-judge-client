@@ -119,12 +119,19 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 				jsonGetSolution = await getSolution.json();
 				setOutputDetails(jsonGetSolution);
 				toast.success("Compile Successful");
+				if (jsonGetSolution.stdout) {
+					setResult(atob(jsonGetSolution.stdout).replace(/\n/g, ""));
+				}
+			}
+			if (
+				JSON.stringify(atob(jsonGetSolution.stdout).replace(/\n/g, "")) ===
+				JSON.stringify(resultOutput)
+			) {
+				setIsCorrect(true);
 			}
 		}
 		
-		if (jsonGetSolution.stdout) {
-			setResult(atob(jsonGetSolution.stdout).replace(/\n/g, ""));
-		}
+
 	};
 	const startIt = () => {
 		setTimeout(function () {
@@ -132,7 +139,9 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			
 		}, 7000);
 	};
-const handleResultSubmit = () => {
+	const handleResultSubmit = () => {
+		
+		console.log(JSON.stringify(result) === JSON.stringify(resultOutput));
 	fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
 		method: "POST",
 		headers: {
@@ -154,9 +163,6 @@ const handleResultSubmit = () => {
 				if (JSON.stringify(result) === JSON.stringify(resultOutput)) {
 					startIt();
 					setConfetti(true);
-					setIsCorrect(true);
-				} else {
-					setIsCorrect(false);
 				}
 			} else {
 				toast.error(data.message);
@@ -214,7 +220,9 @@ const handleResultSubmit = () => {
 				</div>
 
 				<div className="flex flex-shrink-0 w-[30%] flex-col">
-					<OutputWindow outputDetails={outputDetails} />
+					<OutputWindow
+						outputDetails={outputDetails}
+					/>
 					<div className="flex flex-col items-end">
 						<CustomInput
 							customInput={userInput}
