@@ -36,17 +36,10 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 	const [language, setLanguage] = useState<ILanguage>(languageOptions[0]);
 	const [userInput, setUserInput] = useState<string>(``);
 	const [result, setResult] = useState<string>("");
-	console.log(
-		"🚀 ~ file: Compiler.tsx:40 ~ Main",
-		JSON.stringify(result) === JSON.stringify(resultOutput)
-	);
 	const [processing, setProcessing] = useState<boolean>(false);
 	const [isCorrect, setIsCorrect] = useState<boolean>(false);
-	console.log("🚀 ~ file: Compiler.tsx:45 ~ isCorrect", isCorrect)
 	const [show,setShow]=useState<boolean>(false);
 	const [confetti,setConfetti]=useState<boolean>(false);
-	console.log("🚀 ~ file: Compiler.tsx:41 ~ confetti", confetti)
-	
 
 	const {user}:any=useAuth()
 	const onSelectChange = (sl: ILanguage) => {
@@ -64,8 +57,6 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			}
 		}
 	};
-
-		
 
 	const handleSubmit = async (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -121,12 +112,19 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 				jsonGetSolution = await getSolution.json();
 				setOutputDetails(jsonGetSolution);
 				toast.success("Compile Successful");
+				if (jsonGetSolution.stdout) {
+					setResult(atob(jsonGetSolution.stdout).replace(/\n/g, ""));
+				}
+			}
+			if (
+				JSON.stringify(atob(jsonGetSolution.stdout).replace(/\n/g, "")) ===
+				JSON.stringify(resultOutput)
+			) {
+				setIsCorrect(true);
 			}
 		}
 		
-		if (jsonGetSolution.stdout) {
-			setResult(atob(jsonGetSolution.stdout).replace(/\n/g, ""));
-		}
+
 	};
 	const startIt = () => {
 		setTimeout(function () {
@@ -134,16 +132,20 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			
 		}, 7000);
 	};
-const handleResultSubmit = () => {
+	const handleResultSubmit = () => {
+		
+		console.log(JSON.stringify(result) === JSON.stringify(resultOutput));
 	fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json",
+			authorization: `bearer ${localStorage.getItem("token")}`,
 		},
 		body: JSON.stringify({
 			correct: isCorrect,
 			email: user?.email,
 			title: title,
+			userName: user?.displayName,
 		}),
 	})
 		.then((res) => res.json())
@@ -154,14 +156,7 @@ const handleResultSubmit = () => {
 				if (JSON.stringify(result) === JSON.stringify(resultOutput)) {
 					startIt();
 					setConfetti(true);
-					setIsCorrect(true);
-
 				}
-				else {
-					setIsCorrect(false);
-
-				}
-
 			} else {
 				toast.error(data.message);
 			}
@@ -170,7 +165,9 @@ const handleResultSubmit = () => {
 		const [width, height] = useWindowSize();
 
 
-
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 
 	const handleThemeChange = (th: any) => {
@@ -216,7 +213,9 @@ const handleResultSubmit = () => {
 				</div>
 
 				<div className="flex flex-shrink-0 w-[30%] flex-col">
-					<OutputWindow outputDetails={outputDetails} />
+					<OutputWindow
+						outputDetails={outputDetails}
+					/>
 					<div className="flex flex-col items-end">
 						<CustomInput
 							customInput={userInput}

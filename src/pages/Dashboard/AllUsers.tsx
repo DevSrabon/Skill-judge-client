@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import { toast } from "react-hot-toast";
 
 interface Iuser{
@@ -30,31 +31,39 @@ const AllUsers = () => {
                 refetch();
             });
     }
-
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
     return (
-        <div className="overflow-x-auto">
-         <table className="table table-zebra w-full"> 
-          <thead>
-           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>Delete</th>
-           </tr>
-          </thead>
-          <tbody> 
-            {
-                allUsres.map((usr: Iuser, i: number) => <tr key={usr._id}>
-                    <th>{i+1}</th>
-                    <td>{usr.name}</td>
-                    <td>{usr.email}</td>
-                    <td><button onClick={() => handleDeleteUser(usr._id)} className="btn btn-sm bg-black">Delete</button></td>
-                </tr>)
-            }  
-          </tbody>
-         </table>
-        </div>
-    )
+			<div className="overflow-x-auto p-4 lg:ml-64 mt-12">
+				<table className="table table-zebra w-full">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Email Address</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						{allUsres.map((usr: Iuser, i: number) => (
+							<tr key={usr._id}>
+								<th>{i + 1}</th>
+								<td>{usr.name}</td>
+								<td>{usr.email}</td>
+								<td>
+									<button
+										onClick={() => handleDeleteUser(usr._id)}
+										className="btn btn-sm bg-black">
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		);
 }
 
 export default AllUsers;
