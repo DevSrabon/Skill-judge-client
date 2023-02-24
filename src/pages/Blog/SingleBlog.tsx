@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider";
@@ -6,46 +7,51 @@ const SingleBlog = () => {
   const { user }: any = useAuth();
 
   console.log(user);
-	const { dbUser }: any = useUser();
-console.log(dbUser);
-  
+  const { dbUser }: any = useUser();
+  console.log(dbUser);
+
   const params = useParams();
 
-const [blogData, setBlogData] = useState<any>([]);
+  const [blogData, setBlogData] = useState<any>([]);
 
-useEffect(() => {
-  fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
-    .then((response) => response.json())
-    .then((data) => setBlogData(data));
-}, [params]);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
+      .then((response) => response.json())
+      .then((data) => setBlogData(data));
+  }, [params]);
 
-console.log(blogData);
+  console.log(blogData);
 
   const submitComment = (e) => {
     e?.preventDefault();
-    fetch(`${process.env.REACT_APP_API_URL}/blog/comment`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        blogId: blogData[0]._id,
-        name: dbUser.name,
-        userId: dbUser._id,
-        userImage: dbUser.photo,
-        comment: e.target.comment.value,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-         fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
-           .then((response) => response.json())
-           .then((data) => setBlogData(data));
-      });
+    if (e.target.comment.value) {
+      fetch(`${process.env.REACT_APP_API_URL}/blog/comment`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          blogId: blogData[0]._id,
+          name: dbUser.name,
+          userId: dbUser._id,
+          userImage: dbUser.photo,
+          comment: e.target.comment.value,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`)
+            .then((response) => response.json())
+            .then((data) => {
+              setBlogData(data);
+              e.target.reset();
+            });
+        });
+    }
   };
-const removeComment=(data)=>{
-  console.log(data);
-}
+  const removeComment = (data) => {
+    console.log(data);
+  };
   return (
     <div className="px-5 md:px-20 bg-[#232427] text-white">
       {blogData.map((data: any) => (
@@ -59,7 +65,9 @@ const removeComment=(data)=>{
               </div>
               <div className="flex gap-3">
                 <p>publish date : </p>
-                <h2 className="font-bold"> {data.timePost}</h2>
+                <h2 className="font-bold">
+                  {moment(data.timePost).fromNow()}
+                </h2>
               </div>
             </div>
             <hr className="my-2"></hr>
@@ -158,28 +166,51 @@ const removeComment=(data)=>{
                   </div>
                 </div>
               </div>
-              <div>{comment.comment}</div>
+              <div className="mt-3 ml-5">{comment.comment}</div>
             </div>
           ))}
         </div>
       )}
 
       {user && (
-        <form
-          onSubmit={submitComment}
-          className="flex justify-center gap-10 py-10"
-        >
-          <input
-            type="text"
-            name="comment"
-            placeholder="Your Comment"
-            className="border border-blue-500 p-2 rounded-md text-xs w-full ransition ease-in-out hover:-translate-x-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 duration-75"
-          />
+        <form onSubmit={submitComment}>
+          <div className="flex flex-col md:flex-row gap-5 w-full">
+            <div className="flex flex-col w-full">
+              <label className="leading-loose">Your Name</label>
+              <input
+                defaultValue={dbUser.name}
+                readOnly
+                name="name"
+                type="text"
+                className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 dark:text-white"
+                placeholder="Your Name"
+              />
+            </div>
+            <div className="flex flex-col w-full">
+              <label className="leading-loose">Your Email</label>
+              <input
+                defaultValue={dbUser.email}
+                readOnly
+                name="email"
+                type="email"
+                className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 dark:text-white"
+                placeholder="Your Email"
+              />
+            </div>
+          </div>
+          <div className="flex justify-center gap-10 pb-10 pt-5">
+            <input
+              type="text"
+              name="comment"
+              placeholder="Your Comment"
+              className="dark:text-white text-black border border-blue-500 p-2 rounded-md text-xs w-full ransition ease-in-out hover:-translate-x-1 hover:scale-105 focus:-translate-y-1 focus:scale-105 duration-75"
+            />
 
-          <input
-            type="submit"
-            className="border border-sky-700 active:bg-slate-300 rounded-xl p-1 text-xl cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-75"
-          />
+            <input
+              type="submit"
+              className="border border-sky-700 active:bg-slate-300 rounded-xl p-1 text-xl cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-75"
+            />
+          </div>
         </form>
       )}
     </div>

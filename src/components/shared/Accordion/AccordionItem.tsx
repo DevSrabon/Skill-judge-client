@@ -1,4 +1,3 @@
-import React from "react";
 import { Collapse } from "react-collapse";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { TiArrowSortedUp } from "react-icons/ti";
@@ -6,10 +5,14 @@ import { TiArrowSortedUp } from "react-icons/ti";
 type AccordionItemPropType = {
     openAccordionBody: boolean;
     id: number;
-    toggleAccordion:(index: number) => void
+    toggleAccordion:(index: number) => void;
+    accordion:{
+        title:string;
+        answer:string;
+    }
 };
 const AccordionItem = (props: AccordionItemPropType) => {
-    const { openAccordionBody, toggleAccordion, id } = props;
+    const { openAccordionBody, toggleAccordion, id, accordion } = props;
 
     return (
         <div>
@@ -24,9 +27,9 @@ const AccordionItem = (props: AccordionItemPropType) => {
                             : "border-stone-800 dark:border-red-500 "
                     } `}
                 >
-                    <header className="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none">
-                        <span className="text-indigo font-thin text-xl">
-                            Lorem ipsum dolor sit amet
+                    <header className="flex justify-between items-center py-4 px-5 pl-8 pr-8 cursor-pointer select-none">
+                        <span className="text-indigo font-thin text-lg">
+                            {accordion?.title}
                         </span>
                         <div className="flex items-center justify-center">
                             {openAccordionBody ? (
@@ -40,17 +43,10 @@ const AccordionItem = (props: AccordionItemPropType) => {
                         <div>
                             <div className="pl-8 pr-8  pb-5 text-grey-darkest">
                                 <ul className="pl-4">
-                                    <li className="pb-2">
-                                        consectetur adipiscing elit
+                                    <li className="pb-2 text-sm">
+                                        {accordion?.answer}
                                     </li>
-                                    <li className="pb-2">
-                                        sed do eiusmod tempor incididunt ut
-                                        labore et dolore magna aliqua
-                                    </li>
-                                    <li className="pb-2">
-                                        Viverra orci sagittis eu volutpat odio
-                                        facilisis mauris
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>
