@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import { useUser } from '../../contexts/UserProvider';
 import CommunityPostModal from './CommunityPostModal';
 import CommunityPosts from "./CommunityPosts";
 
 const CommunityHome = () => {
     const [isModalOpen, setIsModalOpen]: any = useState(false);
-    console.log(isModalOpen);
     const { dbUser }: any = useUser();
     return (
         <div>
@@ -20,11 +18,7 @@ const CommunityHome = () => {
                         }
                     </div>
                 </div>
-                {
-                    dbUser?._id ? <label onClick={() => setIsModalOpen(true)} htmlFor="my-modal" className="border p-3 bg-gray-50 hover:bg-gray-100 dark:bg-zinc-600 dark:hover:bg-zinc-500 hover:cursor-pointer text-lg dark:text-white rounded-full w-full max-w-lg">Talk about anything regarding programming ...</label>
-                        : <label className="border p-3 bg-gray-50 hover:bg-gray-100 dark:bg-zinc-600 dark:hover:bg-zinc-500 text-lg dark:text-white rounded w-full max-w-sm"><Link to={'/login'} className='font-bold'>Login to start talking with programmers </Link> </label>
-                }
-
+                <label onClick={() => setIsModalOpen(true)} htmlFor="my-modal" className="border p-3 bg-gray-50 hover:bg-gray-100 dark:bg-zinc-600 dark:hover:bg-zinc-500 hover:cursor-pointer text-lg dark:text-white rounded-full w-full max-w-lg">Talk about anything regarding programming ...</label>
             </div>
             <div>
                 <CommunityPosts></CommunityPosts>

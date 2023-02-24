@@ -9,7 +9,6 @@ import TopQuestion from "../pages/Home/TopQuestion/TopQuestion";
 import QuestionAns from "../pages/QuestionAns/QuestionAns";
 import NotFound from "../pages/404";
 import SingleQnA from "../pages/QuestionAns/SingleQnA";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import QuizTopicCards from "../pages/Quiz/QuizTopicCards/QuizTopicCards";
@@ -28,14 +27,17 @@ import AllSubmission from "../pages/Dashboard/AllSubmission";
 import SingleSubmission from "../pages/UserDashboard/SingleSubmission";
 import TermsOfUse from "../SharedComponent/TermsOfUse";
 import Form from "../pages/Home/Form/Form";
+import CommunityHome from "../pages/Community/CommunityHome";
+import PostProvider from "../contexts/PostProvider";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import DashboardV2 from "../pages/Dashboard/DashboardV2";
 import DashboardLayout from "../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Main />,
-        children: [
+            {
+            path: "/",
+            element: <Main />,
+            children: [
             {
                 path: "/",
                 element: <Home />,
@@ -44,6 +46,10 @@ export const router = createBrowserRouter([
                 path: "/terms-of-use",
                 element: <TermsOfUse></TermsOfUse>,
             },
+            {
+				path: "/privacy-policy",
+				element: <PrivacyPolicy />,
+			},
             {
                 path: "contact-us",
                 element: <Form></Form>,
@@ -92,6 +98,10 @@ export const router = createBrowserRouter([
                     ),
                 element: <SingleQnA></SingleQnA>,
             },
+            {
+				    path: '/community-home',
+				    element: <PrivateRoute><PostProvider><CommunityHome></CommunityHome></PostProvider></PrivateRoute>
+			      },
             {
                 path: "/free",
                 element: <Compiler />,

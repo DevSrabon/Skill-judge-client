@@ -50,6 +50,7 @@ const CommunityPostModal = ({ setIsModalOpen }) => {
                             name: dbUser.name,
                             text: data.text,
                             photo: imgData.data.url,
+                            likes: [],
                             date: new Date()
                         }
 
@@ -63,6 +64,7 @@ const CommunityPostModal = ({ setIsModalOpen }) => {
                 userPhoto: dbUser.photo,
                 name: dbUser.name,
                 text: data.text,
+                likes: [],
                 date: new Date()
             }
 

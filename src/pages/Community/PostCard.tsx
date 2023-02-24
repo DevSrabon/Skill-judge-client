@@ -1,11 +1,74 @@
 import { AiFillLike } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
-import { GrLike } from 'react-icons/gr';
+import { HiThumbUp } from 'react-icons/hi';
 import { GoComment } from 'react-icons/go';
 import moment from 'moment';
+import { toast } from 'react-hot-toast';
+import { useUser } from '../../contexts/UserProvider';
 
-const PostCard = ({ post }) => {
-    const { _id, email, userPhoto, name, text, date, photo } = post;
+const PostCard = ({ post, refetch }) => {
+    const { _id, email, userPhoto, name, text, date, photo, likes } = post;
+    const { dbUser }: any = useUser();
+
+    const isLiked = likes?.includes(dbUser._id);
+
+    const makeLike = () => {
+        console.log('liked');
+        const info = {
+            postId: _id,
+            userId: dbUser._id
+        }
+        fetch(`${process.env.REACT_APP_API_URL}/community/post/like`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    toast.success('You liked the post');
+                    refetch();
+                }
+            })
+    }
+
+    const makeUnlike = () => {
+        console.log('unliked');
+        const info = {
+            postId: _id,
+            userId: dbUser._id
+        }
+        fetch(`${process.env.REACT_APP_API_URL}/community/post/unlike`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    toast.success('You unliked the post');
+                    refetch();
+                }
+            })
+    }
+
+    const makeLikeOrUnlike = () => {
+
+        if (isLiked) {
+            makeUnlike();
+        }
+        else {
+            makeLike();
+        }
+    }
 
     return (
         <div className="card w-full max-w-lg mx-auto bg-base-100 shadow-2xl my-8">
@@ -28,13 +91,13 @@ const PostCard = ({ post }) => {
             </div>
             <figure><img src={photo} alt="" /></figure>
             <div className='flex justify-between p-4'>
-                <p><AiFillLike className='bg-blue-600 text-white w-6 h-6 p-1 border rounded-full inline-block mr-1' />0</p>
+                <p><AiFillLike className='bg-blue-600 text-white w-6 h-6 p-1 border rounded-full inline-block mr-1' />{likes?.length}</p>
                 <p>0 comments</p>
             </div>
             <hr />
             <div className='flex justify-evenly py-4'>
-                <button className="btn btn-xs btn-ghost gap-2">
-                    <GrLike className='text-lg' />
+                <button onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost ${isLiked ? 'text-blue-600' : 'text-black'} gap-2`}>
+                    <HiThumbUp className={`text-xl ${isLiked ? 'text-blue-600' : 'text-black'}`} />
                     Like
                 </button>
                 <button className="btn btn-xs btn-ghost gap-2">
