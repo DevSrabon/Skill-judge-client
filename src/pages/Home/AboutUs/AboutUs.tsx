@@ -12,7 +12,8 @@ import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const AboutUs = () => {
-	const [active, setActive] = React.useState<boolean>(true);
+	const [active, setActive] = React.useState({});
+	console.log("🚀 ~ file: AboutUs.tsx:16 ~ AboutUs ~ active:", active)
 
 	const { data = [], isLoading } = useQuery({
 		queryKey: ["user"],
@@ -43,7 +44,7 @@ const AboutUs = () => {
 					/>
 				</div>
 			</div>
-			<div className="container">
+			<div className="containerz">
 				<Swiper
 					effect={"coverflow"}
 					grabCursor={true}
@@ -88,26 +89,31 @@ const AboutUs = () => {
 							<SwiperSlide>
 								<div className="grid items-center justify-center">
 									<img
-										onMouseEnter={() => setActive(false)}
-										onMouseLeave={() => setActive(true)}
+										// onMouseEnter={() => setActive(false)}
+										// onMouseLeave={() => setActive(true)}
 										src={team.img}
 										alt={team.name}
 										className="h-72 md:h-96 w-96  shadow-lg text-center bg-white"
 										loading="lazy"
 									/>
-									<div
-										onMouseEnter={() => setActive(false)}
-										onMouseLeave={() => setActive(true)}
-										className="-mt-[60px] px-2 py-2 bg-white w-[80%] mx-auto rounded shadow-lg">
-										<h2 className="text-center text-sm md:text-xl font-bold text-pink-800 py-2">
-											{team.name}
-										</h2>
-										<h2 className="font-semibold text-center text-sm md:text-lg  text-info">
-											{team.role}
-										</h2>
+									<div className="-mt-[60px] px-2 py-2 bg-white w-[80%] mx-auto rounded shadow-lg">
 										<div
+											onMouseEnter={() =>
+												setActive({ [team._id]: !active[team._id] })
+											}>
+											<h2 className="text-center text-sm md:text-xl font-bold text-pink-800 py-2">
+												{team.name}
+											</h2>
+											<h2 className="font-semibold text-center text-sm md:text-lg  text-info">
+												{team.role}
+											</h2>
+										</div>
+										<div
+											onMouseLeave={() =>
+												setActive({ [team._id]: active[team._id] })
+											}
 											className={` ${
-												active ? "hidden" : "block"
+												active[team._id] ? "block" : "hidden"
 											}  flex justify-center gap-5 text-2xl pt-3 text-info`}>
 											<a href={team.linkedin}>
 												<AiFillLinkedin className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
