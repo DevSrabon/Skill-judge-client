@@ -36,17 +36,10 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 	const [language, setLanguage] = useState<ILanguage>(languageOptions[0]);
 	const [userInput, setUserInput] = useState<string>(``);
 	const [result, setResult] = useState<string>("");
-	console.log(
-		"🚀 ~ file: Compiler.tsx:40 ~ Main",
-		JSON.stringify(result) === JSON.stringify(resultOutput)
-	);
 	const [processing, setProcessing] = useState<boolean>(false);
 	const [isCorrect, setIsCorrect] = useState<boolean>(false);
-	console.log("🚀 ~ file: Compiler.tsx:45 ~ isCorrect", isCorrect)
 	const [show,setShow]=useState<boolean>(false);
 	const [confetti,setConfetti]=useState<boolean>(false);
-	console.log("🚀 ~ file: Compiler.tsx:41 ~ confetti", confetti)
-	
 
 	const {user}:any=useAuth()
 	const onSelectChange = (sl: ILanguage) => {
