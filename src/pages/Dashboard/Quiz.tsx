@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-
+import React from "react"
 const Quiz = () => {
 
     	const { data:quiz }: any = useQuery({
@@ -11,15 +11,17 @@ const Quiz = () => {
 						},
 					}).then((res) => res.json()),
 			});
-			console.log(quiz);
-;
+			React.useEffect(() => {
+				window.scrollTo(0, 0);
+			}, []);
    return (
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto lg:ml-64 mt-12">
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr className="text-center">
 							<th>Attempt</th>
 							<th>Quiz Name</th>
+							<th>User Name</th>
 							<th>Email Address</th>
 							<th>Total Mark</th>
 							<th>Score</th>
@@ -32,6 +34,7 @@ const Quiz = () => {
 							<tr className="text-center" key={user?._id}>
 								<th>{i + 1}</th>
 								<td>{user?.name}</td>
+								<td>{user?.userName}</td>
 								<td>{user?.email}</td>
 								<td>{user?.score + user?.wrong}</td>
 								<td>{user?.score}</td>

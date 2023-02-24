@@ -11,10 +11,12 @@ interface IUser {
 }
 const PaidUser = () => {
     const { paidUser }: any = usePaidUser()
-    console.log(paidUser)
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
     
     return (
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto lg:ml-64 mt-12">
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr>
@@ -31,7 +33,6 @@ const PaidUser = () => {
 								<td>{user.name}</td>
 								<td>{user.email}</td>
 								<td>${user.price}</td>
-								
 							</tr>
 						))}
 					</tbody>
