@@ -161,8 +161,8 @@ const Nav = () => {
 				<div>
 					<div className="flex items-center justify-between  lg:block">
 						<Link to="/">
-							<h2 className="text-2xl dark:text-white text-gray-600 font-bold">
-								<img src={logo} className="w-16 " alt="" />
+							<h2 className="text-2xl dark:text-white text-gray-600 font-bold flex items-center">
+								<img src={logo} className="w-16 " alt="" /> Skill Judge
 							</h2>
 						</Link>
 						<div className="lg:hidden flex items-center gap-1 justify-center">

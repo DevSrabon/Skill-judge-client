@@ -10,7 +10,7 @@ const SharpenSkill = () => {
                 <p className="text-xl mb-4">
                     Looking to sharpen your coding skills? Skill Judge has got you covered! Our platform offers a range of immersive challenges and tutorials designed to help programmers of all levels learn new concepts, refine their skills, and challenge themselves in a fun and engaging way.
                 </p>
-                <button className="btn btn-outline btn-wide text-white">Join our Community</button>
+                <Link to={'/community-home'} className="btn btn-outline btn-wide text-white">Join our Community</Link>
             </div>
             <div className="p-4 my-auto">
                 <div className="rounded-md bg-gradient-to-r from-[#636E81] via-[#8D7E6B] to-[#B48F5D] p-1">

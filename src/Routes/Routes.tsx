@@ -35,172 +35,172 @@ import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/terms-of-use",
-        element: <TermsOfUse></TermsOfUse>,
-      },
-      {
-        path: "/privacy-policy",
-        element: <PrivacyPolicy/>,
-      },
-      {
-        path: "contact-us",
-        element: <Form></Form>,
-      },
-      {
-        path: "/book/:id",
-        element: (
-          <PrivateRoute>
-            <Booking />
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
-      },
-      {
-        path: "/top-questions/:id",
-        element: <TopQuestion />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-      {
-        path: "/my-profile",
-        element: <MyProfile></MyProfile>,
-      },
-      {
-        path: "/qna",
-        loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
-        element: (
-          <PrivateRoute>
-            <QuestionAns />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/singleqna/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-        element: <SingleQnA></SingleQnA>,
-      },
-      {
-				path: '/community-home',
-				element: <PostProvider><CommunityHome></CommunityHome></PostProvider>
+	{
+		path: "/",
+		element: <Main />,
+		children: [
+			{
+				path: "/",
+				element: <Home />,
 			},
-      {
-        path: "/free",
-        element: <Compiler />,
-      },
-      {
-        path: "/quiz",
-        element: <QuizTopicCards />,
-      },
-      {
-        path: "/quiz/:name",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
-        element: <QuizQuesCards />,
-      },
-      {
-        path: "/singleqna/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <SingleQnA></SingleQnA>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-        children: [
-          {
-            path: "/dashboard/all-users",
-            element: <AllUsers />,
-          },
-          {
-            path: "/dashboard/paiduser",
-            element: <PaidUser />,
-          },
-          {
-            path: "/dashboard/quiz",
-            element: <Quiz />,
-          },
-          {
-            path: "/dashboard/allsubmission",
-            element: <AllSubmission />,
-          },
-        ],
-      },
-      {
-        path: "/userDashboard",
-        element: (
-          <PrivateRoute>
-            <UserDashboard />
-          </PrivateRoute>
-        ),
-        children: [
-          {
-            path: "/userDashboard/quiz",
-            element: <SingleQuiz />,
-          },
-          {
-            path: "/userDashboard/singlesubmission",
-            element: <SingleSubmission />,
-          },
-        ],
-      },
-      {
-        path: "/about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "/basic",
-        element: <BasicProblem />,
-      },
-      {
-        path: "/blog",
-        loader: () => fetch(`${process.env.REACT_APP_API_URL}/blog`),
-        element: <Blog></Blog>,
-      },
-      {
-        path: "/blog/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
-        element: <SingleBlog></SingleBlog>,
-      },
-      {
-        path: "/problems/:id",
-        loader: ({ params }) =>
-          fetch(`${process.env.REACT_APP_API_URL}/problems/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <ProblemDetails></ProblemDetails>
-          </PrivateRoute>
-        ),
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <NotFound></NotFound>,
-  },
+			{
+				path: "/terms-of-use",
+				element: <TermsOfUse></TermsOfUse>,
+			},
+			{
+				path: "/privacy-policy",
+				element: <PrivacyPolicy />,
+			},
+			{
+				path: "contact-us",
+				element: <Form></Form>,
+			},
+			{
+				path: "/book/:id",
+				element: (
+					<PrivateRoute>
+						<Booking />
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/book/${params.id}`),
+			},
+			{
+				path: "/top-questions/:id",
+				element: <TopQuestion />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <Signup />,
+			},
+			{
+				path: "/my-profile",
+				element: <MyProfile></MyProfile>,
+			},
+			{
+				path: "/qna",
+				loader: () => fetch(`${process.env.REACT_APP_API_URL}/qna`),
+				element: (
+					<PrivateRoute>
+						<QuestionAns />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: "/singleqna/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+				element: <SingleQnA></SingleQnA>,
+			},
+			{
+				path: '/community-home',
+				element: <PrivateRoute><PostProvider><CommunityHome></CommunityHome></PostProvider></PrivateRoute>
+			},
+			{
+				path: "/free",
+				element: <Compiler />,
+			},
+			{
+				path: "/quiz",
+				element: <QuizTopicCards />,
+			},
+			{
+				path: "/quiz/:name",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/quiz/${params.name}`),
+				element: <QuizQuesCards />,
+			},
+			{
+				path: "/singleqna/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/qnasingle/${params.id}`),
+				element: (
+					<PrivateRoute>
+						<SingleQnA></SingleQnA>
+					</PrivateRoute>
+				),
+			},
+			{
+				path: "/dashboard",
+				element: (
+					<PrivateRoute>
+						<Dashboard />
+					</PrivateRoute>
+				),
+				children: [
+					{
+						path: "/dashboard/all-users",
+						element: <AllUsers />,
+					},
+					{
+						path: "/dashboard/paiduser",
+						element: <PaidUser />,
+					},
+					{
+						path: "/dashboard/quiz",
+						element: <Quiz />,
+					},
+					{
+						path: "/dashboard/allsubmission",
+						element: <AllSubmission />,
+					},
+				],
+			},
+			{
+				path: "/userDashboard",
+				element: (
+					<PrivateRoute>
+						<UserDashboard />
+					</PrivateRoute>
+				),
+				children: [
+					{
+						path: "/userDashboard/quiz",
+						element: <SingleQuiz />,
+					},
+					{
+						path: "/userDashboard/singlesubmission",
+						element: <SingleSubmission />,
+					},
+				],
+			},
+			{
+				path: "/about-us",
+				element: <AboutUs />,
+			},
+			{
+				path: "/basic",
+				element: <BasicProblem />,
+			},
+			{
+				path: "/blog",
+				loader: () => fetch(`${process.env.REACT_APP_API_URL}/blog`),
+				element: <Blog></Blog>,
+			},
+			{
+				path: "/blog/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/blog/${params.id}`),
+				element: <SingleBlog></SingleBlog>,
+			},
+			{
+				path: "/problems/:id",
+				loader: ({ params }) =>
+					fetch(`${process.env.REACT_APP_API_URL}/problems/${params.id}`),
+				element: (
+					<PrivateRoute>
+						<ProblemDetails></ProblemDetails>
+					</PrivateRoute>
+				),
+			},
+		],
+	},
+	{
+		path: "*",
+		element: <NotFound></NotFound>,
+	},
 ]);
