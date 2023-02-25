@@ -35,11 +35,11 @@ const AllUsers = () => {
 		window.scrollTo(0, 0);
 	}, []);
     return (
-			<div className="overflow-x-auto p-4 lg:ml-64 mt-12">
+			<div className="overflow-x-auto p-4 lg:ml-64 mt-10">
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr>
-							<th></th>
+							<th>SL.</th>
 							<th>Name</th>
 							<th>Email Address</th>
 							<th>Delete</th>
