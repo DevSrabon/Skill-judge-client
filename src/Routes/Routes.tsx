@@ -32,6 +32,7 @@ import PostProvider from "../contexts/PostProvider";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import DashboardV2 from "../pages/Dashboard/DashboardV2";
 import DashboardLayout from "../Layout/DashboardLayout";
+import AddProblems from "../pages/Dashboard/AddProblems";
 
 export const router = createBrowserRouter([
             {
@@ -205,6 +206,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/allSubmission",
                 element: <AllSubmission />,
+            },
+            {
+                path: "/dashboard/addProblem",
+                element: <AddProblems/>,
             },
         ],
     },

@@ -9,7 +9,7 @@ const BasicProblem = () => {
 	const [search, setSearch] = useState<string>("");
 	const [filter, setFilter] = useState<boolean>(false);
 	const { isLoading, error, data }: any = useQuery({
-		queryKey: ["user"],
+		queryKey: ["problems"],
 		queryFn: () =>
 			fetch(`${process.env.REACT_APP_API_URL}/problems`, {
 				headers: {
