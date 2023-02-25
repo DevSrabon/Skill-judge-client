@@ -20,10 +20,10 @@ const PaidUser = () => {
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr>
-							<th></th>
+							<th>SL.</th>
 							<th>Name</th>
 							<th>Email Address</th>
-							<th>Paid</th>
+							<th>Payment</th>
 						</tr>
 					</thead>
 					<tbody>

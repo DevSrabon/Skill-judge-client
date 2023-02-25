@@ -24,12 +24,13 @@ interface ILanguage {
 interface ITheme {
 	value: string;
 	label: string;
-}type Props = {
-	resultOutput?: string | undefined;
-	title?: string | undefined;
-};
-const Compiler: React.FC<Props> = ({resultOutput, title}) => {
-	console.log("🚀 ~ file: Compiler.tsx:33 ~ resultOutput", JSON.stringify(resultOutput))
+}
+const Compiler = ({ resultOutput }: any) => {
+	const { output, output1, output2, title } = resultOutput;
+	console.log(
+		"🚀 ~ file: Compiler.tsx:33 ~ resultOutput",
+		JSON.stringify(resultOutput)
+	);
 	const [input, setInput] = useState<string>(``);
 	const [theme, setTheme] = useState<ITheme>({} as ITheme);
 	const [outputDetails, setOutputDetails] = useState<string>(``);
@@ -38,10 +39,11 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 	const [result, setResult] = useState<string>("");
 	const [processing, setProcessing] = useState<boolean>(false);
 	const [isCorrect, setIsCorrect] = useState<boolean>(false);
-	const [show,setShow]=useState<boolean>(false);
-	const [confetti,setConfetti]=useState<boolean>(false);
+	const [show, setShow] = useState<boolean>(false);
+	const [confetti, setConfetti] = useState<boolean>(false);
+	console.log("🚀 ~ file: Compiler.tsx:44 ~ Compiler ~ confetti:", confetti)
 
-	const {user}:any=useAuth()
+	const { user }: any = useAuth();
 	const onSelectChange = (sl: ILanguage) => {
 		console.log("selected Option...", sl);
 		setLanguage(sl);
@@ -63,8 +65,8 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 	) => {
 		e.preventDefault();
 		setProcessing(true);
-		setOutputDetails(``)
-		setShow(false)
+		setOutputDetails(``);
+		setShow(false);
 
 		const response = await fetch(
 			"https://judge0-ce.p.rapidapi.com/submissions",
@@ -83,9 +85,9 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 				}),
 			}
 		);
-		
+
 		const jsonResponse = await response.json();
-		
+
 		let jsonGetSolution: any = {
 			status: { description: "Queue" },
 			stderr: null,
@@ -96,14 +98,14 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			jsonGetSolution.status.description !== "Accepted" &&
 			jsonGetSolution.stderr == null &&
 			jsonGetSolution.compile_output == null
-			) {
-				if (jsonResponse.token) {
-					let url = `https://judge0-ce.p.rapidapi.com/submissions/${jsonResponse.token}?base64_encoded=true`;
-					
-					const getSolution = await fetch(url, {
-						method: "GET",
-						headers: {
-							"x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+		) {
+			if (jsonResponse.token) {
+				let url = `https://judge0-ce.p.rapidapi.com/submissions/${jsonResponse.token}?base64_encoded=true`;
+
+				const getSolution = await fetch(url, {
+					method: "GET",
+					headers: {
+						"x-rapidapi-host": "judge0-ce.p.rapidapi.com",
 						"x-rapidapi-key": `${process.env.REACT_APP_COMPILER_API_KEY}`,
 						"content-type": "application/json",
 					},
@@ -118,57 +120,68 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			}
 			if (
 				JSON.stringify(atob(jsonGetSolution.stdout).replace(/\n/g, "")) ===
-				JSON.stringify(resultOutput)
+				JSON.stringify(output || output1 || output2)
 			) {
 				setIsCorrect(true);
 			}
 		}
-		
-
 	};
 	const startIt = () => {
 		setTimeout(function () {
 			setConfetti(false);
-			
 		}, 7000);
 	};
 	const handleResultSubmit = () => {
-		
 		console.log(JSON.stringify(result) === JSON.stringify(resultOutput));
-	fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
-		method: "POST",
-		headers: {
-			"content-type": "application/json",
-			authorization: `bearer ${localStorage.getItem("token")}`,
-		},
-		body: JSON.stringify({
-			correct: isCorrect,
-			email: user?.email,
-			title: title,
-			userName: user?.displayName,
-		}),
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			if (data.acknowledged) {
-				toast.success("Saved");
-				setShow(true);
-				if (JSON.stringify(result) === JSON.stringify(resultOutput)) {
-					startIt();
-					setConfetti(true);
+		fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+				authorization: `bearer ${localStorage.getItem("token")}`,
+			},
+			body: JSON.stringify({
+				correct: isCorrect,
+				email: user?.email,
+				title: title,
+				userName: user?.displayName,
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.acknowledged) {
+					toast.success("Saved");
+					setShow(true);
+					if (
+						JSON.stringify(result) ===
+						JSON.stringify(output)
+					) {
+						startIt();
+						setConfetti(true);
+					}
+					if (
+						JSON.stringify(result) ===
+						JSON.stringify(output1)
+					) {
+						startIt();
+						setConfetti(true);
+					}
+					if (
+						JSON.stringify(result) ===
+						JSON.stringify(output2)
+					) {
+						startIt();
+						setConfetti(true);
+					}
+				} else {
+					toast.error(data.message);
 				}
-			} else {
-				toast.error(data.message);
-			}
-		});
-};
-		const [width, height] = useWindowSize();
-
+			});
+	};
+	const [width, height] = useWindowSize();
 
 	React.useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-
 
 	const handleThemeChange = (th: any) => {
 		console.log("theme...", th);
@@ -185,7 +198,6 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 			setTheme({ value: "oceanic-next", label: "Oceanic Next" })
 		);
 	}, []);
-
 
 	return (
 		<>
@@ -213,9 +225,7 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 				</div>
 
 				<div className="flex flex-shrink-0 w-[30%] flex-col">
-					<OutputWindow
-						outputDetails={outputDetails}
-					/>
+					<OutputWindow outputDetails={outputDetails} />
 					<div className="flex flex-col items-end">
 						<CustomInput
 							customInput={userInput}
@@ -223,7 +233,7 @@ const Compiler: React.FC<Props> = ({resultOutput, title}) => {
 						/>
 
 						<div className="flex gap-2">
-							{resultOutput && (
+							{(output || output1 || output2) && (
 								<button
 									onClick={handleResultSubmit}
 									disabled={!outputDetails || processing || show}
