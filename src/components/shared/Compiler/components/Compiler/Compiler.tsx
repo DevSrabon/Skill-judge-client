@@ -26,7 +26,7 @@ interface ITheme {
 	label: string;
 }
 const Compiler = ({ resultOutput }: any) => {
-	const { output, output1, output2, title } = resultOutput;
+	const { output, output1, output2, title, valueDefault } = resultOutput;
 	console.log(
 		"🚀 ~ file: Compiler.tsx:33 ~ resultOutput",
 		JSON.stringify(resultOutput)
@@ -217,6 +217,7 @@ const Compiler = ({ resultOutput }: any) => {
 			<div className="flex flex-row space-x-4 items-start px-4 py-4">
 				<div className="flex flex-col w-full h-full justify-start items-end">
 					<CodeEditorWindow
+						valueDefault={valueDefault}
 						code={input}
 						onChange={onChange}
 						language={language?.value}

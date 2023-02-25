@@ -33,6 +33,7 @@ const ProblemDetails = () => {
 		output: string;
 		output1: string;
 		output2: string;
+		valueDefault: string;
 	} = data[0];
 
 	React.useEffect(() => {
@@ -80,7 +81,7 @@ const ProblemDetails = () => {
 				)}
 			</div>
 			<div className="col-span-4">
-				<Compiler resultOutput={data[0]}  />
+				<Compiler resultOutput={data[0]} />
 			</div>
 		</div>
 	);
