@@ -5,15 +5,17 @@ import { GoComment } from 'react-icons/go';
 import moment from 'moment';
 import { toast } from 'react-hot-toast';
 import { useUser } from '../../contexts/UserProvider';
+import { useState } from 'react';
 
 const PostCard = ({ post, refetch }) => {
     const { _id, email, userPhoto, name, text, date, photo, likes } = post;
     const { dbUser }: any = useUser();
+    const [loading, setLoading] = useState(false);
 
     const isLiked = likes?.includes(dbUser._id);
 
     const makeLike = () => {
-        console.log('liked');
+        setLoading(true);
         const info = {
             postId: _id,
             userId: dbUser._id
@@ -31,13 +33,14 @@ const PostCard = ({ post, refetch }) => {
                 if (data.modifiedCount > 0) {
                     console.log(data);
                     toast.success('You liked the post');
+                    setLoading(false);
                     refetch();
                 }
             })
     }
 
     const makeUnlike = () => {
-        console.log('unliked');
+        setLoading(true);
         const info = {
             postId: _id,
             userId: dbUser._id
@@ -55,6 +58,7 @@ const PostCard = ({ post, refetch }) => {
                 if (data.modifiedCount > 0) {
                     console.log(data);
                     toast.success('You unliked the post');
+                    setLoading(false);
                     refetch();
                 }
             })
@@ -96,7 +100,7 @@ const PostCard = ({ post, refetch }) => {
             </div>
             <hr />
             <div className='flex justify-evenly py-4'>
-                <button onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost ${isLiked ? 'text-blue-600' : 'text-black'} gap-2`}>
+                <button disabled={loading} onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost ${isLiked ? 'text-blue-600' : 'text-black'} gap-2`}>
                     <HiThumbUp className={`text-xl ${isLiked ? 'text-blue-600' : 'text-black'}`} />
                     Like
                 </button>
