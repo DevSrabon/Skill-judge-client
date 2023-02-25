@@ -44,7 +44,7 @@ const AboutUs = () => {
 					/>
 				</div>
 			</div>
-			<div className="containerz">
+			<div className="container rounded-lg">
 				<Swiper
 					effect={"coverflow"}
 					grabCursor={true}
@@ -96,7 +96,7 @@ const AboutUs = () => {
 										className="h-72 md:h-96 w-96  shadow-lg text-center bg-white"
 										loading="lazy"
 									/>
-									<div className="-mt-[60px] px-2 py-2 bg-white w-[80%] mx-auto rounded shadow-lg">
+									<div className="-mt-[60px] px-2 py-2 bg-white w-[80%] mx-auto rounded-lg shadow-lg">
 										<div
 											onMouseEnter={() =>
 												setActive({ [team._id]: !active[team._id] })
