@@ -14,7 +14,7 @@ const CommunityHome = () => {
                 <div className="avatar">
                     <div className="w-12 h-12 rounded-full mr-3">
                         {
-                            dbUser?._id ? <img src={dbUser.photo} alt={dbUser.name} /> : <FaUser className='w-full h-full text-blue-500' />
+                            dbUser?._id ? <img src={dbUser?.photo} alt={dbUser?.name} /> : <FaUser className='w-full h-full text-blue-500' />
                         }
                     </div>
                 </div>
