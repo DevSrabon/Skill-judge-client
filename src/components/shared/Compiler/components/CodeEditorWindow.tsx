@@ -24,7 +24,7 @@ const CodeEditorWindow = ({
 				language={language || "javascript"}
 				value={value}
 				theme={theme}
-				defaultValue={valueDefault|| "#Code Here"}
+				defaultValue={valueDefault|| "//Code Here"}
 				onChange={handleEditorChange}
 			/>
 		</div>

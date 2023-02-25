@@ -16,7 +16,7 @@ const PaidUser = () => {
 	}, []);
     
     return (
-			<div className="overflow-x-auto lg:ml-64 mt-12">
+			<div className="overflow-x-auto lg:ml-64 mt-14">
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr>

@@ -33,6 +33,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import DashboardV2 from "../pages/Dashboard/DashboardV2";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddProblems from "../pages/Dashboard/AddProblems";
+import ManageProblem from "../pages/Dashboard/ManageProblem";
 
 export const router = createBrowserRouter([
             {
@@ -210,6 +211,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/addProblem",
                 element: <AddProblems/>,
+            },
+            {
+                path: "/dashboard/manageProblems",
+                element: <ManageProblem/>,
             },
         ],
     },
