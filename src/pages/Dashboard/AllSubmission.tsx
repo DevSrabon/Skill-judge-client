@@ -15,7 +15,7 @@ const AllSubmission = () => {
 		window.scrollTo(0, 0);
 	}, []);
 	return (
-		<div className="overflow-x-auto lg:ml-64 mt-12">
+		<div className="overflow-x-auto lg:ml-64 mt-14">
 			<table className="table table-zebra w-full">
 				<thead>
 					<tr className="text-center">
