@@ -6,19 +6,21 @@ import moment from 'moment';
 import { toast } from 'react-hot-toast';
 import { useUser } from '../../contexts/UserProvider';
 import { useState } from 'react';
+import PostComments from './PostComments';
 
 const PostCard = ({ post, refetch }) => {
-    const { _id, email, userPhoto, name, text, date, photo, likes } = post;
+    const { _id, userId, userPhoto, name, text, date, photo, likes, comments } = post;
     const { dbUser }: any = useUser();
-    const [loading, setLoading] = useState(false);
-
-    const isLiked = likes?.includes(dbUser._id);
+    const [loading, setLoading] = useState(false); // for like button
+    const [showCommentBox, setShowCommentBox] = useState(false); // for opening comment box    
+    const [comment, setComment] = useState('');
+    const isLiked = likes?.includes(dbUser?._id);
 
     const makeLike = () => {
         setLoading(true);
         const info = {
             postId: _id,
-            userId: dbUser._id
+            userId: dbUser?._id
         }
         fetch(`${process.env.REACT_APP_API_URL}/community/post/like`, {
             method: 'PUT',
@@ -43,7 +45,7 @@ const PostCard = ({ post, refetch }) => {
         setLoading(true);
         const info = {
             postId: _id,
-            userId: dbUser._id
+            userId: dbUser?._id
         }
         fetch(`${process.env.REACT_APP_API_URL}/community/post/unlike`, {
             method: 'PUT',
@@ -74,6 +76,41 @@ const PostCard = ({ post, refetch }) => {
         }
     }
 
+    const checkEnter = e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleAddComment();
+        }
+    }
+
+    const handleAddComment = () => {
+        const commentInfo = {
+            postId: _id,
+            userId: dbUser?._id,
+            userPhoto: dbUser?.photo,
+            userName: dbUser?.name,
+            comment,
+            date: new Date()
+        }
+        fetch(`${process.env.REACT_APP_API_URL}/community/post/comment`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(commentInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    toast.success('You made a comment successfully');
+                    setShowCommentBox(false);
+                    refetch();
+                }
+            })
+    }
+
     return (
         <div className="card w-full max-w-lg mx-auto bg-base-100 shadow-2xl my-8">
             <div className="card-body">
@@ -87,30 +124,59 @@ const PostCard = ({ post, refetch }) => {
                         </div>
                     </div>
                     <div>
-                        <h3 className="font-bold">{name}</h3>
+                        <p className="font-bold">{name}</p>
                         <p>{moment(date).fromNow()}</p>
                     </div>
                 </div>
                 <p>{text}</p>
             </div>
+
+            {/* photo */}
             <figure><img src={photo} alt="" /></figure>
+
+            {/* number of likes and comments */}
             <div className='flex justify-between p-4'>
-                <p><AiFillLike className='bg-blue-600 text-white w-6 h-6 p-1 border rounded-full inline-block mr-1' />{likes?.length}</p>
-                <p>0 comments</p>
+                <p><HiThumbUp className='bg-blue-600 text-white w-6 h-6 p-[2px] border rounded-full inline-block mr-1' />{likes?.length}</p>
+                <p>{comments?.length} <GoComment className='w-5 h-5 inline-block' /></p>
             </div>
             <hr />
+
+            {/* Like and Comment Button */}
             <div className='flex justify-evenly py-4'>
                 <button disabled={loading} onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost ${isLiked ? 'text-blue-600' : 'text-black'} gap-2`}>
                     <HiThumbUp className={`text-xl ${isLiked ? 'text-blue-600' : 'text-black'}`} />
                     Like
                 </button>
-                <button className="btn btn-xs btn-ghost gap-2">
+                <button onClick={() => setShowCommentBox(true)} className="btn btn-xs btn-ghost gap-2">
                     <GoComment className='text-lg mt-1' />
                     Comment
                 </button>
             </div>
             <hr />
-            <div>
+
+            {/* Comment Box */}
+            {
+                showCommentBox && (
+                    <div className='flex items-center p-4'>
+                        <div className="avatar">
+                            <div className="w-12 h-12 rounded-full mr-3">
+                                {
+                                    dbUser?._id ? <img src={dbUser?.photo} alt={dbUser?.name} /> : <FaUser className='w-full h-full text-blue-500' />
+                                }
+                            </div>
+                        </div>
+                        <textarea onChange={(e) => setComment(e.target.value)} onKeyDown={checkEnter} placeholder='Write a comment...' className="textarea h-12 bg-gray-100 hover:bg-gray-200 dark:bg-zinc-600 dark:hover:bg-zinc-500 text-lg dark:text-white rounded-lg w-full">
+
+                        </textarea>
+                    </div>
+                )
+            }
+
+            {/* Comments */}
+            <div className='p-4'>
+                {
+                    comments?.map((singleComment, idx) => <PostComments key={idx} singleComment={singleComment}></PostComments>)
+                }
             </div>
         </div>
     );
