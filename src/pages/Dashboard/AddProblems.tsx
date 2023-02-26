@@ -11,6 +11,7 @@ const AddProblems = () => {
 		skills: string;
 		types: string;
 		titleDetails: string;
+		example1: string;
 		example2: string;
 		default: string;
 		output: string;
@@ -54,10 +55,42 @@ const AddProblems = () => {
 						skills: data.skills,
 						types: data.types,
 						titleDetails: data.titleDetails,
+						example1: data.example1,
 						example2: data.example2,
 						output1: data.output,
 						output2: data.output2,
 						image: imgData?.data?.url,
+						valueDefault: data.valueDefault,
+						date: new Date(),
+					};
+					// save problem information into the database
+					fetch(`${process.env.REACT_APP_API_URL}/addProblem`, {
+						method: "POST",
+						headers: {
+							"content-type": "application/json",
+							authorization: `bearer ${localStorage.getItem("accessToken")}`,
+						},
+						body: JSON.stringify(add),
+					})
+						.then((res) => res.json())
+						.then((result) => {
+							console.log(result);
+							toast.success(`${data.title} is added successfully`);
+							reset();
+						});
+				} else {
+					const add = {
+						email: user.email,
+						name: user.displayName,
+						title: data.title,
+						difficulty: data.difficulty,
+						skills: data.skills,
+						types: data.types,
+						titleDetails: data.titleDetails,
+						example1:data.example1,
+						example2: data.example2,
+						output1: data.output,
+						output2: data.output2,
 						valueDefault: data.valueDefault,
 						date: new Date(),
 					};
@@ -84,7 +117,7 @@ const AddProblems = () => {
 			<h1 className="text-xl font-semibold my-4 pt-4">Add Problem</h1>
 			<hr />
 			<form onSubmit={handleSubmit(handleAddProblem)}>
-				<div className="grid gap-4 grid-cols-3 my-5">
+				<div className="grid gap-4 grid-cols-4 my-5">
 					<div className="col-span-2 border rounded p-3">
 						<div className="form-control w-full">
 							<label className="label">
@@ -161,12 +194,12 @@ const AddProblems = () => {
 							<textarea
 								placeholder={"console.log('Hello')"}
 								className="textarea textarea-bordered w-full"
-								{...register("titleDetails", {
-									required: "titleDetails is required",
+								{...register("example1", {
+									required: "example1 is required",
 								})}
 							/>
-							{errors.titleDetails ? (
-								<p className="text-red-600">{errors.titleDetails?.message}</p>
+							{errors.example1 ? (
+								<p className="text-red-600">{errors.example1?.message}</p>
 							) : null}
 						</div>
 						<div className="form-control w-full">
@@ -180,7 +213,7 @@ const AddProblems = () => {
 							/>
 						</div>
 					</div>
-					<div className="col-span-1 border rounded p-3">
+					<div className="col-span-2 border rounded p-3">
 						<div className="form-control w-full">
 							<label className="label">
 								<span className="label-text font-semibold">
@@ -249,9 +282,8 @@ const AddProblems = () => {
 							<label className="label">
 								<span className="label-text font-semibold">Default Value</span>
 							</label>
-							<input
+							<textarea
 								className="input input-bordered w-full"
-								type="text"
 								{...register("valueDefault")}
 							/>
 						</div>

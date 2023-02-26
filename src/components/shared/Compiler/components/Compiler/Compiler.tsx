@@ -239,7 +239,7 @@ const Compiler = ({ resultOutput }: any) => {
 									onClick={handleResultSubmit}
 									disabled={!outputDetails || processing || show}
 									className={classnames(
-										"mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
+										"mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white dark:text-black flex-shrink-0",
 										!outputDetails ? "opacity-50" : ""
 									)}>
 									Submit
@@ -249,7 +249,7 @@ const Compiler = ({ resultOutput }: any) => {
 								onClick={handleSubmit}
 								disabled={!input || processing}
 								className={classnames(
-									"mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
+									"mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 dark:text-black bg-white flex-shrink-0",
 									!input ? "opacity-50" : ""
 								)}>
 								{processing ? "Processing..." : "Compile and Execute"}

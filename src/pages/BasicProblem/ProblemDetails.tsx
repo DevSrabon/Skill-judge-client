@@ -43,7 +43,7 @@ const ProblemDetails = () => {
 	return (
 		<div className="grid sm:grid-cols-1 md:grid-cols-5 gap-5  px-2 md:px-5 dark:text-white dark:bg-gray-800">
 			<div className="md:col-span-1 py-5 dark:bg-gray-800">
-				<h2 className="text-xl font-bold">{title}</h2>
+				<h2 className="text-xl font-bold">{titleDetails}</h2>
 				<p className="text-justify">{task}</p>
 				<p className="mt-4 font-semibold">Example1:</p>
 				{example1img ? (
@@ -52,7 +52,7 @@ const ProblemDetails = () => {
 					<img className="my-3" src={image} alt="" />
 				)}
 				<pre
-					dangerouslySetInnerHTML={{ __html: example1 || titleDetails }}
+					dangerouslySetInnerHTML={{ __html: example1 }}
 					className="w-10"></pre>
 				<p className="mt-4 font-semibold">Output1:</p>
 				<p className="p-3 bg-[#f7f7f8] dark:text-black">{output || output1}</p>
