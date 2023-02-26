@@ -8,8 +8,8 @@ const CommunityHome = () => {
     const [isModalOpen, setIsModalOpen]: any = useState(false);
     const { dbUser }: any = useUser();
     return (
-        <div>
-            <h2 className='text-4xl text-center font-bold dark:text-white mt-10'>Welcome to the Skill Judge Community Forum</h2>
+        <div className="dark:text-black">
+            <h2 className='text-4xl text-center font-bold  mt-10'>Welcome to the Skill Judge Community Forum</h2>
             <div className='flex items-center justify-center my-10'>
                 <div className="avatar">
                     <div className="w-12 h-12 rounded-full mr-3">

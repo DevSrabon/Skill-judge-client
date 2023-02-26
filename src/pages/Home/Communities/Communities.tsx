@@ -49,7 +49,7 @@ const Communities = () => {
 						commenting with constructive feedback.
 					</p>
 				</div>
-				<div className="rounded-lg mt-14  bg-stone-800 dark:bg-red-400 shadow-xl grid grid-cols-3">
+				<div className="rounded-lg mt-14  bg-stone-800 dark:bg-gray-900 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					<div className="flex py-[70px] space-y-5 space-x-5 justify-center items-center flex-col">
 						<h3 className="text-7xl font-semibold text-white">
 							<CountUp end={data && data?.users} start={0} />

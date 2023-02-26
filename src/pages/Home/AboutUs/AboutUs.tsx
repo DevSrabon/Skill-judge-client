@@ -101,10 +101,10 @@ const AboutUs = () => {
 											onMouseEnter={() =>
 												setActive({ [team._id]: !active[team._id] })
 											}>
-											<h2 className="text-center text-sm md:text-xl font-bold text-pink-800 py-2">
+											<h2 className="text-center text-sm md:text-xl font-bold dark:text-gray-900 py-2">
 												{team.name}
 											</h2>
-											<h2 className="font-semibold text-center text-sm md:text-lg  text-info">
+											<h2 className="font-semibold text-center text-sm md:text-lg  dark:text-gray-900">
 												{team.role}
 											</h2>
 										</div>
@@ -114,15 +114,15 @@ const AboutUs = () => {
 											}
 											className={` ${
 												active[team._id] ? "block" : "hidden"
-											}  flex justify-center gap-5 text-2xl pt-3 text-info`}>
+											}  flex justify-center gap-5 text-2xl pt-3 dark:text-gray-900`}>
 											<a href={team.linkedin}>
-												<AiFillLinkedin className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
+												<AiFillLinkedin className="hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 											</a>
 											<a href={team.github}>
-												<AiFillGithub className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
+												<AiFillGithub className="hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 											</a>
 											<a href={team.facebook}>
-												<AiFillFacebook className="hover:text-pink-800 hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
+												<AiFillFacebook className="hover:text-3xl hover:-mt-2 transition-all duration-300 ease-in-out" />
 											</a>
 										</div>
 									</div>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { FiArrowDown } from "react-icons/fi";
+import PrimaryButton from "../../../components/shared/PrimaryButton/PrimaryButton";
 
 const Form = () => {
 
@@ -25,7 +26,8 @@ const Form = () => {
 							<span></span>
 						</div>
 						<h2 className=" text-center text-4xl md:text-6xl dark:text-white font-extrabold ">
-							Connect with<br className="mt-2" /> Skill Judge Team
+							Connect with
+							<br className="mt-2" /> Skill Judge Team
 						</h2>
 						<div className=" hidden md:block md:absolute md:right-[77px] lg:right-[-36px]">
 							<img
@@ -186,7 +188,7 @@ const Form = () => {
 							<input
 								type="email"
 								placeholder="example@gmail.com"
-								className="w-full border-b-2 py-4 focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg"
+								className="w-full input-bordered  input  border-b-2 py-4 focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg"
 							/>
 						</div>
 						<div>
@@ -198,7 +200,7 @@ const Form = () => {
 							<input
 								type="text"
 								placeholder="Title"
-								className="w-full border-b-2 placeholder:text-start py-4 focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg"
+								className="w-full input-bordered  input border-b-2 placeholder:text-start py-4 focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg"
 							/>
 						</div>
 						<div>
@@ -210,7 +212,7 @@ const Form = () => {
 							<select
 								name=""
 								id=""
-								className="w-full border-b-2 py-4 focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg">
+								className="w-full select select-bordered focus:outline-none focus:border-emerald-400 placeholder:font-sans placeholder:text-lg dark:text-black">
 								<option value="Select...">Select...</option>
 								<option value="Talent Acqusation/Recruting">
 									Talent Acqusation/Recruting
@@ -220,9 +222,7 @@ const Form = () => {
 							</select>
 						</div>
 						<div>
-							<button className="btn px-6 bg-emerald-400 border-none rounded-none">
-								Submit
-							</button>
+							<PrimaryButton>Submit</PrimaryButton>
 						</div>
 					</form>
 				</div>

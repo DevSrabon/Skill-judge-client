@@ -12,9 +12,9 @@ const QuizQuesCards = () => {
 		<div>
 			<h2 className="text-3xl dark:text-white font-bold text-center my-3">{name} QUIZ</h2>
 			<>
-				(
+				
 					<QuizQuesCard name={name} question={questions} />
-				)
+				
 			</>
 		</div>
 	);
