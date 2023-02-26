@@ -117,7 +117,7 @@ const AddProblems = () => {
 			<h1 className="text-xl font-semibold my-4 pt-4">Add Problem</h1>
 			<hr />
 			<form onSubmit={handleSubmit(handleAddProblem)}>
-				<div className="grid gap-4 grid-cols-3 my-5">
+				<div className="grid gap-4 grid-cols-4 my-5">
 					<div className="col-span-2 border rounded p-3">
 						<div className="form-control w-full">
 							<label className="label">
@@ -213,7 +213,7 @@ const AddProblems = () => {
 							/>
 						</div>
 					</div>
-					<div className="col-span-1 border rounded p-3">
+					<div className="col-span-2 border rounded p-3">
 						<div className="form-control w-full">
 							<label className="label">
 								<span className="label-text font-semibold">
