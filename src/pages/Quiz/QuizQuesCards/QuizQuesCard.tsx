@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../../../contexts/AuthProvider";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import PrimaryButton from "../../../components/shared/PrimaryButton/PrimaryButton";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -49,7 +50,7 @@ const QuizQuesCard = ({ question, name }) => {
 		setIsCorrect(e.target.value);
 	};
 
-	const optionSubmit = (e: any): void => {
+	const optionSubmit = () => {
 		if (question[currentQuestion].correctAnswer === isCorrect) {
 			setScore(score + 1);
 		} else {
@@ -100,159 +101,162 @@ const QuizQuesCard = ({ question, name }) => {
 	};
 
 	return (
-		<div className="quiz-container ">
-			{showResults ? (
-				<div className=" flex justify-evenly items-center">
-					<div>
-						{correctAnswer > 59 ? (
-							<p className="p-3 rounded-lg bg-info my-2 text-white ">
-								"Congratulations! You earn a batch!"
-							</p>
-						) : null}
-						<h2 className="text-3xl mb-3 font-semibold p-4 bg-info rounded text-white">
-							Your Score is {score}
+		<section>
+			<div className="quiz-container ">
+				{showResults ? (
+					<div className=" flex justify-evenly items-center">
+						<div>
+							{correctAnswer > 59 ? (
+								<p className="p-3 rounded-lg bg-info my-2 text-white ">
+									"Congratulations! You earn a batch!"
+								</p>
+							) : null}
+							<h2 className="text-3xl mb-3 font-semibold p-4 bg-info rounded text-white">
+								Your Score is {score}
+							</h2>
+
+							<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+								<table className="w-full text-sm text-left text-blue-100 dark:text-blue-100">
+									<thead className="text-xs text-white uppercase bg-blue-600 dark:text-white">
+										<tr>
+											<th scope="col" className="px-6 py-3">
+												Title
+											</th>
+											<th scope="col" className="px-6 py-3">
+												Result
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr className="bg-blue-500 border-b border-blue-400">
+											<th
+												scope="row"
+												className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+												Total Questions
+											</th>
+											<td className="px-6 py-4">{question.length}</td>
+										</tr>
+										<tr className="bg-blue-500 border-b border-blue-400">
+											<th
+												scope="row"
+												className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+												Final Score
+											</th>
+											<td className="px-6 py-4">{score}</td>
+										</tr>
+
+										<tr className="bg-blue-500 border-b border-blue-400">
+											<th
+												scope="row"
+												className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+												Correct Answer
+											</th>
+											<td className="px-6 py-4">{score}</td>
+										</tr>
+										<tr className="bg-blue-500 border-b border-blue-400">
+											<th
+												scope="row"
+												className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+												Wrong Answer
+											</th>
+											<td className="px-6 py-4">{wrong}</td>
+										</tr>
+										<tr className="bg-blue-500 border-b border-blue-400">
+											<th
+												scope="row"
+												className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+												Percentage of correct answer
+											</th>
+											<td className="px-6 py-4">{correctAnswer}%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div className="mt-3">
+								{" "}
+								<PrimaryButton onClick={() => restartGame()}>
+									Restart Game
+								</PrimaryButton>
+							</div>
+						</div>
+						<div className="flex justify-between">
+							<div className="grid justify-center my-10 ">
+								<Pie data={data} />
+							</div>
+							<div className="grid justify-center my-10 ">
+								<Pie data={percentage} />
+							</div>
+						</div>
+					</div>
+				) : (
+					<div className="question-card">
+						<div className="w-full bg-neutral-200 dark:bg-neutral-600">
+							<div
+								className="bg-emerald-400 hover:bg-emerald-600 text-white rounded-sm p-0.5 tex t-center text-xs font-medium leading-none "
+								style={{ width: `${progress}%`, minWidth: "1.4rem" }}>
+								{progress}%
+							</div>
+						</div>
+						<h2 className="text-black font-medium dark:text-white">
+							Question: {currentQuestion + 1} out of {question.length}
 						</h2>
+						<h3 className="question-text dark:text-white">
+							{question[currentQuestion].question.replace(/(<([^>]+)>)/gi, "")}
+						</h3>
 
-						<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-							<table className="w-full text-sm text-left text-blue-100 dark:text-blue-100">
-								<thead className="text-xs text-white uppercase bg-blue-600 dark:text-white">
-									<tr>
-										<th scope="col" className="px-6 py-3">
-											Title
-										</th>
-										<th scope="col" className="px-6 py-3">
-											Result
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr className="bg-blue-500 border-b border-blue-400">
-										<th
-											scope="row"
-											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Total Questions
-										</th>
-										<td className="px-6 py-4">{question.length}</td>
-									</tr>
-									<tr className="bg-blue-500 border-b border-blue-400">
-										<th
-											scope="row"
-											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Final Score
-										</th>
-										<td className="px-6 py-4">{score}</td>
-									</tr>
+						<ul className="list">
+							{question[currentQuestion].options.map(
+								(option: string, index: number) => {
+									return (
+										<>
+											<label htmlFor={option}>
+												<div
+													className="list-li dark:bg-cyan-300  dark:text-black"
+													tabIndex={index + 1}
+													key={index}>
+													{option}
+													<input
+														onClick={optionClick}
+														className={"hidden"}
+														type="button"
+														name={question[currentQuestion].id}
+														id={option}
+														value={option}
+													/>
+												</div>
+											</label>
+										</>
+									);
+								}
+							)}
+						</ul>
+						<div className="mt-3 flex justify-center gap-3">
+							{currentQuestion > 0 && (
+								<PrimaryButton onClick={previous}>Prev</PrimaryButton>
+							)}
 
-									<tr className="bg-blue-500 border-b border-blue-400">
-										<th
-											scope="row"
-											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Correct Answer
-										</th>
-										<td className="px-6 py-4">{score}</td>
-									</tr>
-									<tr className="bg-blue-500 border-b border-blue-400">
-										<th
-											scope="row"
-											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Wrong Answer
-										</th>
-										<td className="px-6 py-4">{wrong}</td>
-									</tr>
-									<tr className="bg-blue-500 border-b border-blue-400">
-										<th
-											scope="row"
-											className="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-											Percentage of correct answer
-										</th>
-										<td className="px-6 py-4">{correctAnswer}%</td>
-									</tr>
-								</tbody>
-							</table>
+							{currentQuestion !== question.length - 1 && (
+								<PrimaryButton isDisabled={!isActive} onClick={optionSubmit}>
+									Next
+								</PrimaryButton>
+							)}
 						</div>
-						<button className="button" onClick={() => restartGame()}>
-							Restart game
-						</button>
-					</div>
-					<div className="flex justify-between">
-						<div className="grid justify-center my-10 ">
-							<Pie data={data} />
-						</div>
-						<div className="grid justify-center my-10 ">
-							<Pie data={percentage} />
-						</div>
-					</div>
-				</div>
-			) : (
-				<div className="question-card">
-					<div className="w-full bg-neutral-200 dark:bg-neutral-600">
-						<div
-							className="bg-primary rounded-sm p-0.5 tex t-center text-xs font-medium leading-none text-primary-100"
-							style={{ width: `${progress}%`, minWidth: "1.4rem" }}>
-							{progress}%
-						</div>
-					</div>
-					<h2 className="text-black font-medium dark:text-white">
-						Question: {currentQuestion + 1} out of {question.length}
-					</h2>
-					<h3 className="question-text dark:text-white">
-						{question[currentQuestion].question.replace(/(<([^>]+)>)/gi, "")}
-					</h3>
-
-					<ul className="list">
-						{question[currentQuestion].options.map(
-							(option: string, index: number) => {
-								return (
-									<>
-										<label htmlFor={option}>
-											<div
-												className="list-li dark:bg-cyan-300  dark:text-black"
-												tabIndex={index + 1}
-												key={index}>
-												{option}
-												<input
-													onClick={optionClick}
-													className={"hidden"}
-													type="button"
-													name={question[currentQuestion].id}
-													id={option}
-													value={option}
-												/>
-											</div>
-										</label>
-									</>
-								);
-							}
+						{currentQuestion === question.length - 1 && (
+							<div className="mt-3">
+								<PrimaryButton
+									isDisabled={!isActive}
+									onClick={() => {
+										optionSubmit();
+										handleSave();
+									}}>
+									Submit
+								</PrimaryButton>
+							</div>
 						)}
-					</ul>
-					{currentQuestion > 0 && (
-						<button className="button mr-3" onClick={previous}>
-							Prev
-						</button>
-					)}
-
-					{currentQuestion !== question.length - 1 && (
-						<button
-							className="button"
-							disabled={!isActive}
-							onClick={optionSubmit}>
-							Next
-						</button>
-					)}
-					{currentQuestion === question.length - 1 && (
-						<button
-							className="button"
-							disabled={!isActive}
-							onClick={(e) => {
-								optionSubmit(e);
-								handleSave();
-							}}>
-							Submit
-						</button>
-					)}
-				</div>
-			)}
-		</div>
+					</div>
+				)}
+			</div>
+		</section>
 	);
 };
 

@@ -27,10 +27,6 @@ interface ITheme {
 }
 const Compiler = ({ resultOutput }: any) => {
 	const { output, output1, output2, title, valueDefault } = resultOutput;
-	console.log(
-		"🚀 ~ file: Compiler.tsx:33 ~ resultOutput",
-		JSON.stringify(resultOutput)
-	);
 	const [input, setInput] = useState<string>(``);
 	const [theme, setTheme] = useState<ITheme>({} as ITheme);
 	const [outputDetails, setOutputDetails] = useState<string>(``);
@@ -41,7 +37,6 @@ const Compiler = ({ resultOutput }: any) => {
 	const [isCorrect, setIsCorrect] = useState<boolean>(false);
 	const [show, setShow] = useState<boolean>(false);
 	const [confetti, setConfetti] = useState<boolean>(false);
-	console.log("🚀 ~ file: Compiler.tsx:44 ~ Compiler ~ confetti:", confetti)
 
 	const { user }: any = useAuth();
 	const onSelectChange = (sl: ILanguage) => {
@@ -234,7 +229,7 @@ const Compiler = ({ resultOutput }: any) => {
 						/>
 
 						<div className="flex gap-2">
-							{(output || output1 || output2) && (
+							{(resultOutput?.length > 0) ? (
 								<button
 									onClick={handleResultSubmit}
 									disabled={!outputDetails || processing || show}
@@ -244,7 +239,7 @@ const Compiler = ({ resultOutput }: any) => {
 									)}>
 									Submit
 								</button>
-							)}
+							):null}
 							<button
 								onClick={handleSubmit}
 								disabled={!input || processing}

@@ -20,12 +20,12 @@ const TopQuestion = () => {
     }
     if (data?.length === 1 && data) {
         content = (
-            <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 mb-5">
                 <div className="lg:mb-0 mb-4">
                     <h2 className="card-title text-lime-400 ">
                         {data[0]?.name}
                     </h2>
-                    <p className=" text-justify text-gray-50 mt-4">
+                    <p className=" text-justify  mt-4">
                         {data[0]?.question}
                     </p>
                     <h4 className="text-lg mt-3  mb-2">Description:</h4>
@@ -35,11 +35,11 @@ const TopQuestion = () => {
                     <h4 className="text-lg mt-3  mb-2">
                         How To Solve Problem Explain With Step By Step:
                     </h4>
-                    <ul className="mt-3 mb-3 bg-slate-50 p-3">
+                    <ul className="mt-3 mb-3 bg-slate-50  dark:bg-gray-900 p-3">
                         <>
                             {data[0]?.pseudocode?.map(
                                 (psc: string, index: number) => (
-                                    <li key={index} className="text-black">
+                                    <li key={index} className="text-black dark:text-white">
                                         {index + 1}-{psc}
                                     </li>
                                 )
