@@ -9,6 +9,33 @@
     border-radius: 40px;
 }
 
+.hero-section .image-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+
+.hero-section .image-layer:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.hero-section {
+    position: relative;
+    
+}
+
 .team-section .image-layer {
     position: absolute;
     left: 0;
@@ -33,7 +60,7 @@
 
 .team-section {
     position: relative;
-    padding: 130px 0px 70px;
+    padding: 130px 0px 0px;
 }
 
 .dots span {

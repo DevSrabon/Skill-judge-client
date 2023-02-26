@@ -33,10 +33,10 @@ const AboutUs = () => {
 				<div className={"dots"}>
 					<span></span>
 				</div>
-				<h2 className=" text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-5">
+				<h2 className=" text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-3">
 					Meet With Our <br className="mt-2" /> Team Members
 				</h2>
-				<div className=" hidden md:block md:absolute md:right-[-30px] lg:right-[304px]">
+				<div className=" hidden md:block md:absolute md:right-[77px] lg:right-[304px]">
 					<img
 						src="https://t.commonsupport.com/driveto/images/resource/title-pattern-1.svg"
 						alt=""

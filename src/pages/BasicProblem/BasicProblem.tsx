@@ -29,7 +29,7 @@ const BasicProblem = () => {
 		return <ErrorSpinner/>
 	}
 	return (
-		<div className=" bg-[#f3f7f7] md:pb-[40vh] dark:bg-gray-800 md:pl-16 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+		<div className=" bg-[#f3f7f7] md:pb-[40vh] dark:bg-gray-800  md:pl-16 py-10 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
 			<div className="relative flex flex-col divide-y md:col-span-2 lg:col-span-3">
 				{data
 					?.filter((item: any) => {
@@ -41,15 +41,15 @@ const BasicProblem = () => {
 						<div
 							className={` flex flex-col ${
 								filter ? "hidden" : "block"
-							} gap-3 md:flex-row justify-between items-center mx-4 py-5 px-5 bg-white shadow-lg `}>
+							} gap-3 md:flex-row justify-between items-center mx-4 py-5 px-5 bg-white dark:bg-gray-700 shadow-lg `}>
 							<div>
 								<h3 className="text-xl">{problem.title}</h3>
 								<small>
 									<span className="text-orange-600">
 										{problem.difficulty},{" "}
 									</span>
-									<span>Max Score: {problem.maxScore}, </span>
-									<span>Success Rate: {problem.successRate}%</span>
+									{/* <span>Max Score: {problem.maxScore}, </span>
+									<span>Success Rate: {problem.successRate}%</span> */}
 								</small>
 								<p>{problem.types}</p>
 							</div>

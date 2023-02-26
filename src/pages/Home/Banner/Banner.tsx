@@ -1157,23 +1157,46 @@ const Banner = () => {
 	};
 	renderThemeChanger()
 	return (
-		<div className="relative flex justify-center items-center">
+		<div className="relative flex justify-center items-center hero-section">
 			<div className="absolute text-center z-10">
-				<h1 className="text-[#ff4d4d]  text-4xl md:text-7xl lg:text-8xl mb-2">
+				<div className="relative">
+					<div className={"dots"}>
+						<span></span>
+					</div>
+					<h2 className=" text-center  dark:text-white font-bold ">
+						<span className="text-[#ff4d4d]  text-4xl md:text-7xl lg:text-8xl mb-2">
+							Achieve mastery
+						</span>{" "}
+						<br className="mt-2" />{" "}
+						<span className="text-black dark:text-white text-4xl md:text-7xl lg:text-8xl mb-5">
+							through challenge
+						</span>
+					</h2>
+					<div className=" hidden md:block md:absolute md:right-[77px] lg:right-[-140px]">
+						<img
+							src="https://t.commonsupport.com/driveto/images/resource/title-pattern-1.svg"
+							alt=""
+							className="w-44 md:w-64"
+						/>
+					</div>
+				</div>
+				{/* <h1 className="text-[#ff4d4d]  text-4xl md:text-7xl lg:text-8xl mb-2">
 					Achieve mastery
 				</h1>
 				<h1 className="text-black dark:text-white text-4xl md:text-7xl lg:text-8xl mb-5">
 					through challenge
-				</h1>
-				<h4 className="text-black dark:text-white text-md md:text-2xl mb-5 mx-4">
-					"Master the Art of Coding with Skill Judge - The Ultimate Problem-Solving Platform"
+				</h1> */}
+				<h4 className="text-black dark:text-white text-md md:text-2xl my-5 mx-4">
+					"Master the Art of Coding with Skill Judge - <br className="lg:hidden"/> The Ultimate
+					Problem-Solving Platform"
 				</h4>
 				<div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-3">
 					<Link to={"/login"}>
 						<PrimaryButton>Get Started</PrimaryButton>
 					</Link>
 					<p className="text-[#9f8f91] text-justify">
-						Sign up now to get full access to our library of <br /> problem challenges, quizzes, and community features!
+						Sign up now to get full access to our library of <br /> problem
+						challenges, quizzes, and community features!
 					</p>
 				</div>
 			</div>
