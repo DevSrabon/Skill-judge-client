@@ -15,7 +15,7 @@
     /* background-color: gray; */
     padding: 16px;
     border-radius: 16px;
-    color: white;
+    color: black;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
@@ -26,14 +26,15 @@
 
 .list-li {
     margin-top: 8px;
-    background-color: black;
+    background-color: white;
     padding: 16px;
-    border: 3px solid white;
+    border: 3px solid rgb(216, 200, 200);
     border-radius: 20px;
     font-size: 20px;
+    font-weight: 600;
 }
 .list-li:focus{
-    background-color: #a04646;
+    background-color: rgb(232, 218, 218);
 }
 
 .list-click {
