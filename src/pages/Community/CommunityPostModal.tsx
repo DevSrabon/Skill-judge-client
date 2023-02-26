@@ -45,12 +45,13 @@ const CommunityPostModal = ({ setIsModalOpen }) => {
                 .then(imgData => {
                     if (imgData.success) {
                         const post = {
-                            email: dbUser.email,
-                            userPhoto: dbUser.photo,
-                            name: dbUser.name,
+                            userId: dbUser?._id,
+                            userPhoto: dbUser?.photo,
+                            name: dbUser?.name,
                             text: data.text,
                             photo: imgData.data.url,
                             likes: [],
+                            comments: [],
                             date: new Date()
                         }
 
@@ -60,9 +61,9 @@ const CommunityPostModal = ({ setIsModalOpen }) => {
         }
         else {
             const post = {
-                email: dbUser.email,
-                userPhoto: dbUser.photo,
-                name: dbUser.name,
+                userId: dbUser?._id,
+                userPhoto: dbUser?.photo,
+                name: dbUser?.name,
                 text: data.text,
                 likes: [],
                 date: new Date()
