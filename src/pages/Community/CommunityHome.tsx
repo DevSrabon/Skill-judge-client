@@ -8,7 +8,7 @@ const CommunityHome = () => {
     const [isModalOpen, setIsModalOpen]: any = useState(false);
     const { dbUser }: any = useUser();
     return (
-        <div className="dark:text-black">
+        <div className="dark:text-white">
             <h2 className='text-4xl text-center font-bold  mt-10'>Welcome to the Skill Judge Community Forum</h2>
             <div className='flex items-center justify-center my-10'>
                 <div className="avatar">

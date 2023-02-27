@@ -14,7 +14,7 @@ const PostComments: any = ({ singleComment }) => {
 
                 </div>
             </div>
-            <div className='bg-gray-100 p-2 rounded-lg'>
+            <div className='bg-gray-100 dark:bg-gray-600 p-2 rounded-lg'>
                 <p><span className='font-semibold'>{userName}</span> <span className='ml-4 text-gray-400'>{moment(date).fromNow()}</span></p>
                 <p>{comment}</p>
             </div>
