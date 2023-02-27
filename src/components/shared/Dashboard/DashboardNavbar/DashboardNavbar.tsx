@@ -16,7 +16,6 @@ const DashboardNavbar = ({ setOpenSideBar, openSideBar }: any) => {
 						console.log(err);
 					});
 			};
-    console.log(user);
     let alText = "profile user";
     return (
 			<nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 ">

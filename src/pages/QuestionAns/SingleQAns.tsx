@@ -65,7 +65,6 @@ const SingleQAns = ({ qna, user, refetch }) => {
 			});
 	};
 	const handleDelete = (id:any) => {
-		console.log(id);
 		fetch(`${process.env.REACT_APP_API_URL}/deleteqna/${id}`, {
 			method: "DELETE",
 			headers: {

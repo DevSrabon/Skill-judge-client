@@ -21,7 +21,6 @@ const Login = () => {
 
 	const [userEmail, setUserEmail] = useState<string>('');
 	const [token] = useToken(userEmail);
-	console.log(token)
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -43,7 +42,6 @@ const Login = () => {
 			.then(res => res.json())
 			.then(data => {
 				setUserEmail(email);
-				console.log(data);
 			})
 	};
 
@@ -51,8 +49,6 @@ const Login = () => {
 		setError('');
 		loginUser(data.email, data.password)
 			.then(result => {
-				const user = result.user;
-				console.log(user);
 				toast.success('Login Successful');
 				setUserEmail(data.email);
 				setLoading(false);
@@ -70,7 +66,6 @@ const Login = () => {
 		createUserWithGoogle()
 			.then(result => {
 				const user = result.user;
-				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('Login Successful');
 				// navigate(from, { replace: true });

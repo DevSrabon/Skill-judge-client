@@ -31,10 +31,8 @@ const AddProblems = () => {
 	const imageHostKey = process.env.REACT_APP_imgbb_key;
 
 	const handleAddProblem = (data: FormValues) => {
-		console.log(data);
 		const image = data.img[0];
 		const image1 = data.img[0];
-		console.log(image);
 		const formData = new FormData();
 		formData.append("image", image);
 		formData.append("image1", image1);
@@ -45,7 +43,6 @@ const AddProblems = () => {
 		})
 			.then((res) => res.json())
 			.then((imgData) => {
-				console.log(imgData);
 				if (imgData.success) {
 					const add = {
 						email: user.email,
@@ -74,7 +71,6 @@ const AddProblems = () => {
 					})
 						.then((res) => res.json())
 						.then((result) => {
-							console.log(result);
 							toast.success(`${data.title} is added successfully`);
 							reset();
 						});
@@ -105,7 +101,6 @@ const AddProblems = () => {
 					})
 						.then((res) => res.json())
 						.then((result) => {
-							console.log(result);
 							toast.success(`${data.title} is added successfully`);
 							reset();
 						});

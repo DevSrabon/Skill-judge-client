@@ -7,8 +7,6 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Blog = () => {
   const blogData: any = useLoaderData();
-  console.log(blogData);
-  console.log(Date());
   return (
     <div className="m-10">
       <h1 className="text-4xl text-center dark:text-white my-3">

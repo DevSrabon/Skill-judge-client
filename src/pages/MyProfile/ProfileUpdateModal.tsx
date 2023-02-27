@@ -32,7 +32,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 			)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data);
 					toast.success("Your information updated successfully");
 					refetch();
 					// navigate('/my-profile');
@@ -54,7 +53,6 @@ const ProfileUpdateModal: any = ({ profile, refetch, setIsModalOpen }) => {
 				.then((res) => res.json())
 				.then((imgData) => {
 					if (imgData.success) {
-						console.log(imgData.data.url);
 						const userInfo: any = {
 							name,
 							email,

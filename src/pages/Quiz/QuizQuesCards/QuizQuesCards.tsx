@@ -6,7 +6,6 @@ const QuizQuesCards = () => {
 	const data: any = useLoaderData();
 	const questions = data[0].questions;
     const name = data[0].name;
-    console.log(data)
 
 	return (
 		<div>

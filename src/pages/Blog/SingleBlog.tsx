@@ -5,13 +5,8 @@ import { useAuth } from "../../contexts/AuthProvider";
 import { useUser } from "../../contexts/UserProvider";
 const SingleBlog = () => {
   const { user }: any = useAuth();
-
-  console.log(user);
   const { dbUser }: any = useUser();
-  console.log(dbUser);
-
   const params = useParams();
-
   const [blogData, setBlogData] = useState<any>([]);
 
   useEffect(() => {
@@ -19,8 +14,6 @@ const SingleBlog = () => {
       .then((response) => response.json())
       .then((data) => setBlogData(data));
   }, [params]);
-
-  console.log(blogData);
 
   const submitComment = (e) => {
     e?.preventDefault();

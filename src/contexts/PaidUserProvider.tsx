@@ -23,7 +23,6 @@ const PaidUserProvider = ({ children }: { children: ReactElement }) => {
 				},
 			}).then((res) => res.json()),
 	});
-console.log(paidUser)
 	useEffect(() => {
 		if (data?.length) {
 			setPaidUser(data);
