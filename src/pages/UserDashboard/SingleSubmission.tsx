@@ -19,7 +19,7 @@ const SingleSubmission = () => {
 		});
 
 		return (
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto p-4">
 				<table className="table table-zebra w-full">
 					<thead>
 						<tr className="text-center">

@@ -114,10 +114,10 @@ const AddProblems = () => {
 	};
 	return (
 		<section className="lg:ml-[265px] lg:mr-4  mt-14">
-			<h1 className="text-xl font-semibold my-4 pt-4">Add Problem</h1>
+			<h1 className="text-xl font-semibold my-4 pl-3 pt-4">Add Problem</h1>
 			<hr />
 			<form onSubmit={handleSubmit(handleAddProblem)}>
-				<div className="grid gap-4 grid-cols-4 my-5">
+				<div className="grid  gap-4 grid-cols-1 md:grid-cols-4 my-5">
 					<div className="col-span-2 border rounded p-3">
 						<div className="form-control w-full">
 							<label className="label">
