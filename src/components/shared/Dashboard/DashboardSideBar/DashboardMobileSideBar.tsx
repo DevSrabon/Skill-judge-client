@@ -1,4 +1,6 @@
 import SideBarItem from "./SideBarItem";
+import { MdManageAccounts, MdOutlineSyncProblem } from "react-icons/md";
+import { DiSublime } from "react-icons/di";
 
 const DashboardMobileSideBar = ({ openSideBar }: any) => {
     return (
@@ -9,9 +11,9 @@ const DashboardMobileSideBar = ({ openSideBar }: any) => {
         >
             <div className="h-full px-3 pb-4 overflow-y-auto bg-white">
                 <ul className="space-y-2">
-                    <SideBarItem link="/dashboard" name="Dashboard">
+                    <SideBarItem link="" name="Dashboard">
                         <svg
-                            className="w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-900 dark:group-hover:text-white"
+                            className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +24,7 @@ const DashboardMobileSideBar = ({ openSideBar }: any) => {
                     </SideBarItem>
                     <SideBarItem link="/dashboard/paidUsers" name="Paid User">
                         <svg
-                            className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +38,7 @@ const DashboardMobileSideBar = ({ openSideBar }: any) => {
                     </SideBarItem>
                     <SideBarItem link="/dashboard/allQuiz" name="All Quiz">
                         <svg
-                            className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@ const DashboardMobileSideBar = ({ openSideBar }: any) => {
                     </SideBarItem>
                     <SideBarItem link="/dashboard/allUsers" name="All Users">
                         <svg
-                            className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +60,24 @@ const DashboardMobileSideBar = ({ openSideBar }: any) => {
                                 clipRule="evenodd"
                             ></path>
                         </svg>
+                    </SideBarItem>
+                    <SideBarItem
+                        link="/dashboard/allSubmission"
+                        name="All Submissions"
+                    >
+                        <DiSublime className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white" />
+                    </SideBarItem>
+                    <SideBarItem
+                        link="/dashboard/addProblem"
+                        name="Add Problem"
+                    >
+                        <MdOutlineSyncProblem className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white" />
+                    </SideBarItem>
+                    <SideBarItem
+                        link="/dashboard/manageProblems"
+                        name="Manage Problems"
+                    >
+                        <MdManageAccounts className="flex-shrink-0 w-6 h-6 text-gray-500 group-focus-within:text-white transition duration-75 group-hover:text-white" />
                     </SideBarItem>
                 </ul>
             </div>
