@@ -20,8 +20,6 @@ const CheckoutForm: React.FC<CheckoutFormPropsType> = ({ booking, billingAddress
     const [success, setSuccess] = useState<string>("");
     const [processing, setProcessing] = useState<boolean>(false);
     const [transactionId, setTransactionId] = useState<string>();
-
-    console.log(booking, "booking");
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/create-payment-intent`, {
             method: "POST",
@@ -53,7 +51,6 @@ const CheckoutForm: React.FC<CheckoutFormPropsType> = ({ booking, billingAddress
             type: "card",
             card,
         });
-        console.log(paymentMethod);
         if (error) {
             console.log(error);
             setCardError(error.message);
@@ -100,7 +97,6 @@ const CheckoutForm: React.FC<CheckoutFormPropsType> = ({ booking, billingAddress
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     if (data.insertedId) {
                         setSuccess("Congrates ! Your payment successfully");
                         setTransactionId(paymentIntent.id);
@@ -109,7 +105,6 @@ const CheckoutForm: React.FC<CheckoutFormPropsType> = ({ booking, billingAddress
         }
         setProcessing(false);
     };
-	console.log(billingAddress);
     if (loading) {
         return <Spinner />;
     }

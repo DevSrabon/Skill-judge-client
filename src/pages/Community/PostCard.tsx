@@ -33,7 +33,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You liked the post');
                     setLoading(false);
                     refetch();
@@ -58,7 +57,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You unliked the post');
                     setLoading(false);
                     refetch();
@@ -103,7 +101,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You made a comment successfully');
                     setShowCommentBox(false);
                     refetch();
@@ -112,7 +109,7 @@ const PostCard = ({ post, refetch }) => {
     }
 
     return (
-        <div className="card w-full max-w-lg mx-auto bg-base-100 shadow-2xl my-8">
+        <div className="card w-full max-w-lg mx-auto bg-base-100 dark:bg-gray-900 shadow-2xl my-8">
             <div className="card-body">
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -143,11 +140,11 @@ const PostCard = ({ post, refetch }) => {
 
             {/* Like and Comment Button */}
             <div className='flex justify-evenly py-4'>
-                <button disabled={loading} onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost ${isLiked ? 'text-blue-600' : 'text-black'} gap-2`}>
-                    <HiThumbUp className={`text-xl ${isLiked ? 'text-blue-600' : 'text-black'}`} />
+                <button disabled={loading} onClick={makeLikeOrUnlike} className={`btn btn-xs btn-ghost dark:hover:bg-gray-600 ${isLiked ? 'text-blue-600' : 'text-black dark:text-white'} gap-2`}>
+                    <HiThumbUp className={`text-xl ${isLiked ? 'text-blue-600' : 'text-black dark:text-white'}`} />
                     Like
                 </button>
-                <button onClick={() => setShowCommentBox(true)} className="btn btn-xs btn-ghost gap-2">
+                <button onClick={() => setShowCommentBox(true)} className="btn btn-xs btn-ghost dark:hover:bg-gray-600 gap-2">
                     <GoComment className='text-lg mt-1' />
                     Comment
                 </button>
@@ -175,7 +172,7 @@ const PostCard = ({ post, refetch }) => {
             {/* Comments */}
             <div className='p-4'>
                 {
-                    comments?.map((singleComment, idx) => <PostComments key={idx} singleComment={singleComment}></PostComments>)
+                    comments?.slice(0).reverse().map((singleComment, idx) => <PostComments key={idx} singleComment={singleComment}></PostComments>)
                 }
             </div>
         </div>

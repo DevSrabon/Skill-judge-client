@@ -36,7 +36,6 @@ const Signup = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
 				setUserEmail(email);
 			})
 			.catch(error => console.error(error));
@@ -46,7 +45,6 @@ const Signup = () => {
 		setError('');
 		createUser(data.email, data.password)
 			.then(result => {
-				const user = result.user;
 				updateUser({ displayName: data.name })
 					.then(() => {
 						saveUser(data.name, data.email);
@@ -55,7 +53,6 @@ const Signup = () => {
 						setLoading(false);
 					})
 					.catch(err => console.log(err))
-				console.log(user);
 			})
 			.catch(err => {
 				console.log(err);
@@ -69,7 +66,6 @@ const Signup = () => {
 		createUserWithGoogle()
 			.then(result => {
 				const user = result.user;
-				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('SignUp Successful');
 				setLoading(false);
@@ -96,17 +92,17 @@ const Signup = () => {
 					src="https://assets7.lottiefiles.com/packages/lf20_qmvs7uqa.json"></Player>
 			</div>
 			<div className="">
-				<div className="w-full max-w-sm mx-auto shadow-xl p-8 rounded-md">
+				<div className="w-full max-w-sm mx-auto shadow-xl dark:bg-gray-900 p-8 rounded-md">
 					<h2 className="text-xl">Sign Up</h2>
 					<form onSubmit={handleSubmit(handleSignup)} className="form-control">
 						{/* Name */}
 						<label className="label">
-							<span className="label-text">Name</span>
+							<span className="label-text dark:text-white">Name</span>
 						</label>
 						<input
 							type="text"
 							{...register("name", { required: "Name is required" })}
-							className="input input-bordered w-full max-w-sm"
+							className="input input-bordered w-full max-w-sm dark:bg-slate-600"
 						/>
 						{errors.name && (
 							<p className="text-red-700">{errors.name?.message}</p>
@@ -114,12 +110,12 @@ const Signup = () => {
 
 						{/* Email */}
 						<label className="label">
-							<span className="label-text">Email</span>
+							<span className="label-text dark:text-white">Email</span>
 						</label>
 						<input
 							type="email"
 							{...register("email", { required: "Email is required" })}
-							className="input input-bordered w-full max-w-sm"
+							className="input input-bordered w-full max-w-sm dark:bg-slate-600"
 						/>
 						{errors.email && (
 							<p className="text-red-700">{errors.email?.message}</p>
@@ -127,7 +123,7 @@ const Signup = () => {
 
 						{/* Password */}
 						<label className="label">
-							<span className="label-text">Password</span>
+							<span className="label-text dark:text-white">Password</span>
 						</label>
 						<input
 							type="password"
@@ -138,7 +134,7 @@ const Signup = () => {
 									message: "Password must be at least 6 characters",
 								},
 							})}
-							className="input input-bordered w-full max-w-sm"
+							className="input input-bordered w-full max-w-sm dark:bg-slate-600"
 						/>
 						{errors.password && (
 							<p className="text-red-700">{errors.password?.message}</p>
@@ -163,7 +159,7 @@ const Signup = () => {
 					<button
 						onClick={handleGoogleLogin}
 						disabled={loading}
-						className="btn btn-outline w-full max-w-sm">
+						className="btn btn-outline w-full max-w-sm dark:text-white">
 						SignUp With Google
 					</button>
 				</div>

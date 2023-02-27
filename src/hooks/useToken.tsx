@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useToken = (email: string) => {
-    console.log("🚀 ~ file: useToken.tsx:4 ~ useToken ~ email", email)
-    
+const useToken = (email: string) => {    
     const [token, setToken] = useState<string>('');
     useEffect(() => {
         if (email) {
