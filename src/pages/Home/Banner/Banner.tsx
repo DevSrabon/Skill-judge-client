@@ -1161,7 +1161,7 @@ const Banner = () => {
 			<div className="absolute text-center z-10">
 				<div className="relative">
 					<div className={"dots"}>
-						<span className="top-5"></span>
+						<span className="top-2 md:top-5"></span>
 					</div>
 					<h2 className=" text-center  dark:text-white font-bold ">
 						<span className="text-[#ff4d4d]  text-4xl md:text-7xl lg:text-8xl mb-2">

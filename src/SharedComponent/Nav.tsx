@@ -135,7 +135,7 @@ const Nav = () => {
 						)}
 						{dropDown && (
 							<ul
-								className="lg:absolute  lg:top-14  lg:-right-12 menu ul lg:bg-white lg:dark:bg-dark lg:bg-opacity-30 lg:backdrop-filter lg:backdrop-blur-2xl lg:shadow-md items-center justify-center lg:z-50 lg:p-2 "
+								className="lg:absolute  lg:top-14  lg:-right-12 menu ul lg:bg-white lg:dark:bg-black  lg:backdrop-filter  lg:shadow-md items-center justify-center lg:z-50 lg:py-2 lg:px-5"
 								onClick={() => {
 									setDropDown(!dropDown);
 									setNavbar(!navbar);
