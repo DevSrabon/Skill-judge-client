@@ -92,7 +92,7 @@ const Signup = () => {
 				<Player
 					autoplay
 					loop
-					className='w-96'
+					className="w-96"
 					src="https://assets7.lottiefiles.com/packages/lf20_qmvs7uqa.json"></Player>
 			</div>
 			<div className="">
@@ -150,7 +150,7 @@ const Signup = () => {
 							type="submit"
 							disabled={loading}
 							value="Sign Up"
-							className="btn btn-accent text-white w-full max-w-sm mt-5"
+							className="bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-2 font-medium rounded-lg text-sm px-5 py-3 text-center dark:text-white mt-3"
 						/>
 						<p>
 							Already have an account?{" "}

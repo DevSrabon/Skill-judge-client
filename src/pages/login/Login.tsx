@@ -150,7 +150,7 @@ const Login = () => {
 						type="submit"
 						value="Login"
 						disabled={loading}
-						className="btn btn-accent w-full max-w-sm"
+						className="bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-2 font-medium rounded-lg text-sm px-5 py-3 text-center dark:text-white"
 					/>
 					<p>
 						New to Skill-Judge?{" "}
