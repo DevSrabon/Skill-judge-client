@@ -240,9 +240,7 @@ const QuizQuesCard = ({ question, name }) => {
 									Next
 								</PrimaryButton>
 							)}
-						</div>
-						{currentQuestion === question.length - 1 && (
-							<div className="mt-3">
+						{currentQuestion === question.length - 1 && (		
 								<PrimaryButton
 									isDisabled={!isActive}
 									onClick={() => {
@@ -251,8 +249,8 @@ const QuizQuesCard = ({ question, name }) => {
 									}}>
 									Submit
 								</PrimaryButton>
-							</div>
 						)}
+						</div>
 					</div>
 				)}
 			</div>
