@@ -33,7 +33,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You liked the post');
                     setLoading(false);
                     refetch();
@@ -58,7 +57,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You unliked the post');
                     setLoading(false);
                     refetch();
@@ -103,7 +101,6 @@ const PostCard = ({ post, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data);
                     toast.success('You made a comment successfully');
                     setShowCommentBox(false);
                     refetch();

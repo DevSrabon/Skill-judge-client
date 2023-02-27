@@ -18,7 +18,6 @@ const ManageProblem = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    console.log(data);
     if (isLoading) {
         return <Spinner />;
     }

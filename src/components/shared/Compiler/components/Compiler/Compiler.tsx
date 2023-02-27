@@ -40,7 +40,6 @@ const Compiler = ({ resultOutput }: any) => {
 
 	const { user }: any = useAuth();
 	const onSelectChange = (sl: ILanguage) => {
-		console.log("selected Option...", sl);
 		setLanguage(sl);
 	};
 	const onChange = (action: string, data: string) => {
@@ -127,7 +126,6 @@ const Compiler = ({ resultOutput }: any) => {
 		}, 7000);
 	};
 	const handleResultSubmit = () => {
-		console.log(JSON.stringify(result) === JSON.stringify(resultOutput));
 		fetch(`${process.env.REACT_APP_API_URL}/compileResult`, {
 			method: "POST",
 			headers: {
@@ -179,7 +177,6 @@ const Compiler = ({ resultOutput }: any) => {
 	}, []);
 
 	const handleThemeChange = (th: any) => {
-		console.log("theme...", th);
 		const theme = th;
 
 		if (["light", "vs-dark"].includes(theme.value)) {

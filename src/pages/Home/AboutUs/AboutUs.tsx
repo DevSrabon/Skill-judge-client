@@ -13,8 +13,6 @@ import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const AboutUs = () => {
 	const [active, setActive] = React.useState({});
-	console.log("🚀 ~ file: AboutUs.tsx:16 ~ AboutUs ~ active:", active)
-
 	const { data = [], isLoading } = useQuery({
 		queryKey: ["user"],
 		queryFn: async () => {

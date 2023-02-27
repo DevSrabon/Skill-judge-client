@@ -12,7 +12,6 @@ const Form = () => {
 			return data;
 		}
 	}) 
-	console.log(users)
 
 	return (
 		<div>

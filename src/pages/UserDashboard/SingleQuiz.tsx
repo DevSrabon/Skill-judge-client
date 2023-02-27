@@ -5,8 +5,6 @@ import { useAuth } from '../../contexts/AuthProvider';
 const SingleQuiz = () => {
     const {user}:any=useAuth()
 
-    	// console.log("🚀 ~ file: SingleQuiz.tsx:8 ~ SingleQuiz ~ quiz", quiz)
-
 			const { data:quiz }: any = useQuery({
 				queryKey: ["userquiz", user?.email],
 				queryFn: () =>

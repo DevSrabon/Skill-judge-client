@@ -13,7 +13,6 @@ const HomeBlog = () => {
         .then((response) => response.json())
         .then((data) => setBlogData(data));
     }, []);
-console.log(blogData);
     return (
       <div>
         <h1 className='text-3xl text-black dark:text-white text-center'>Our latest blogs</h1>

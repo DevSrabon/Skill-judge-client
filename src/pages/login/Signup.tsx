@@ -36,7 +36,6 @@ const Signup = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
 				setUserEmail(email);
 			})
 			.catch(error => console.error(error));
@@ -46,7 +45,6 @@ const Signup = () => {
 		setError('');
 		createUser(data.email, data.password)
 			.then(result => {
-				const user = result.user;
 				updateUser({ displayName: data.name })
 					.then(() => {
 						saveUser(data.name, data.email);
@@ -55,7 +53,6 @@ const Signup = () => {
 						setLoading(false);
 					})
 					.catch(err => console.log(err))
-				console.log(user);
 			})
 			.catch(err => {
 				console.log(err);
@@ -69,7 +66,6 @@ const Signup = () => {
 		createUserWithGoogle()
 			.then(result => {
 				const user = result.user;
-				console.log(user);
 				saveUser(user.displayName, user.email);
 				toast.success('SignUp Successful');
 				setLoading(false);

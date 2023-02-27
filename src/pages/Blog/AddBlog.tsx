@@ -3,7 +3,6 @@ import { useUser } from "../../contexts/UserProvider";
 
 const AddBlog = () => {
   const { dbUser }: any = useUser();
-  console.log(dbUser);
   const publishBlog = (e) => {
     e?.preventDefault();
     fetch(`${process.env.REACT_APP_API_URL}/blog`, {

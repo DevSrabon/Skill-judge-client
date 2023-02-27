@@ -8,7 +8,6 @@ import CheckOutForm from "./CheckOutForm";
 const stripePromise: any | null = loadStripe(
     process.env.REACT_APP_STRIPE_PK ?? ""
 );
-console.log(stripePromise);
 
 export type AddressObject = {
     city: string | null;

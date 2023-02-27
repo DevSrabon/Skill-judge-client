@@ -11,7 +11,6 @@ const UserReviews = () => {
         fetch(`${process.env.REACT_APP_API_URL}/reviews`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setReviews(data);
             })
     }, [])
