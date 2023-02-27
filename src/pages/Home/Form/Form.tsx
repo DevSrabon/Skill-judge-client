@@ -19,8 +19,8 @@ const Form = () => {
 			<div className="flex flex-row lg:flex-row justify-center">
 				<FiArrowDown className="text-4xl lg:text-8xl" />
 			</div>
-			<section className="lg:flex justify-center">
-				<div className="lg:w-3/6 hero-section">
+			<section className="lg:flex justify-center items-center">
+				<div className="lg:w-3/6 grid justify-center justify-items-center  hero-section">
 					<div className="relative">
 						<div className={"dots"}>
 							<span></span>
@@ -38,11 +38,11 @@ const Form = () => {
 						</div>
 					</div>
 					{/* <h1 className="text-5xl font-bold font-sans leading-[4.2rem]"><span className="">Connect with <br/> Skill Judge Team</span></h1> */}
-					<p className="my-12 font-sans text-xl dark:text-white">
+					<p className="my-5 md:my-12 text-center  font-sans text-xl dark:text-white">
 						Connect with an expert who can help you find the <br /> right
 						solution for your team.
 					</p>
-					<div className="grid grid-cols-3 items-center">
+					<div className="grid grid-cols-2 md:grid-cols-3 items-center">
 						<div className="flex items-center">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ const Form = () => {
 					</div>
 				</div>
 				<div className="lg:w-3/6">
-					<form className="px-20 py-16 flex flex-col gap-y-10">
+					<form className="px-3 md:px-20 py-16 flex flex-col gap-y-10">
 						<div>
 							<label
 								htmlFor="email"

@@ -11,7 +11,7 @@ const Nav = () => {
 	const { dbUser, }: any = useUser();
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState<Boolean>(false);
-	const [navbar, setNavbar] = useState<Boolean>(false);
+	const [navbar, setNavbar] = useState<Boolean>(true);
 	const [dropDown, setDropDown] = useState<Boolean>(false);
 
 	useEffect(() => {
