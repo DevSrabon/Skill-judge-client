@@ -60,14 +60,15 @@ const TopQuestions = () => {
 				<div className="grid grid-cols-1 gap-1 md:gap-10 md:grid-cols-2 lg:grid-cols-3 ">
 					{data.map((top: QuestionType) => (
 						<motion.div
+							key={top._id}
 							whileHover={{ scale: 1.1 }}
 							transition={{
 								type: "spring",
 								stiffness: 400,
 								damping: 10,
 							}}>
-							<div className="mt-3 md:mt-10 w-full p-5 hover:shadow-2xl dark:bg-gray-900 dark:text-gray-100 rounded-2xl shadow-xl ">
-								<h4 className="text-xl text-black font-semibold dark:text-white font-semibold">
+							<div  className="mt-3 md:mt-10 w-full p-5 hover:shadow-2xl dark:bg-gray-900 dark:text-gray-100 rounded-2xl shadow-xl ">
+								<h4 className="text-xl text-black dark:text-white font-semibold">
 									{top?.name}
 								</h4>
 								<p className="mt-2 md:mt-5 text-black dark:text-gray-400	 text-justify">

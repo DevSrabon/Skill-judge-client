@@ -84,7 +84,7 @@ const AboutUs = () => {
 					className="swiper-container">
 					{data.map((team: any) => (
 						<div key={team._id}>
-							<SwiperSlide>
+							<SwiperSlide key={team._id}>
 								<div className="grid items-center justify-center">
 									<img
 										// onMouseEnter={() => setActive(false)}
