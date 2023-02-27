@@ -29,7 +29,7 @@ const DashboardV2 = () => {
                     <DashWidget
                         icon={
                             <>
-                                <FiUsers className="text-6xl text-rose-500" />
+                                <FiUsers className="text-6xl text-gray-900" />
                             </>
                         }
                         labelName={"Users"}
@@ -39,7 +39,7 @@ const DashboardV2 = () => {
                     <DashWidget
                         icon={
                             <>
-                                <MdOutlineQuiz className="text-6xl text-rose-500" />
+                                <MdOutlineQuiz className="text-6xl text-gray-900" />
                             </>
                         }
                         labelName={"Quizs"}
@@ -49,7 +49,7 @@ const DashboardV2 = () => {
                     <DashWidget
                         icon={
                             <>
-                                <BiUserVoice className="text-6xl text-rose-500" />
+                                <BiUserVoice className="text-6xl text-gray-900" />
                             </>
                         }
                         labelName={"Paid Users"}
@@ -59,7 +59,7 @@ const DashboardV2 = () => {
                     <DashWidget
                         icon={
                             <>
-                                <MdOutlinePaid className="text-6xl text-rose-500" />
+                                <MdOutlinePaid className="text-6xl text-gray-900" />
                             </>
                         }
                         labelName={"Earning"}

@@ -15,7 +15,10 @@ const AllSubmission = () => {
 		window.scrollTo(0, 0);
 	}, []);
 	return (
-		<div className="overflow-x-auto lg:ml-64 mt-14">
+		<div className="overflow-x-auto lg:ml-64 mb-10 mt-20 mx-5">
+            <h2 className="text-gray-900 font-medium text-lg mb-2">
+                All Submissions
+            </h2>
 			<table className="table table-zebra w-full">
 				<thead>
 					<tr className="text-center">
