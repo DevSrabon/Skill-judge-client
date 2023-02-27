@@ -10,7 +10,7 @@ const PrimaryButton = ({
 		<button
 		disabled={isDisabled}
 			onClick={onClick}
-			className={`bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white`}>
+			className={`bg-emerald-400 hover:bg-emerald-600 text-white focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white`}>
 			{children}
 		</button>
 	);
