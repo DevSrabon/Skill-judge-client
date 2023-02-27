@@ -95,7 +95,7 @@ const Nav = () => {
 				<Link to={"/blog"}>Blog</Link>
 			</li>
 			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
-				<Link to={"/qna"}>QnA</Link>
+				<Link to={"/community-home"}>Community</Link>
 			</li>
 			<li onClick={() => setNavbar(!navbar)} className="hover:text-orange-400">
 				<Link to={"/basic"}>Problems</Link>
