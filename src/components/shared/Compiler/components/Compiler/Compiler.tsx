@@ -229,7 +229,7 @@ const Compiler = ({ resultOutput }: any) => {
 						/>
 
 						<div className="flex gap-2">
-							{(resultOutput?.length > 0) ? (
+							{(output || output1 || output2) ? (
 								<button
 									onClick={handleResultSubmit}
 									disabled={!outputDetails || processing || show}

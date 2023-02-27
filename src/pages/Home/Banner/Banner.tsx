@@ -1172,13 +1172,6 @@ const Banner = () => {
 							through challenge
 						</span>
 					</h2>
-					<div className=" hidden md:block md:absolute md:right-[77px] lg:right-[-140px]">
-						<img
-							src="https://t.commonsupport.com/driveto/images/resource/title-pattern-1.svg"
-							alt=""
-							className="w-44 md:w-64"
-						/>
-					</div>
 				</div>
 				{/* <h1 className="text-[#ff4d4d]  text-4xl md:text-7xl lg:text-8xl mb-2">
 					Achieve mastery
