@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { MdQuiz } from "react-icons/md";
-import { BsFillCursorFill } from "react-icons/bs";
+import { BsBookmark, BsFillCursorFill } from "react-icons/bs";
 import { BiFilterAlt } from "react-icons/bi";
 
 const UserDashboard = () => {
@@ -25,6 +25,12 @@ const UserDashboard = () => {
 							to={"/userDashboard/singlesubmission"}>
 							<BsFillCursorFill />
 							Submission
+						</Link>
+						<Link
+							className="bg-emerald-400 hover:bg-emerald-500 focus:bg-emerald-800 focus:text-white"
+							to={"/userDashboard/addblog"}>
+							<BsBookmark />
+							Add Blog
 						</Link>
 					</li>
 				</ul>
