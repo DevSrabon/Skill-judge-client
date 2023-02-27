@@ -142,7 +142,7 @@ export const router = createBrowserRouter([
                 ),
                 children: [
                     {
-                        path: "/userDashboard/quiz",
+                        path: "/userDashboard",
                         element: <SingleQuiz />,
                     },
                     {
