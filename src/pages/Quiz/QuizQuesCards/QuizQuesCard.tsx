@@ -25,7 +25,7 @@ const QuizQuesCard = ({ question, name }) => {
 			{
 				label: "# of Votes",
 				data: [score, wrong],
-				backgroundColor: ["#2563eb", "rgb(235, 91, 14)"],
+				backgroundColor: ["#34d399", "#fff"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
 				ShadowRoot: Pie,
@@ -38,7 +38,7 @@ const QuizQuesCard = ({ question, name }) => {
 			{
 				label: "# of Votes",
 				data: [correctAnswer, 100 - correctAnswer],
-				backgroundColor: ["#2563eb", "rgb(235, 91, 14)"],
+				backgroundColor: ["#34d399", "#fff"],
 				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
 				borderWidth: 1,
 				ShadowRoot: Pie,
@@ -66,6 +66,7 @@ const QuizQuesCard = ({ question, name }) => {
 	};
 
 	const restartGame = () => {
+		setWrong(0)
 		setScore(0);
 		setCurrentQuestion(0);
 		setShowResults(false);
@@ -104,14 +105,15 @@ const QuizQuesCard = ({ question, name }) => {
 		<section>
 			<div className="quiz-container ">
 				{showResults ? (
-					<div className=" flex justify-evenly items-center">
+					<div className=" mb-5 flex justify-evenly items-center">
 						<div>
 							{correctAnswer > 59 ? (
-								<p className="p-3 rounded-lg bg-info my-2 text-white ">
-									"Congratulations! You earn a batch!"
-								</p>
+								<h4
+									className="p-3 font-semibold text-xl rounded-lg bg-blue-600 my-2 text-white ">
+									"Congratulations! You earn a badge!"
+								</h4>
 							) : null}
-							<h2 className="text-3xl mb-3 font-semibold p-4 bg-info rounded text-white">
+							<h2 className="text-3xl mb-3 font-semibold p-4 bg-blue-600 rounded text-white">
 								Your Score is {score}
 							</h2>
 
@@ -240,7 +242,7 @@ const QuizQuesCard = ({ question, name }) => {
 									Next
 								</PrimaryButton>
 							)}
-						{currentQuestion === question.length - 1 && (		
+							{currentQuestion === question.length - 1 && (
 								<PrimaryButton
 									isDisabled={!isActive}
 									onClick={() => {
@@ -249,7 +251,7 @@ const QuizQuesCard = ({ question, name }) => {
 									}}>
 									Submit
 								</PrimaryButton>
-						)}
+							)}
 						</div>
 					</div>
 				)}
