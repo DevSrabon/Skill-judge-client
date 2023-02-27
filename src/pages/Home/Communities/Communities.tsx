@@ -23,7 +23,7 @@ const Communities = () => {
 
     return (
 			<section className="container hero-section">
-				<div className=" space-y-10 w-8/12 text-center mx-auto">
+				<div className="space-y-3 lg:space-y-10 lg:w-8/12 text-center mx-auto">
 					<div className="relative">
 						<div className={"dots"}>
 							<span></span>
@@ -31,7 +31,7 @@ const Communities = () => {
 						<h2 className=" text-center text-4xl md:text-6xl dark:text-white font-extrabold mb-3">
 							An occupied Skill Judge Platform community
 						</h2>
-						<div className=" hidden md:block md:absolute md:right-[-93px] lg:right-[-6px]">
+						<div className=" hidden md:block md:absolute md:right-[15px] lg:right-[-6px]">
 							<img
 								src="https://t.commonsupport.com/driveto/images/resource/title-pattern-1.svg"
 								alt=""
@@ -42,14 +42,14 @@ const Communities = () => {
 					{/* <h2 className="text-6xl font-semibold dark:font-normal text-black dark:text-white">
 						An occupied Skill Judge Platform community
 					</h2> */}
-					<p className="text-xl mt-2 font-light text-black dark:text-white">
+					<p className="text-xl pt-4 font-light text-black dark:text-white">
 						Skill Judge is a collective effort by its users. They are
 						creators—authoring problem solving platform to teach various
 						techniques,problem solving with solutions that enlighten others, and
 						commenting with constructive feedback.
 					</p>
 				</div>
-				<div className="rounded-lg mt-14  bg-stone-800 dark:bg-gray-900 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+				<div className="rounded-lg mt-5 lg:mt-14  bg-stone-800 dark:bg-gray-900 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					<div className="flex py-[70px] space-y-5 space-x-5 justify-center items-center flex-col">
 						<h3 className="text-7xl font-semibold text-white">
 							<CountUp end={data && data?.users} start={0} />
