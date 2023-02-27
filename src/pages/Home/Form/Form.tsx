@@ -3,15 +3,14 @@ import { FiArrowDown } from "react-icons/fi";
 import PrimaryButton from "../../../components/shared/PrimaryButton/PrimaryButton";
 
 const Form = () => {
-
-	const {data: users} = useQuery({
+	const { data: users } = useQuery({
 		queryKey: ["user"],
 		queryFn: async () => {
 			const res = await fetch(`${process.env.REACT_APP_API_URL}/team`);
 			const data = await res.json();
 			return data;
-		}
-	}) 
+		},
+	});
 
 	return (
 		<div>
@@ -59,8 +58,8 @@ const Form = () => {
 									y1="24.75"
 									y2="24.75"
 									gradientUnits="userSpaceOnUse">
-									<stop offset="0" stop-color="#0081fb" />
-									<stop offset=".995" stop-color="#0064e1" />
+									<stop offset="0" stopColor="#0081fb" />
+									<stop offset=".995" stopColor="#0064e1" />
 								</linearGradient>
 								<path
 									fill="url(#wSMw7pqi7WIWHewz2_TZXa)"
@@ -73,8 +72,8 @@ const Form = () => {
 									y1="32.87"
 									y2="13.012"
 									gradientUnits="userSpaceOnUse">
-									<stop offset="0" stop-color="#0081fb" />
-									<stop offset=".995" stop-color="#0064e1" />
+									<stop offset="0" stopColor="#0081fb" />
+									<stop offset=".995" stopColor="#0064e1" />
 								</linearGradient>
 								<path
 									fill="url(#wSMw7pqi7WIWHewz2_TZXb)"
